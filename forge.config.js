@@ -52,6 +52,15 @@ module.exports = {
         if (fs.existsSync(buildPath)) {
           fs.copySync(buildPath, targetAppPath);
           console.log(`Copied app to ${targetAppPath}`);
+          
+          // 对于 Windows，确保 package.json 在正确的位置
+          if (platform === 'win32') {
+            const packageJsonPath = path.join(targetAppPath, 'resources', 'app', 'package.json');
+            const packageJsonDir = path.dirname(packageJsonPath);
+            fs.ensureDirSync(packageJsonDir);
+            fs.copySync(path.resolve(__dirname, 'package.json'), packageJsonPath);
+            console.log(`Copied package.json to ${packageJsonPath}`);
+          }
         }
       },
     ],
