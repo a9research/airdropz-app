@@ -55,11 +55,26 @@ module.exports = {
           
           // 对于 Windows，确保 package.json 在正确的位置
           if (platform === 'win32') {
+            // 复制到 .exe 文件内部
             const packageJsonPath = path.join(targetAppPath, 'resources', 'app', 'package.json');
             const packageJsonDir = path.dirname(packageJsonPath);
             fs.ensureDirSync(packageJsonDir);
             fs.copySync(path.resolve(__dirname, 'package.json'), packageJsonPath);
             console.log(`Copied package.json to ${packageJsonPath}`);
+            
+            // 同时复制到目录结构中，供 Squirrel maker 使用
+            const dirPackageJsonPath = path.join(targetDir, 'resources', 'app', 'package.json');
+            const dirPackageJsonDir = path.dirname(dirPackageJsonPath);
+            fs.ensureDirSync(dirPackageJsonDir);
+            fs.copySync(path.resolve(__dirname, 'package.json'), dirPackageJsonPath);
+            console.log(`Copied package.json to ${dirPackageJsonPath}`);
+            
+            // 验证文件是否真的存在
+            if (fs.existsSync(dirPackageJsonPath)) {
+              console.log(`Verified package.json exists at ${dirPackageJsonPath}`);
+            } else {
+              console.error(`ERROR: package.json not found at ${dirPackageJsonPath}`);
+            }
           }
         }
       },
