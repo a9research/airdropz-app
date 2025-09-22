@@ -110,7 +110,7 @@ jobs:
                   # 移动生成的可执行文件到插件根目录
                   if [ "$RUNNER_OS" = "Windows" ]; then
                     if [ -f "dist/${py_file%.py}.exe" ]; then
-                      move "dist\\${py_file%.py}.exe" "${py_file%.py}.exe"
+                      mv "dist/${py_file%.py}.exe" "${py_file%.py}.exe"
                       echo "Created ${py_file%.py}.exe"
                     fi
                   else
@@ -142,6 +142,8 @@ jobs:
         echo "Generated executables:"
         if [ "$RUNNER_OS" = "Windows" ]; then
           find plugins/ -name "*.exe" -type f
+          echo "All files in plugins directory:"
+          find plugins/ -type f
         else
           # List all files in plugins directory, excluding Python files and build artifacts
           find plugins/ -type f ! -name "*.py" ! -name "*.spec" ! -path "*/build/*" ! -path "*/dist/*" ! -name "*.pyc" ! -name "__pycache__"

@@ -48,6 +48,18 @@ module.exports = {
       platforms: ['darwin'],
     },
     {
+      name: '@electron-forge/maker-dmg',
+      config: {
+        background: path.resolve(__dirname, 'public/icon.png'),
+        icon: path.resolve(__dirname, 'public/icon.icns'),
+        iconSize: 80,
+        contents: [
+          { x: 448, y: 344, type: 'link', path: '/Applications' },
+          { x: 192, y: 344, type: 'file', path: 'airdropz.app' }
+        ]
+      },
+    },
+    {
       name: '@electron-forge/maker-deb',
       config: {},
     },
