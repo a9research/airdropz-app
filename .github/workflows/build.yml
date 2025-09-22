@@ -56,6 +56,21 @@ jobs:
     - name: Build Next.js
       run: |
         echo "Building Next.js application..."
+        echo "Current working directory: $(pwd)"
+        echo "Contents of current directory:"
+        if [ "$RUNNER_OS" = "Windows" ]; then
+          dir
+        else
+          ls -la
+        fi
+        echo "Checking package.json:"
+        if [ -f "package.json" ]; then
+          echo "package.json found"
+          cat package.json | head -10
+        else
+          echo "package.json not found!"
+          exit 1
+        fi
         npm run build
         echo "Next.js build completed"
       shell: bash
@@ -99,9 +114,19 @@ jobs:
                       echo "Created ${py_file%.py}.exe"
                     fi
                   else
+                    # macOS/Linux: 查找生成的可执行文件
                     if [ -f "dist/${py_file%.py}" ]; then
                       mv "dist/${py_file%.py}" "${py_file%.py}"
                       echo "Created ${py_file%.py}"
+                    else
+                      # 如果直接生成在 dist 目录，尝试查找
+                      executable_name=$(find dist -type f -name "${py_file%.py}" 2>/dev/null | head -1)
+                      if [ -n "$executable_name" ]; then
+                        mv "$executable_name" "${py_file%.py}"
+                        echo "Created ${py_file%.py} from $executable_name"
+                      else
+                        echo "Warning: Could not find generated executable for ${py_file}"
+                      fi
                     fi
                   fi
                 fi
@@ -118,7 +143,8 @@ jobs:
         if [ "$RUNNER_OS" = "Windows" ]; then
           find plugins/ -name "*.exe" -type f
         else
-          find plugins/ -name "*" -type f -executable | grep -v ".py"
+          # List all files in plugins directory, excluding Python files and build artifacts
+          find plugins/ -type f ! -name "*.py" ! -name "*.spec" ! -path "*/build/*" ! -path "*/dist/*" ! -name "*.pyc" ! -name "__pycache__"
         fi
       shell: bash
       

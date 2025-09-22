@@ -1,6 +1,8 @@
 {
   "name": "airdropz",
   "version": "0.0.01",
+  "description": "Electron app with Next.js and proxy browser functionality",
+  "author": "Austin",
   "private": true,
   "main": "electron/main.js",
   "preload": "electron/preload.js",

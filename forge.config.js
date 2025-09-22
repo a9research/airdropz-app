@@ -4,21 +4,24 @@ const path = require('path');
 const fs = require('fs-extra');
 
 // 从 package.json 读取版本信息
-const packageJson = require('./package.json');
+const packageJson = require(path.resolve(__dirname, 'package.json'));
 
 module.exports = {
   packagerConfig: {
     asar: true,
-    main: './electron/main.js',
-    preload: './electron/preload.js',
+    main: path.resolve(__dirname, 'electron/main.js'),
+    preload: path.resolve(__dirname, 'electron/preload.js'),
     // 应用基本信息（从 package.json 读取）
     name: packageJson.name, // 应用名称
     executableName: packageJson.name, // 可执行文件名
     appVersion: packageJson.version, // 应用版本号
     // 应用图标配置（使用 public 目录）
-    icon: './public/icon', // 图标文件路径（不包含扩展名，Electron Forge 会自动添加 .icns/.ico/.png）
+    icon: path.resolve(__dirname, 'public/icon'), // 图标文件路径（不包含扩展名，Electron Forge 会自动添加 .icns/.ico/.png）
     // 增加对 Next.js 输出的支持
-    extraResources: ['./.next/**/*', './plugins/**/*'], // 包含插件目录
+    extraResources: [
+      path.resolve(__dirname, '.next/**/*'), 
+      path.resolve(__dirname, 'plugins/**/*')
+    ], // 包含插件目录
     afterCopy: [
       (buildPath, electronVersion, platform, arch) => {
         if (process.env.NODE_ENV === 'production') {
