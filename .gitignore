@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# electron forge build artifacts
+*.app
+
 # production
 /build
 

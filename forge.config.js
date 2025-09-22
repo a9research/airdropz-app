@@ -11,27 +11,18 @@ module.exports = {
     asar: true,
     main: path.resolve(__dirname, 'electron/main.js'),
     preload: path.resolve(__dirname, 'electron/preload.js'),
-    // 应用基本信息（从 package.json 读取）
-    name: packageJson.name, // 应用名称
-    executableName: packageJson.name, // 可执行文件名
-    appVersion: packageJson.version, // 应用版本号
-    // 应用图标配置（使用 public 目录）
-    icon: path.resolve(__dirname, 'public/icon'), // 图标文件路径（不包含扩展名，Electron Forge 会自动添加 .icns/.ico/.png）
-    // 输出目录配置
+    name: packageJson.name,
+    executableName: packageJson.name,
+    appVersion: packageJson.version,
+    icon: path.resolve(__dirname, 'public/icon'),
     out: path.resolve(__dirname, 'out'),
-    // 增加对 Next.js 输出的支持
     extraResources: [
       '.next/**/*', 
       'plugins/**/*'
-    ], // 包含插件目录
+    ],
     afterCopy: [
       (buildPath, electronVersion, platform, arch) => {
-        if (process.env.NODE_ENV === 'production') {
-          // 确保 electron-next 构建后文件可用
-          console.log(`Copying Next.js output to ${buildPath}`);
-        }
-        
-        // 复制插件目录到应用资源目录
+        // 复制插件到应用包
         const pluginDir = path.join(buildPath, 'resources/app.asar.unpacked/plugins');
         fs.ensureDirSync(pluginDir);
         fs.copySync(path.resolve(__dirname, 'plugins'), pluginDir);
@@ -40,54 +31,50 @@ module.exports = {
     ],
     afterExtract: [
       (buildPath, electronVersion, platform, arch) => {
-        // 确保输出目录存在
+        // 确保输出目录存在并复制应用包
         const outDir = path.resolve(__dirname, 'out');
         const targetDir = path.join(outDir, `${packageJson.name}-${platform}-${arch}`);
         fs.ensureDirSync(targetDir);
         
-        // 复制应用到输出目录
         const appName = platform === 'darwin' ? `${packageJson.name}.app` : `${packageJson.name}.exe`;
         const targetAppPath = path.join(targetDir, appName);
         
         if (fs.existsSync(buildPath)) {
-          fs.copySync(buildPath, targetAppPath);
-          console.log(`Copied app to ${targetAppPath}`);
-          
-          // 对于 Windows，确保完整的应用结构被复制
-          if (platform === 'win32') {
-            console.log(`Windows platform detected, copying complete app structure...`);
-            
-            // 复制完整的应用结构到目标目录
-            const appContentsPath = path.join(targetAppPath, 'resources', 'app');
-            if (fs.existsSync(appContentsPath)) {
-              // 复制应用内容到目标目录的根目录
-              const targetAppContents = path.join(targetDir, 'resources', 'app');
-              fs.ensureDirSync(path.dirname(targetAppContents));
-              fs.copySync(appContentsPath, targetAppContents);
-              console.log(`Copied app contents to ${targetAppContents}`);
+          if (platform === 'darwin') {
+            // 对于 macOS，从 Electron.app 复制内容
+            const electronAppPath = path.join(buildPath, 'Electron.app');
+            if (fs.existsSync(electronAppPath)) {
+              fs.copySync(electronAppPath, targetAppPath);
+              console.log(`Copied Electron.app to ${targetAppPath}`);
               
-              // 复制其他必要的目录和文件
-              const localesPath = path.join(targetAppPath, 'locales');
-              if (fs.existsSync(localesPath)) {
-                const targetLocalesPath = path.join(targetDir, 'locales');
-                fs.copySync(localesPath, targetLocalesPath);
-                console.log(`Copied locales to ${targetLocalesPath}`);
+              // 为 DMG maker 创建符号链接
+              const symlinkPath = path.resolve(__dirname, `${packageJson.name}.app`);
+              if (fs.existsSync(symlinkPath)) {
+                fs.removeSync(symlinkPath);
               }
-              
-              // 复制其他可能需要的目录
-              const resourcesPath = path.join(targetAppPath, 'resources');
-              if (fs.existsSync(resourcesPath)) {
-                const targetResourcesPath = path.join(targetDir, 'resources');
-                fs.copySync(resourcesPath, targetResourcesPath);
-                console.log(`Copied resources to ${targetResourcesPath}`);
-              }
+              fs.symlinkSync(targetAppPath, symlinkPath);
+              console.log(`Created symlink: ${symlinkPath} -> ${targetAppPath}`);
             }
+          } else {
+            // 对于 Windows，直接复制
+            fs.copySync(buildPath, targetAppPath);
+            console.log(`Copied app to ${targetAppPath}`);
           }
         }
       },
     ],
   },
   rebuildConfig: {},
+  hooks: {
+    afterMake: async (config, makeResults) => {
+      // 清理构建过程中创建的符号链接
+      const symlinkPath = path.resolve(__dirname, `${packageJson.name}.app`);
+      if (fs.existsSync(symlinkPath)) {
+        fs.removeSync(symlinkPath);
+        console.log(`Cleaned up symlink: ${symlinkPath}`);
+      }
+    },
+  },
   makers: [
     {
       name: '@electron-forge/maker-zip',
@@ -96,7 +83,14 @@ module.exports = {
     {
       name: '@electron-forge/maker-dmg',
       platforms: ['darwin'],
-      config: {},
+      config: {
+        icon: path.resolve(__dirname, 'public/icon.icns'),
+        iconSize: 80,
+        contents: [
+          { x: 448, y: 344, type: 'link', path: '/Applications' },
+          { x: 192, y: 344, type: 'file', path: `${packageJson.name}.app` }
+        ]
+      },
     },
     {
       name: '@electron-forge/maker-squirrel',
@@ -109,16 +103,6 @@ module.exports = {
       config: {
         icon: path.resolve(__dirname, 'public/icon.ico'),
       },
-    },
-    {
-      name: '@electron-forge/maker-deb',
-      platforms: ['linux'],
-      config: {},
-    },
-    {
-      name: '@electron-forge/maker-rpm',
-      platforms: ['linux'],
-      config: {},
     },
   ],
   plugins: [
@@ -135,6 +119,5 @@ module.exports = {
       [FuseV1Options.EnableEmbeddedAsarIntegrityValidation]: true,
       [FuseV1Options.OnlyLoadAppFromAsar]: true,
     }),
-    // 注意：不添加 @electron-forge/plugin-webpack，因为 electron-next 接管 renderer
   ],
 };
