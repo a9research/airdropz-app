@@ -53,27 +53,34 @@ module.exports = {
           fs.copySync(buildPath, targetAppPath);
           console.log(`Copied app to ${targetAppPath}`);
           
-          // 对于 Windows，确保 package.json 在正确的位置
+          // 对于 Windows，确保完整的应用结构被复制
           if (platform === 'win32') {
-            // 复制到 .exe 文件内部
-            const packageJsonPath = path.join(targetAppPath, 'resources', 'app', 'package.json');
-            const packageJsonDir = path.dirname(packageJsonPath);
-            fs.ensureDirSync(packageJsonDir);
-            fs.copySync(path.resolve(__dirname, 'package.json'), packageJsonPath);
-            console.log(`Copied package.json to ${packageJsonPath}`);
+            console.log(`Windows platform detected, copying complete app structure...`);
             
-            // 同时复制到目录结构中，供 Squirrel maker 使用
-            const dirPackageJsonPath = path.join(targetDir, 'resources', 'app', 'package.json');
-            const dirPackageJsonDir = path.dirname(dirPackageJsonPath);
-            fs.ensureDirSync(dirPackageJsonDir);
-            fs.copySync(path.resolve(__dirname, 'package.json'), dirPackageJsonPath);
-            console.log(`Copied package.json to ${dirPackageJsonPath}`);
-            
-            // 验证文件是否真的存在
-            if (fs.existsSync(dirPackageJsonPath)) {
-              console.log(`Verified package.json exists at ${dirPackageJsonPath}`);
-            } else {
-              console.error(`ERROR: package.json not found at ${dirPackageJsonPath}`);
+            // 复制完整的应用结构到目标目录
+            const appContentsPath = path.join(targetAppPath, 'resources', 'app');
+            if (fs.existsSync(appContentsPath)) {
+              // 复制应用内容到目标目录的根目录
+              const targetAppContents = path.join(targetDir, 'resources', 'app');
+              fs.ensureDirSync(path.dirname(targetAppContents));
+              fs.copySync(appContentsPath, targetAppContents);
+              console.log(`Copied app contents to ${targetAppContents}`);
+              
+              // 复制其他必要的目录和文件
+              const localesPath = path.join(targetAppPath, 'locales');
+              if (fs.existsSync(localesPath)) {
+                const targetLocalesPath = path.join(targetDir, 'locales');
+                fs.copySync(localesPath, targetLocalesPath);
+                console.log(`Copied locales to ${targetLocalesPath}`);
+              }
+              
+              // 复制其他可能需要的目录
+              const resourcesPath = path.join(targetAppPath, 'resources');
+              if (fs.existsSync(resourcesPath)) {
+                const targetResourcesPath = path.join(targetDir, 'resources');
+                fs.copySync(resourcesPath, targetResourcesPath);
+                console.log(`Copied resources to ${targetResourcesPath}`);
+              }
             }
           }
         }
