@@ -6,7 +6,7 @@
   "preload": "electron/preload.js",
   "scripts": {
     "dev": "concurrently \"next dev --turbopack\" \"wait-on http://localhost:3000 && electron-forge start\"",
-    "build": "next build --turbopack && electron-next build ./src && electron-forge package",
+    "build": "next build --turbopack && electron-forge package",
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",

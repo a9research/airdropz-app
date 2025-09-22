@@ -9,12 +9,12 @@ export default function Home() {
     console.log('Button clicked');
     if (window.api) {
       window.api.openProxyBrowser('https://baidu.com')
-        .then((window: any) => {
+        .then((window: unknown) => {
           if (window) {
             console.log('Proxy browser opened:', window);
           }
         })
-        .catch((error: any) => console.error('Failed to open proxy browser:', error));
+        .catch((error: Error) => console.error('Failed to open proxy browser:', error));
     } else {
       console.error('window.api is not available');
     }
@@ -24,11 +24,11 @@ export default function Home() {
     console.log('useEffect triggered', window.api);
     if (window.api) {
       window.api.scrape('https://baidu.com')
-        .then((result) => {
+        .then((result: string) => {
           console.log('Scrape result:', result);
           setScrapeResult(result);
         })
-        .catch((error: any) => console.error('Scrape error:', error));
+        .catch((error: Error) => console.error('Scrape error:', error));
     }
   }, []);
 

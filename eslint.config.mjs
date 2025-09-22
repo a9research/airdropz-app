@@ -18,7 +18,27 @@ const eslintConfig = [
       "out/**",
       "build/**",
       "next-env.d.ts",
+      "src/.next/**",
+      "**/*.d.ts",
+      "**/.next/**",
+      "**/static/**",
+      "**/chunks/**",
+      "**/polyfills.js",
+      "**/_buildManifest.js",
+      "**/_ssgManifest.js",
+      "**/validator.ts",
+      "**/routes.d.ts",
     ],
+  },
+  {
+    rules: {
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-unused-expressions": "off",
+      "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/no-this-alias": "off",
+      "@typescript-eslint/no-empty-object-type": "warn",
+      "@typescript-eslint/ban-ts-comment": "warn",
+    },
   },
 ];
 

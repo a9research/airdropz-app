@@ -18,7 +18,7 @@ module.exports = {
     // 应用图标配置（使用 public 目录）
     icon: './public/icon', // 图标文件路径（不包含扩展名，Electron Forge 会自动添加 .icns/.ico/.png）
     // 增加对 Next.js 输出的支持
-    extraResources: ['./out/**/*', './plugins/**/*'], // 包含插件目录
+    extraResources: ['./.next/**/*', './plugins/**/*'], // 包含插件目录
     afterCopy: [
       (buildPath, electronVersion, platform, arch) => {
         if (process.env.NODE_ENV === 'production') {
