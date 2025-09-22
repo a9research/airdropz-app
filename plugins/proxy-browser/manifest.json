@@ -1,0 +1,5 @@
+{
+    "name": "proxy-browser",
+    "type": "js",
+    "entry": "index.js"
+  }

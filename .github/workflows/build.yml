@@ -1,0 +1,171 @@
+name: Build Electron App with Python Executables
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'plugins/**'
+      - 'electron/**'
+      - 'src/**'
+      - 'package.json'
+      - 'forge.config.js'
+      - '.github/workflows/build.yml'
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest]
+        include:
+          - os: macos-latest
+            platform: darwin
+            arch: arm64
+          - os: windows-latest
+            platform: win32
+            arch: x64
+      fail-fast: false  # 允许一个平台失败不影响另一个平台
+    
+    runs-on: ${{ matrix.os }}
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+        
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.13'
+        
+    - name: Install dependencies
+      run: |
+        echo "Installing Node.js dependencies..."
+        npm ci
+        echo "Installing Python dependencies..."
+        python -m pip install --upgrade pip
+        pip install pyinstaller
+        echo "Dependencies installed successfully"
+      shell: bash
+        
+    - name: Build Next.js
+      run: |
+        echo "Building Next.js application..."
+        npm run build
+        echo "Next.js build completed"
+      shell: bash
+        
+    - name: Build Python executables
+      run: |
+        echo "Building Python executables..."
+        echo "Current directory: $(pwd)"
+        echo "Python plugins directory:"
+        if [ "$RUNNER_OS" = "Windows" ]; then
+          dir plugins/
+        else
+          ls -la plugins/
+        fi
+        
+        # 为每个 Python 插件构建可执行文件
+        for plugin_dir in plugins/*/; do
+          if [ -d "$plugin_dir" ]; then
+            plugin_name=$(basename "$plugin_dir")
+            echo "Processing plugin: $plugin_name"
+            
+            # 检查是否有 Python 文件
+            python_files=$(find "$plugin_dir" -name "*.py" -type f)
+            if [ -n "$python_files" ]; then
+              echo "Found Python files in $plugin_name:"
+              echo "$python_files"
+              
+              # 进入插件目录
+              cd "$plugin_dir"
+              
+              # 为每个 Python 文件构建可执行文件
+              for py_file in *.py; do
+                if [ -f "$py_file" ]; then
+                  echo "Building $py_file..."
+                  pyinstaller --onefile --distpath ./dist "$py_file"
+                  
+                  # 移动生成的可执行文件到插件根目录
+                  if [ "$RUNNER_OS" = "Windows" ]; then
+                    if [ -f "dist/${py_file%.py}.exe" ]; then
+                      move "dist\\${py_file%.py}.exe" "${py_file%.py}.exe"
+                      echo "Created ${py_file%.py}.exe"
+                    fi
+                  else
+                    if [ -f "dist/${py_file%.py}" ]; then
+                      mv "dist/${py_file%.py}" "${py_file%.py}"
+                      echo "Created ${py_file%.py}"
+                    fi
+                  fi
+                fi
+              done
+              
+              # 返回项目根目录
+              cd ../..
+            fi
+          fi
+        done
+        
+        echo "Python executables built successfully"
+        echo "Generated executables:"
+        if [ "$RUNNER_OS" = "Windows" ]; then
+          find plugins/ -name "*.exe" -type f
+        else
+          find plugins/ -name "*" -type f -executable | grep -v ".py"
+        fi
+      shell: bash
+      
+    - name: Package Electron App (macOS)
+      if: matrix.os == 'macos-latest'
+      run: |
+        echo "Packaging Electron app for macOS..."
+        npm run make
+        echo "macOS packaging completed"
+        ls -la out/make/*.dmg
+      shell: bash
+      env:
+        NODE_ENV: production
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Package Electron App (Windows)
+      if: matrix.os == 'windows-latest'
+      run: |
+        echo "Packaging Electron app for Windows..."
+        npm run make
+        echo "Windows packaging completed"
+        dir out\\make\\*.exe
+      shell: bash
+      env:
+        NODE_ENV: production
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+    - name: Upload macOS build
+      if: matrix.os == 'macos-latest'
+      uses: actions/upload-artifact@v4
+      with:
+        name: framework-macos
+        path: out/make/*.dmg
+        
+    - name: Upload Windows build
+      if: matrix.os == 'windows-latest'
+      uses: actions/upload-artifact@v4
+      with:
+        name: framework-windows
+        path: out/make/*.exe
+        
+    - name: Create Release
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          out/make/*.dmg
+          out/make/*.exe
+        draft: false
+        prerelease: false
