@@ -17,10 +17,12 @@ module.exports = {
     appVersion: packageJson.version, // 应用版本号
     // 应用图标配置（使用 public 目录）
     icon: path.resolve(__dirname, 'public/icon'), // 图标文件路径（不包含扩展名，Electron Forge 会自动添加 .icns/.ico/.png）
+    // 输出目录配置
+    out: path.resolve(__dirname, 'out'),
     // 增加对 Next.js 输出的支持
     extraResources: [
-      path.resolve(__dirname, '.next/**/*'), 
-      path.resolve(__dirname, 'plugins/**/*')
+      '.next/**/*', 
+      'plugins/**/*'
     ], // 包含插件目录
     afterCopy: [
       (buildPath, electronVersion, platform, arch) => {
@@ -36,35 +38,55 @@ module.exports = {
         console.log(`Copied plugins to ${pluginDir}`);
       },
     ],
+    afterExtract: [
+      (buildPath, electronVersion, platform, arch) => {
+        // 确保输出目录存在
+        const outDir = path.resolve(__dirname, 'out');
+        const targetDir = path.join(outDir, `${packageJson.name}-${platform}-${arch}`);
+        fs.ensureDirSync(targetDir);
+        
+        // 复制应用到输出目录
+        const appName = platform === 'darwin' ? `${packageJson.name}.app` : `${packageJson.name}.exe`;
+        const targetAppPath = path.join(targetDir, appName);
+        
+        if (fs.existsSync(buildPath)) {
+          fs.copySync(buildPath, targetAppPath);
+          console.log(`Copied app to ${targetAppPath}`);
+        }
+      },
+    ],
   },
   rebuildConfig: {},
   makers: [
     {
-      name: '@electron-forge/maker-squirrel',
-      config: {},
-    },
-    {
       name: '@electron-forge/maker-zip',
-      platforms: ['darwin'],
+      platforms: ['darwin', 'win32'],
     },
     {
       name: '@electron-forge/maker-dmg',
+      platforms: ['darwin'],
+      config: {},
+    },
+    {
+      name: '@electron-forge/maker-squirrel',
+      platforms: ['win32'],
+      config: {},
+    },
+    {
+      name: '@electron-forge/maker-wix',
+      platforms: ['win32'],
       config: {
-        background: path.resolve(__dirname, 'public/icon.png'),
-        icon: path.resolve(__dirname, 'public/icon.icns'),
-        iconSize: 80,
-        contents: [
-          { x: 448, y: 344, type: 'link', path: '/Applications' },
-          { x: 192, y: 344, type: 'file', path: 'airdropz.app' }
-        ]
+        icon: path.resolve(__dirname, 'public/icon.ico'),
       },
     },
     {
       name: '@electron-forge/maker-deb',
+      platforms: ['linux'],
       config: {},
     },
     {
       name: '@electron-forge/maker-rpm',
+      platforms: ['linux'],
       config: {},
     },
   ],
