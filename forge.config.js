@@ -47,18 +47,44 @@ module.exports = {
               fs.copySync(electronAppPath, targetAppPath);
               console.log(`Copied Electron.app to ${targetAppPath}`);
               
-              // 为 DMG maker 创建符号链接
-              const symlinkPath = path.resolve(__dirname, `${packageJson.name}.app`);
-              if (fs.existsSync(symlinkPath)) {
-                fs.removeSync(symlinkPath);
+              // 为 DMG maker 复制实际的应用包（而不是符号链接）
+              const dmgAppPath = path.resolve(__dirname, `${packageJson.name}.app`);
+              if (fs.existsSync(dmgAppPath)) {
+                fs.removeSync(dmgAppPath);
               }
-              fs.symlinkSync(targetAppPath, symlinkPath);
-              console.log(`Created symlink: ${symlinkPath} -> ${targetAppPath}`);
+              fs.copySync(targetAppPath, dmgAppPath);
+              console.log(`Copied app for DMG: ${targetAppPath} -> ${dmgAppPath}`);
             }
           } else {
             // 对于 Windows，直接复制
             fs.copySync(buildPath, targetAppPath);
             console.log(`Copied app to ${targetAppPath}`);
+            
+            // 为 Windows makers 复制必要的文件结构
+            const appContentsPath = path.join(targetAppPath, 'resources', 'app');
+            if (fs.existsSync(appContentsPath)) {
+              // 复制应用内容到目标目录的根目录
+              const targetAppContents = path.join(targetDir, 'resources', 'app');
+              fs.ensureDirSync(path.dirname(targetAppContents));
+              fs.copySync(appContentsPath, targetAppContents);
+              console.log(`Copied app contents to ${targetAppContents}`);
+              
+              // 复制其他必要的目录和文件
+              const localesPath = path.join(targetAppPath, 'locales');
+              if (fs.existsSync(localesPath)) {
+                const targetLocalesPath = path.join(targetDir, 'locales');
+                fs.copySync(localesPath, targetLocalesPath);
+                console.log(`Copied locales to ${targetLocalesPath}`);
+              }
+              
+              // 复制其他可能需要的目录
+              const resourcesPath = path.join(targetAppPath, 'resources');
+              if (fs.existsSync(resourcesPath)) {
+                const targetResourcesPath = path.join(targetDir, 'resources');
+                fs.copySync(resourcesPath, targetResourcesPath);
+                console.log(`Copied resources to ${targetResourcesPath}`);
+              }
+            }
           }
         }
       },
