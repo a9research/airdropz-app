@@ -182,12 +182,23 @@ jobs:
         NODE_ENV: production
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
-    - name: Upload macOS build
+    - name: Upload macOS ARM64 build
       if: matrix.os == 'macos-latest'
       uses: actions/upload-artifact@v4
       with:
-        name: framework-macos
-        path: dist/AirdropzAlpha-0.0.1-arm64.dmg
+        name: framework-macos-arm64
+        path: |
+          dist/AirdropzAlpha-0.0.1-arm64.dmg
+          dist/AirdropzAlpha-0.0.1-arm64-mac.zip
+        
+    - name: Upload macOS x64 build
+      if: matrix.os == 'macos-latest'
+      uses: actions/upload-artifact@v4
+      with:
+        name: framework-macos-x64
+        path: |
+          dist/AirdropzAlpha-0.0.1.dmg
+          dist/AirdropzAlpha-0.0.1-mac.zip
         
     - name: Upload Windows build
       if: matrix.os == 'windows-latest'
@@ -203,8 +214,10 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          dist/*.dmg
-          dist/*.zip
+          dist/AirdropzAlpha-0.0.1-arm64.dmg
+          dist/AirdropzAlpha-0.0.1-arm64-mac.zip
+          dist/AirdropzAlpha-0.0.1.dmg
+          dist/AirdropzAlpha-0.0.1-mac.zip
           dist/AirdropzAlpha Setup 0.0.1.exe
           dist/AirdropzAlpha 0.0.1.exe
         draft: false
