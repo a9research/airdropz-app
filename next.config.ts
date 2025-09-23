@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
     // 在构建时忽略 TypeScript 错误
     ignoreBuildErrors: false,
   },
+  /* config options here */
 };
 
 export default nextConfig;

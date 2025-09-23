@@ -15,6 +15,7 @@
 
 # next.js
 /.next/
+/src/.next/
 /out/
 
 # electron forge build artifacts
@@ -31,6 +32,8 @@
 
 # production
 /build
+
+/references/
 
 # misc
 .DS_Store
