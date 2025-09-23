@@ -158,7 +158,7 @@ jobs:
       if: matrix.os == 'macos-latest'
       run: |
         echo "Packaging Electron app for macOS..."
-        npm run package:mac
+        npm run electron-pack-mac
         echo "macOS packaging completed"
         ls -la dist/*.dmg
         ls -la dist/*.zip
@@ -171,7 +171,7 @@ jobs:
       if: matrix.os == 'windows-latest'
       run: |
         echo "Packaging Electron app for Windows..."
-        npm run package:win
+        npm run electron-pack-win
         echo "Windows packaging completed"
         echo "Checking generated files:"
         dir dist
