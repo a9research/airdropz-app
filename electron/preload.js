@@ -12,4 +12,6 @@ contextBridge.exposeInMainWorld('api', {
   },
   scrape: (url, options) => ipcRenderer.invoke('browser-scrape', url, options),
   openProxyBrowser: (url) => ipcRenderer.invoke('open-proxy-browser', url),
+  browserDownloadStatus: () => ipcRenderer.invoke('browser-download-status'),
+  browserDownload: () => ipcRenderer.invoke('browser-download'),
 });

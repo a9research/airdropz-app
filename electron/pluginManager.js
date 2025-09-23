@@ -2,8 +2,16 @@ const fs = require('fs');
 const path = require('path');
 const { app } = require('electron');
 const { spawn } = require('child_process');
-const pluggableElectron = require('pluggable-electron');
-console.log('pluggable-electron loaded:', Object.keys(pluggableElectron));
+
+// 动态加载 pluggable-electron，如果失败则使用备用方案
+let pluggableElectron;
+try {
+  pluggableElectron = require('pluggable-electron');
+  console.log('pluggable-electron loaded:', Object.keys(pluggableElectron));
+} catch (error) {
+  console.warn('pluggable-electron not available, using fallback plugin system:', error.message);
+  pluggableElectron = null;
+}
 
 class PluginManager {
   constructor() {
@@ -20,9 +28,11 @@ class PluginManager {
 
   initialize() {
     try {
-      if (this.pluginDir) {
+      if (this.pluginDir && pluggableElectron) {
         pluggableElectron.init({ pluginDir: this.pluginDir });
         console.log('pluggable-electron initialized successfully');
+      } else if (this.pluginDir) {
+        console.log('pluggable-electron not available, using fallback plugin system');
       } else {
         console.error('pluginDir is undefined or invalid');
       }
@@ -33,6 +43,11 @@ class PluginManager {
 
   loadPlugins() {
     try {
+      if (!fs.existsSync(this.pluginDir)) {
+        console.log('Plugin directory does not exist, skipping plugin loading');
+        return;
+      }
+
       fs.readdirSync(this.pluginDir).forEach(pluginName => {
         const pluginPath = path.join(this.pluginDir, pluginName);
         const manifestPath = path.join(pluginPath, 'manifest.json');
@@ -40,9 +55,11 @@ class PluginManager {
           const manifest = JSON.parse(fs.readFileSync(manifestPath));
           if (manifest.type === 'python') {
             this.startPythonPlugin(pluginPath, manifest.entry).catch(err => console.error(`Failed to start plugin ${pluginName}:`, err));
-          } else if (manifest.type === 'js') {
+          } else if (manifest.type === 'js' && pluggableElectron) {
             console.log(`Installing JS plugin: ${pluginName}`);
             pluggableElectron.plugins.install(pluginName); // 安装 JS 插件
+          } else if (manifest.type === 'js') {
+            console.log(`JS plugin ${pluginName} found but pluggable-electron not available`);
           }
         }
       });
@@ -90,3 +107,6 @@ app.whenReady().then(() => {
   pm.initialize();
   pm.loadPlugins();
 });
+
+// 导出 pluginManager 实例
+module.exports = pm;

@@ -30,6 +30,9 @@
 # storage files
 /storage/
 
+# playwright browsers (handled by CI/CD)
+# /playwright-browsers/
+
 # production
 /build
 

@@ -26,6 +26,10 @@ const nextConfig: NextConfig = {
     };
     return config;
   },
+  // 添加 generateBuildId 来避免构建问题
+  generateBuildId: async () => {
+    return 'build-' + Date.now();
+  },
   /* config options here */
 };
 

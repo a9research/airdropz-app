@@ -29,10 +29,7 @@
     "react-dom": "19.1.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
-    "@types/pouchdb": "^6.4.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "concurrently": "^9.2.1",
@@ -52,7 +49,6 @@
       "output": "dist"
     },
     "files": [
-      "out/**/*",
       "electron/**/*",
       "node_modules/**/*",
       "package.json"
@@ -61,6 +57,10 @@
       {
         "from": "plugins",
         "to": "plugins"
+      },
+      {
+        "from": "out",
+        "to": "out"
       }
     ],
     "mac": {
