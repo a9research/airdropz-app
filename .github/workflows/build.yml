@@ -205,9 +205,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: framework-windows
-        path: |
-          dist/AirdropzAlpha Setup 0.0.1.exe
-          dist/AirdropzAlpha 0.0.1.exe
+        path: dist/AirdropzAlpha Setup 0.0.1.exe
         
     - name: Create Release
       if: startsWith(github.ref, 'refs/tags/')
