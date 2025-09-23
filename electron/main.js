@@ -26,7 +26,9 @@ function createWindow() {
     mainWindow.loadURL('http://localhost:3000');
     mainWindow.webContents.openDevTools();
   } else {
-    mainWindow.loadFile(path.join(__dirname, '../out/index.html'));
+    // 在生产环境中，electron-next 会处理 Next.js 集成
+    // 我们只需要加载主页面
+    mainWindow.loadURL('http://localhost:3000');
   }
 }
 
