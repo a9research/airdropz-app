@@ -168,7 +168,15 @@ jobs:
         echo "Packaging Electron app for Windows..."
         npm run package:win
         echo "Windows packaging completed"
-        dir dist\\*.exe
+        echo "Checking generated files:"
+        dir dist
+        echo "Windows build files:"
+        if [ -f "dist/AirdropzAlpha Setup 0.0.1.exe" ]; then
+          echo "✓ NSIS installer found: AirdropzAlpha Setup 0.0.1.exe"
+        fi
+        if [ -f "dist/AirdropzAlpha 0.0.1.exe" ]; then
+          echo "✓ Portable executable found: AirdropzAlpha 0.0.1.exe"
+        fi
       shell: bash
       env:
         NODE_ENV: production
@@ -179,14 +187,16 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: framework-macos
-        path: dist/*.dmg
+        path: dist/AirdropzAlpha-0.0.1-arm64.dmg
         
     - name: Upload Windows build
       if: matrix.os == 'windows-latest'
       uses: actions/upload-artifact@v4
       with:
         name: framework-windows
-        path: dist/*.exe
+        path: |
+          dist/AirdropzAlpha Setup 0.0.1.exe
+          dist/AirdropzAlpha 0.0.1.exe
         
     - name: Create Release
       if: startsWith(github.ref, 'refs/tags/')
@@ -194,6 +204,8 @@ jobs:
       with:
         files: |
           dist/*.dmg
-          dist/*.exe
+          dist/*.zip
+          dist/AirdropzAlpha Setup 0.0.1.exe
+          dist/AirdropzAlpha 0.0.1.exe
         draft: false
         prerelease: false
