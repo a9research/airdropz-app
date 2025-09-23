@@ -20,6 +20,15 @@
 # electron forge build artifacts
 *.app
 
+# electron-builder build artifacts
+/dist/
+
+# database files
+/mydb/
+
+# storage files
+/storage/
+
 # production
 /build
 
