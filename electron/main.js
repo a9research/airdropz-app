@@ -5,11 +5,42 @@ process.on('unhandledRejection', (reason, promise) => {
 let pluginManager, browserService;
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
-const prepareNext = require('electron-next');
+const express = require('express');
 const PouchDB = require('pouchdb');
 const db = new PouchDB('mydb');
 
+const isDev = process.env.NODE_ENV === 'development' && !app.isPackaged;
+
 let mainWindow;
+let server;
+
+function startServer() {
+  return new Promise((resolve, reject) => {
+    try {
+      const expressApp = express();
+      const port = 3001; // 使用不同的端口避免冲突
+      
+      // 设置静态文件服务
+      expressApp.use(express.static(path.join(__dirname, '../out')));
+      
+      // 处理 Next.js 静态资源
+      expressApp.use('/_next/static', express.static(path.join(__dirname, '../out/_next/static')));
+      
+      // 处理所有其他路由，返回index.html（用于SPA路由）
+      expressApp.use((req, res) => {
+        res.sendFile(path.join(__dirname, '../out/index.html'));
+      });
+      
+      server = expressApp.listen(port, () => {
+        resolve();
+      });
+      
+      server.on('error', reject);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -22,14 +53,28 @@ function createWindow() {
     },
   });
 
-  if (process.env.NODE_ENV === 'development') {
-    mainWindow.loadURL('http://localhost:3000');
-    mainWindow.webContents.openDevTools();
-  } else {
-    // 在生产环境中，electron-next 会处理 Next.js 集成
-    // 我们只需要加载主页面
-    mainWindow.loadURL('http://localhost:3000');
-  }
+  const startUrl = isDev 
+    ? 'http://localhost:3000' 
+    : 'http://localhost:3001';
+  
+  mainWindow.loadURL(startUrl);
+
+  // 添加页面加载事件监听
+  mainWindow.webContents.on('did-finish-load', () => {
+    // 页面加载完成
+  });
+
+  mainWindow.webContents.on('did-fail-load', (event, errorCode, errorDescription, validatedURL) => {
+    console.error('页面加载失败:', errorCode, errorDescription, validatedURL);
+  });
+
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show();
+    // 在开发环境自动打开开发者工具
+    if (isDev) {
+      mainWindow.webContents.openDevTools();
+    }
+  });
 }
 
 app.whenReady().then(async () => {
@@ -71,19 +116,23 @@ app.whenReady().then(async () => {
   }
   
   try {
-    await prepareNext('./src');
-  } catch (error) {
-    console.error('Error preparing Next.js:', error);
-    // 如果端口被占用，继续运行应用
-    if (error.code === 'EADDRINUSE') {
-      console.log('Port 8000 is in use, continuing without Next.js server...');
+    if (!isDev) {
+      await startServer();
     }
+    createWindow();
+  } catch (error) {
+    console.error('Failed to start application:', error);
+    app.quit();
   }
-  createWindow();
 });
 
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') app.quit();
+  if (server) {
+    server.close();
+  }
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
 });
 
 app.on('activate', () => {
