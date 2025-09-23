@@ -38,6 +38,9 @@
 
 /references/
 
+# documentation
+/doc/
+
 # misc
 .DS_Store
 *.pem
