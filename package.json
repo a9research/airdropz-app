@@ -7,14 +7,14 @@
   "main": "electron/main.js",
   "preload": "electron/preload.js",
   "scripts": {
-    "dev": "concurrently \"next dev --turbopack\" \"wait-on http://localhost:3000 && electron-forge start\"",
-    "build": "next build --turbopack && electron-forge package",
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge package && electron-forge make --skip-package",
-    "lint": "eslint",
-    "electron:dev": "concurrently \"next dev -p 3000\" \"wait-on http://localhost:3000 && electron .\"",
-    "electron:build": "next build --turbopack && electron-next build ./src"
+    "dev": "concurrently \"next dev --turbopack\" \"wait-on http://localhost:3000 && electron .\"",
+    "build": "next build --turbopack",
+    "start": "electron .",
+    "package": "npm run build && electron-builder",
+    "package:mac": "npm run build && electron-builder --mac",
+    "package:win": "npm run build && electron-builder --win",
+    "package:linux": "npm run build && electron-builder --linux",
+    "lint": "eslint"
   },
   "dependencies": {
     "crawlee": "^3.15.0",
@@ -26,16 +26,6 @@
     "react-dom": "19.1.0"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^7.9.0",
-    "@electron-forge/maker-deb": "^7.9.0",
-    "@electron-forge/maker-dmg": "^7.9.0",
-    "@electron-forge/maker-rpm": "^7.9.0",
-    "@electron-forge/maker-squirrel": "^7.9.0",
-    "@electron-forge/maker-wix": "^7.9.0",
-    "@electron-forge/maker-zip": "^7.9.0",
-    "@electron-forge/plugin-auto-unpack-natives": "^7.9.0",
-    "@electron-forge/plugin-fuses": "^7.9.0",
-    "@electron/fuses": "^1.8.0",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
@@ -44,12 +34,73 @@
     "@types/react-dom": "^19",
     "concurrently": "^9.2.1",
     "electron": "38.1.2",
-    "electron-next": "^3.1.5",
+    "electron-builder": "^25.1.8",
     "eslint": "^9",
     "eslint-config-next": "15.5.3",
     "pluggable-electron": "^1.0.0",
     "tailwindcss": "^4",
     "typescript": "^5",
     "wait-on": "^9.0.0"
+  },
+  "build": {
+    "appId": "com.airdropzalpha.app",
+    "productName": "AirdropzAlpha",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "electron/**/*",
+      "src/**/*",
+      "public/**/*",
+      "plugins/**/*",
+      "package.json",
+      "next.config.ts"
+    ],
+    "extraResources": [
+      {
+        "from": "plugins",
+        "to": "plugins"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.productivity",
+      "icon": "public/icon.icns",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["arm64", "x64"]
+        },
+        {
+          "target": "zip",
+          "arch": ["arm64", "x64"]
+        }
+      ]
+    },
+    "win": {
+      "icon": "public/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ]
+    },
+    "linux": {
+      "icon": "public/icon.png",
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": ["x64"]
+        },
+        {
+          "target": "deb",
+          "arch": ["x64"]
+        }
+      ]
+    }
   }
 }
