@@ -57,6 +57,8 @@ yarn-error.log*
 # vercel
 .vercel
 
+.cursorrules
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

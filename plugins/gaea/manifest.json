@@ -1,0 +1,39 @@
+{
+  "name": "gaea",
+  "type": "frontend",
+  "version": "1.0.0",
+  "description": "Gaea 账号管理系统 - 支持分组、批量操作和跨页选择",
+  "author": "AirdropzAlpha",
+  "dependencies": {
+    "frontend": {
+      "pouchdb": "^9.0.0"
+    }
+  },
+  "entry": {
+    "frontend": "index.js"
+  },
+  "database": "gaea_accounts",
+  "ui": {
+    "enabled": true,
+    "route": "/plugin/gaea",
+    "title": "GAEA",
+    "icon": "Users",
+    "category": "空投项目"
+  },
+  "features": [
+    "account_management",
+    "grouping",
+    "batch_operations",
+    "cross_page_selection",
+    "import_export"
+  ],
+  "resources": {
+    "frontend": [
+      "frontend/services/gaeaService.ts",
+      "frontend/components/"
+    ],
+    "shared": [
+      "shared/types/index.ts"
+    ]
+  }
+}

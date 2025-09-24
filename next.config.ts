@@ -9,8 +9,8 @@ const nextConfig: NextConfig = {
     // 在构建时忽略 TypeScript 错误
     ignoreBuildErrors: false,
   },
-  // 只在生产环境使用静态导出
-  ...(process.env.NODE_ENV === 'production' && { output: 'export' }),
+  // 注释掉静态导出，因为我们需要动态 API 路由
+  // ...(process.env.NODE_ENV === 'production' && { output: 'export' }),
   trailingSlash: false,
   images: {
     unoptimized: true,
@@ -19,7 +19,16 @@ const nextConfig: NextConfig = {
   ...(process.env.NODE_ENV === 'production' && { distDir: 'out' }),
   // 排除 references 目录，避免构建时扫描参考文件
   pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
-  webpack: (config) => {
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      // 在服务端构建时排除 PouchDB 相关模块
+      config.externals = config.externals || [];
+      config.externals.push({
+        'pouchdb': 'commonjs pouchdb',
+        'pouchdb-find': 'commonjs pouchdb-find',
+        'pouchdb-adapter-idb': 'commonjs pouchdb-adapter-idb',
+      });
+    }
     config.watchOptions = {
       ...config.watchOptions,
       ignored: ['**/references/**', '**/doc/**'],

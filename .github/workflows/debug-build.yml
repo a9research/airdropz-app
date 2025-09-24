@@ -1,0 +1,61 @@
+name: Debug Build Process
+
+on:
+  workflow_dispatch: # 仅手动触发
+
+jobs:
+  debug-macos:
+    runs-on: macos-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+        
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.13'
+        
+    - name: Debug environment
+      run: |
+        echo "=== Environment Info ==="
+        echo "Node version: $(node --version)"
+        echo "NPM version: $(npm --version)"
+        echo "Python version: $(python --version)"
+        echo "Pip version: $(pip --version)"
+        echo "Current directory: $(pwd)"
+        echo "Files in current directory:"
+        ls -la
+        
+    - name: Install dependencies
+      run: |
+        echo "=== Installing dependencies ==="
+        npm ci
+        python -m pip install --upgrade pip
+        pip install aiohttp aiohttp-socks fake-useragent pytz pyinstaller
+        echo "Dependencies installed"
+        
+    - name: Test Python script
+      run: |
+        echo "=== Testing Python script ==="
+        node scripts/build-python-executables.js
+        echo "Python script completed"
+        
+    - name: Test Next.js build
+      run: |
+        echo "=== Testing Next.js build ==="
+        npm run build
+        echo "Next.js build completed"
+        
+    - name: Test Electron packaging
+      run: |
+        echo "=== Testing Electron packaging ==="
+        npm run electron-pack-mac
+        echo "Electron packaging completed"
+

@@ -7,12 +7,143 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const express = require('express');
 const PouchDB = require('pouchdb');
+const { spawn } = require('child_process');
+const fs = require('fs');
 const db = new PouchDB('mydb');
 
 const isDev = process.env.NODE_ENV === 'development' && app && !app.isPackaged;
 
 let mainWindow;
 let server;
+
+// 统一的Python插件执行功能
+function executePythonPlugin(pluginName, command, data) {
+  return new Promise((resolve, reject) => {
+    let executablePath, args;
+    
+    // 发送日志到前端的函数
+    const sendLogToFrontend = (message, type = 'stdout') => {
+      const allWindows = BrowserWindow.getAllWindows();
+      allWindows.forEach(window => {
+        if (window.webContents) {
+          window.webContents.send('plugin-log', {
+            plugin: pluginName,
+            type: type,
+            message: message,
+            timestamp: new Date().toISOString()
+          });
+        }
+      });
+    };
+    
+    if (isDev) {
+      // 开发环境 - 使用Python脚本
+      const scriptPath = path.join(__dirname, '../plugins', pluginName, 'plugin.py');
+      const pythonCommand = path.join(__dirname, '../runtime/python-env/bin/python3');
+      
+      executablePath = pythonCommand;
+      args = [scriptPath, command, JSON.stringify(data)];
+    } else {
+      // 生产环境 - 使用打包的可执行文件
+      const resourcesPath = process.resourcesPath;
+      
+      // 根据平台确定可执行文件扩展名
+      const executableExtension = process.platform === 'win32' ? '.exe' : '';
+      const finalExecutableName = pluginName.replace(/-/g, '_') + executableExtension;
+      
+      executablePath = path.join(resourcesPath, 'executables', finalExecutableName);
+      args = [command, JSON.stringify(data)];
+    }
+    
+    // 检查可执行文件是否存在
+    if (!fs.existsSync(executablePath)) {
+      reject(new Error(`可执行文件不存在: ${executablePath}`));
+      return;
+    }
+    
+    console.log(`[DEBUG] 执行Python插件: ${executablePath}`);
+    console.log(`[DEBUG] 参数: ${JSON.stringify(args)}`);
+    console.log(`[DEBUG] 插件: ${pluginName}`);
+    console.log(`[DEBUG] 命令: ${command}`);
+    
+    const pythonProcess = spawn(executablePath, args, {
+      cwd: isDev ? path.dirname(executablePath) : process.resourcesPath,
+      stdio: ['pipe', 'pipe', 'pipe']
+    });
+    
+    let stdout = '';
+    let stderr = '';
+    
+    pythonProcess.stdout.on('data', (data) => {
+      const output = data.toString();
+      stdout += output;
+      
+      // 实时发送日志到前端
+      sendLogToFrontend(output.trim(), 'stdout');
+      
+      // 检查是否是JSON输出并立即解析（用于快速响应）
+      const lines = output.split('\n');
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (trimmed.startsWith('{') && trimmed.endsWith('}')) {
+          try {
+            const result = JSON.parse(trimmed);
+            
+            // 如果是成功消息，立即解析并返回
+            if (result.success && !result.error) {
+              resolve(result);
+              return;
+            }
+          } catch (e) {
+            // 继续处理其他行
+          }
+        }
+      }
+    });
+    
+    pythonProcess.stderr.on('data', (data) => {
+      const output = data.toString();
+      stderr += output;
+      
+      // 实时发送日志到前端
+      sendLogToFrontend(output.trim(), 'stderr');
+    });
+    
+    pythonProcess.on('close', (code) => {
+      if (code !== 0) {
+        reject(new Error(`Python插件异常退出 (退出码: ${code})\n错误: ${stderr}\n输出: ${stdout}`));
+        return;
+      }
+      
+      // 正常退出时，尝试解析输出
+      try {
+        // 如果stdout中有JSON输出，解析它
+        const lines = stdout.split('\n');
+        for (const line of lines) {
+          const trimmed = line.trim();
+          if (trimmed.startsWith('{') && trimmed.endsWith('}')) {
+            try {
+              const result = JSON.parse(trimmed);
+              resolve(result);
+              return;
+            } catch (e) {
+              // 继续尝试下一行
+            }
+          }
+        }
+        
+        // 如果没有找到JSON输出，返回默认成功结果
+        resolve({ success: true, message: '插件执行完成' });
+      } catch (error) {
+        reject(new Error(`解析插件输出失败: ${error.message}`));
+      }
+    });
+    
+    pythonProcess.on('error', (error) => {
+      reject(new Error(`启动Python插件进程失败: ${error.message}`));
+    });
+  });
+}
 
 function startServer() {
   return new Promise((resolve, reject) => {
@@ -87,6 +218,12 @@ function createWindow() {
   });
 
   mainWindow.webContents.on('did-fail-load', (event, errorCode, errorDescription, validatedURL) => {
+    // 忽略 Turnstile 相关的错误，这些是正常的
+    if (validatedURL === 'about:srcdoc' || validatedURL.includes('turnstile') || validatedURL.includes('cloudflare')) {
+      console.log('忽略 Turnstile 相关错误:', validatedURL);
+      return;
+    }
+    
     console.error('页面加载失败:', errorCode, errorDescription, validatedURL);
     console.error('Error details:', {
       errorCode,
@@ -209,6 +346,19 @@ if (app && app.whenReady) {
     }
   });
   
+  // 注册 Python 插件执行处理器
+  ipcMain.handle('execute-python-plugin', async (event, pluginName, command, data) => {
+    console.log(`execute-python-plugin called: ${pluginName}, command: ${command}`);
+    
+    try {
+      const result = await executePythonPlugin(pluginName, command, data);
+      return result;
+    } catch (error) {
+      console.error('Python plugin execution error:', error);
+      return { success: false, error: error.message };
+    }
+  });
+  
   console.log('IPC handlers registered successfully');
   
   try {
@@ -236,6 +386,8 @@ app.on('window-all-closed', () => {
 
 if (app) {
   app.on('activate', () => {
-    if (mainWindow === null) createWindow();
+    if (BrowserWindow.getAllWindows().length === 0) {
+      createWindow();
+    }
   });
 }

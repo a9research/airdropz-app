@@ -72,7 +72,9 @@ class PluginManager {
     const scriptPath = path.join(pluginPath, script);
     try {
       console.log('Starting Python plugin:', scriptPath);
-      const pythonProcess = spawn('python3', [scriptPath], { stdio: ['pipe', 'pipe', 'pipe'] });
+      // 使用项目内的 Python 虚拟环境
+      const pythonPath = path.join(__dirname, '..', 'runtime', 'python-env', 'bin', 'python');
+      const pythonProcess = spawn(pythonPath, [scriptPath], { stdio: ['pipe', 'pipe', 'pipe'] });
       if (!pythonProcess || !pythonProcess.stdout || !pythonProcess.stderr || !pythonProcess.stdin) {
         throw new Error('Spawned process or streams are null');
       }

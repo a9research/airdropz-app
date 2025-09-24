@@ -12,6 +12,7 @@ export interface ElectronAPI {
     success: boolean;
     error?: string;
   }>;
+  invokePluginAction: (pluginName: string, actionName: string, ...args: any[]) => Promise<any>;
 }
   
   declare module 'electron' {
