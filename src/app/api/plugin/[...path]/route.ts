@@ -253,7 +253,7 @@ async function handleProxyRequest(request: NextRequest, method: string) {
 // 处理决策请求
 async function handleDecisionsRequest(request: NextRequest, method: string, apiPath: string[]) {
   if (method === 'POST' && apiPath[1] === 'submit') {
-    let accountId: string, accountName: string, token: string, ticket: string, detail: string;
+    let accountId: string = '', accountName: string = '', token: string = '', ticket: string = '', detail: string = '';
     
     try {
       const requestData = await request.json();
@@ -418,7 +418,7 @@ async function handleTrainingRequest(request: NextRequest, method: string, apiPa
   if (method === 'POST') {
     const action = apiPath[1]; // daily-reward, training, deep-training, claim
     
-    let accountId: string, accountName: string, token: string, proxyUrl: string;
+    let accountId: string = '', accountName: string = '', token: string = '', proxyUrl: string = '';
     
     try {
       const requestData = await request.json();
@@ -1081,7 +1081,7 @@ async function handleMiningRequest(request: NextRequest, method: string, apiPath
     let data;
     try {
       data = JSON.parse(responseText);
-    } catch (parseError) {
+    } catch (parseError: any) {
       console.error('❌ JSON解析失败:', parseError);
       console.error('❌ 响应内容:', responseText);
       throw new Error(`JSON解析失败: ${parseError.message}`);

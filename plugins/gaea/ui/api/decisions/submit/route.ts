@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { HttpsProxyAgent } from 'https-proxy-agent';
 
 export async function POST(request: NextRequest) {
   try {
@@ -10,14 +9,6 @@ export async function POST(request: NextRequest) {
         { success: false, error: '缺少必要参数' },
         { status: 400 }
       );
-    }
-
-    // 获取代理配置
-    const proxyUrl = process.env.PROXY_URL;
-    let agent = undefined;
-    
-    if (proxyUrl) {
-      agent = new HttpsProxyAgent(proxyUrl);
     }
 
     // 调用决策接口
@@ -41,8 +32,7 @@ export async function POST(request: NextRequest) {
         chain_id: 8453,
         ticket: ticket,
         detail: detail
-      }),
-      agent: agent
+      })
     });
 
     const result = await response.json();

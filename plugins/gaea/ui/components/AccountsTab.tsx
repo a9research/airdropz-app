@@ -275,6 +275,7 @@ export function AccountsTab({
               loading={loading}
               isImporting={isImporting}
               isExporting={isExporting}
+              importResult={null}
               onFileSelect={onFileSelect}
               onExport={onExport}
               onDownloadTemplate={onDownloadTemplate}

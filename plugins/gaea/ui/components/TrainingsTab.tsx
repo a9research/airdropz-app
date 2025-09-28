@@ -142,7 +142,7 @@ export function TrainingsTab({ onRefresh, loading: externalLoading, toast }: Tra
       
       if (lastResetTime && parseInt(lastResetTime) > fiveMinutesAgo) {
         console.log('⏰ 最近5分钟内已重置过，跳过本次重置');
-        return;
+        return false;
       }
       
       console.log('🔄 检测到新的一天，重置训练状态...');
@@ -307,11 +307,11 @@ export function TrainingsTab({ onRefresh, loading: externalLoading, toast }: Tra
     let interval: NodeJS.Timeout | null = null;
     
     if (shouldStartTimer()) {
-      interval = setInterval(() => {
+      interval = setInterval(async () => {
         console.log('⏰ 定期检查重置状态...');
         console.log('📅 当前本地存储的重置日期:', localStorage.getItem('training_last_reset_date'));
         
-        const resetResult = checkAndResetDailyStatus();
+        const resetResult = await checkAndResetDailyStatus();
         
         // 如果重置成功，停止定时器
         if (resetResult) {
