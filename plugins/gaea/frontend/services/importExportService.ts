@@ -80,19 +80,17 @@ export class ImportExportService {
    */
   async exportToCSV(): Promise<string> {
     try {
-      const response = await fetch('/api/plugin/gaea/accounts?limit=10000');
+      // 直接从PouchDB获取数据，而不是通过API
+      const { getDatabaseService } = await import('@/lib/database');
+      const dbService = getDatabaseService('gaea_accounts');
       
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status} 错误`);
-      }
-
-      const data = await response.json();
+      // 获取所有账号数据
+      const result = await dbService.getAllDocs({ include_docs: true });
+      const accounts = result.rows.map(row => row.doc).filter(doc => doc);
       
-      if (!data.success || !data.data.accounts) {
+      if (accounts.length === 0) {
         return '';
       }
-
-      const accounts = data.data.accounts;
       
       // CSV表头
       const headers = ['Name', 'Browser_ID', 'Token', 'Proxy', 'UID', 'Username', 'Password', 'Group'];
@@ -103,13 +101,13 @@ export class ImportExportService {
       accounts.forEach((account: any) => {
         const row = [
           account.name || '',
-          account.browserId || '',
+          account.browser_id || account.browserId || '',
           account.token || '',
           account.proxy || '',
           account.uid || '',
           account.username || '',
           account.password || '',
-          account.group || 'Default'
+          account.group_name || account.group || 'Default'
         ].map(field => `"${field}"`); // 用引号包围字段，防止CSV解析问题
         
         csvRows.push(row.join(','));
@@ -127,19 +125,15 @@ export class ImportExportService {
    */
   async exportToJSON(): Promise<string> {
     try {
-      const response = await fetch('/api/plugin/gaea/accounts?limit=10000');
+      // 直接从PouchDB获取数据，而不是通过API
+      const { getDatabaseService } = await import('@/lib/database');
+      const dbService = getDatabaseService('gaea_accounts');
       
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status} 错误`);
-      }
-
-      const data = await response.json();
+      // 获取所有账号数据
+      const result = await dbService.getAllDocs({ include_docs: true });
+      const accounts = result.rows.map(row => row.doc).filter(doc => doc);
       
-      if (!data.success || !data.data.accounts) {
-        return JSON.stringify([], null, 2);
-      }
-
-      return JSON.stringify(data.data.accounts, null, 2);
+      return JSON.stringify(accounts, null, 2);
     } catch (error) {
       console.error('导出JSON失败:', error);
       throw error;

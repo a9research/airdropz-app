@@ -29,6 +29,24 @@ export const DATABASE_CONFIG: Record<string, DatabaseConfig> = {
     auto_compaction: true,
     revs_limit: 10,
   },
+  gaea_tickets: {
+    name: 'airdropz_gaea_tickets',
+    adapter: 'idb',
+    auto_compaction: true,
+    revs_limit: 10,
+  },
+  gaea_decisions: {
+    name: 'airdropz_gaea_decisions',
+    adapter: 'idb',
+    auto_compaction: true,
+    revs_limit: 10,
+  },
+  gaea_decision_settings: {
+    name: 'airdropz_gaea_decision_settings',
+    adapter: 'idb',
+    auto_compaction: true,
+    revs_limit: 5,
+  },
 };
 
 // 数据库实例缓存

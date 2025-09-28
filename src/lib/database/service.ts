@@ -68,8 +68,11 @@ export class DatabaseServiceBase implements DatabaseService {
   async get(id: string): Promise<DatabaseDocument> {
     try {
       return await this.db.get(id);
-    } catch (error) {
-      console.error(`Failed to get document ${id}:`, error);
+    } catch (error: any) {
+      // 只记录非"not_found"错误
+      if (error.name !== 'not_found' && error.status !== 404) {
+        console.error(`Failed to get document ${id}:`, error);
+      }
       throw error;
     }
   }

@@ -1,117 +1,43 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import Layout from '@/components/layout/Layout';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { BrowserDownloadModal } from '@/components/BrowserDownloadModal';
+import { useBrowserCheck } from '@/hooks/useBrowserCheck';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
 import { 
-  Table, 
-  TableBody, 
-  TableCell, 
-  TableHead, 
-  TableHeader, 
-  TableRow 
-} from '@/components/ui/table';
-import { 
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
-import { 
-  ChevronLeft, 
-  ChevronRight, 
-  Search, 
-  Edit, 
-  Trash2, 
-  Eye,
-  EyeOff,
-  Check,
-  X,
-  Plus,
-  RefreshCw,
-  Upload,
-  Download,
   Users,
-  FolderPlus,
-  Settings,
-  CheckSquare,
-  Square,
-  FileText,
-  CheckCircle,
-  XCircle,
-  AlertCircle,
   Ticket,
+  Settings,
   Brain,
-  BarChart3,
-  FileDown,
-  ArrowRight,
-  Folder,
-  ArrowUpDown,
-  ArrowUp,
-  ArrowDown
+  BarChart3
 } from 'lucide-react';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { useAuth } from '@/app/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import { useToastSonner } from '@/hooks/use-toast-sonner';
 import { ImportExportService } from '../../frontend/services/importExportService';
+import { GaeaLoginService, LoginCredentials, LoginResult } from '../../frontend/services/gaeaLoginService';
 import { CSVAccountData } from '../../shared/types/import-export';
-
-interface Account {
-  id: string;
-  name: string;
-  browser_id: string;
-  token: string;
-  proxy: string;
-  uid: string;
-  username: string;
-  password: string;
-  group_name: string;
-  created_at: string;
-  updated_at: string;
-  group_color: string;
-  group_description: string;
-}
-
-interface Group {
-  name: string;
-  description: string;
-  color: string;
-  created_at: string;
-  account_count: number;
-}
-
-interface AccountTableData {
-  accounts: Account[];
-  total: number;
-  page: number;
-  limit: number;
-  total_pages: number;
-}
+import { Account, Group, ImportResult } from '../components/types';
+import { AccountsTab } from '../components/AccountsTab';
+import { TicketsTab, DecisionsTab, TrainingsTab, MiningTab } from '../components/TabsContent';
+import { DeepTrainingCountdown, DecisionCountdown } from '../components/CountdownTimer';
 
 export default function GaeaPluginPage() {
   const { user, loading: authLoading } = useAuth();
   const router = useRouter();
   const { toast } = useToastSonner();
-
-  const formatDate = (dateString?: string) => {
-    if (!dateString) return '-';
-    return new Date(dateString).toLocaleString('zh-CN');
-  };
   
+  // 浏览器检查
+  const {
+    isChecking,
+    isInstalled,
+    showDownloadModal,
+    error: browserError,
+    handleDownloadComplete,
+    handleDownloadClose
+  } = useBrowserCheck();
+
   // 导入导出服务
   const importExportService = new ImportExportService();
   
@@ -140,8 +66,13 @@ export default function GaeaPluginPage() {
   const [targetGroup, setTargetGroup] = useState('');
   const [isImporting, setIsImporting] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
-  const [importResult, setImportResult] = useState<any>(null);
+  const [importResult, setImportResult] = useState<ImportResult | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  
+  // 登录相关状态
+  const [loggingInAccounts, setLoggingInAccounts] = useState<Set<string>>(new Set());
+  const [loginResult, setLoginResult] = useState<LoginResult | null>(null);
+  const [selectedAccountForLogin, setSelectedAccountForLogin] = useState<Account | null>(null);
   
   // 排序状态
   const [sortField, setSortField] = useState<string>('');
@@ -159,7 +90,6 @@ export default function GaeaPluginPage() {
     if (user) {
       loadAccounts();
       loadGroups();
-      loadSelectionState();
     }
   }, [user, currentPage, pageSize, searchTerm, selectedGroup, sortField, sortDirection]);
 
@@ -186,7 +116,8 @@ export default function GaeaPluginPage() {
       });
 
       // 转换数据格式
-      let accounts = result.rows.map((row: any) => {
+      const rows = result.rows || [];
+      let accounts = rows.map((row: any) => {
         const doc = row.doc;
         return {
           id: doc._id,
@@ -289,7 +220,7 @@ export default function GaeaPluginPage() {
       const data = (result as any).data || (result as any).rows || [];
       console.log('提取的数据:', data);
       
-      if (data && data.length > 0) {
+      if (Array.isArray(data) && data.length > 0) {
         // 提取文档内容
         const customGroups = data
           .map((doc: any) => doc.doc || doc)
@@ -326,20 +257,7 @@ export default function GaeaPluginPage() {
     }
   };
 
-  const loadSelectionState = async () => {
-    try {
-      const response = await fetch('/api/plugin/gaea/selection-state');
-      const data = await response.json();
-      if (data.success) {
-        // data.data 是一个对象，包含 selectedAccountIds 数组
-        const selectedIds = data.data.selectedAccountIds || [];
-        setSelectedAccounts(new Set(selectedIds));
-      }
-    } catch (error) {
-      console.error('加载选择状态失败:', error);
-    }
-  };
-
+  // 事件处理函数
   const handleSearch = (value: string) => {
     setSearchTerm(value);
     setCurrentPage(1);
@@ -367,76 +285,7 @@ export default function GaeaPluginPage() {
     }
   };
 
-  const handleMoveToGroup = async (targetGroup: string) => {
-    const selectedIds = Array.from(selectedAccounts);
-    if (selectedIds.length === 0) {
-      toast({ title: '提示', description: '请先选择要移动的账号', type: 'warning' });
-      return;
-    }
-
-    try {
-      // 直接使用客户端数据库更新账号分组
-      const { getDatabaseService } = await import('@/lib/database');
-      const dbService = getDatabaseService('gaea_accounts');
-      
-      for (const accountId of selectedIds) {
-        try {
-          const account = await dbService.get(accountId);
-          const updatedAccount = {
-            ...account,
-            group: targetGroup,
-            updatedAt: new Date().toISOString()
-          };
-          await dbService.put(updatedAccount);
-        } catch (error) {
-          console.error(`更新账号 ${accountId} 失败:`, error);
-        }
-      }
-
-      toast({ 
-        title: '成功', 
-        description: `已将 ${selectedIds.length} 个账号移动到 ${targetGroup} 分组`, 
-        type: 'success' 
-      });
-      
-      // 清空选择并重新加载数据
-      setSelectedAccounts(new Set());
-      loadAccounts();
-    } catch (error) {
-      console.error('移动账号失败:', error);
-      toast({ title: '操作失败', description: '移动账号失败', type: 'error' });
-    }
-  };
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
-
-  const handlePageSizeChange = (size: number) => {
-    setPageSize(size);
-    setCurrentPage(1);
-  };
-
-  const togglePasswordVisibility = (accountId: string) => {
-    setShowPasswords(prev => ({
-      ...prev,
-      [accountId]: !prev[accountId]
-    }));
-  };
-
-  const handleSelectAccount = async (accountId: string, selected: boolean) => {
-    try {
-      const response = await fetch('/api/plugin/gaea/selection-state', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          account_ids: [accountId],
-          selected: selected
-        })
-      });
-      
-      const data = await response.json();
-      if (data.success) {
+  const handleSelectAccount = useCallback((accountId: string, selected: boolean) => {
         setSelectedAccounts(prev => {
           const newSet = new Set(prev);
           if (selected) {
@@ -446,20 +295,306 @@ export default function GaeaPluginPage() {
           }
           return newSet;
         });
-      }
+  }, []);
+
+  const handleSelectAll = useCallback(() => {
+    if (!Array.isArray(accounts) || accounts.length === 0) return;
+    
+    const allSelected = selectedAccounts.size === accounts.length;
+    const accountIds = accounts.map(acc => acc.id);
+    
+    if (allSelected) {
+      setSelectedAccounts(new Set());
+    } else {
+      setSelectedAccounts(new Set(accountIds));
+    }
+  }, [accounts, selectedAccounts.size]);
+
+  // 刷新账号数据
+  const handleRefreshAccounts = useCallback(async () => {
+    setLoading(true);
+    try {
+      await loadAccounts();
+      await loadGroups();
     } catch (error) {
-      toast({ title: '操作失败', description: '网络错误', type: 'error' });
+      console.error('刷新账号数据失败:', error);
+      toast({ title: '刷新失败', description: '刷新账号数据失败', type: 'error' });
+    } finally {
+      setLoading(false);
+    }
+  }, [loadAccounts, loadGroups, toast]);
+
+  // 通用登录函数，供TicketsTab使用
+  const handleLoginAccount = useCallback(async (accountId: string): Promise<boolean> => {
+    try {
+      // 从账号列表中找到对应的账号
+      const account = accounts.find(acc => acc.id === accountId);
+      if (!account) {
+        console.error('❌ 未找到账号:', accountId);
+        return false;
+      }
+
+      console.log('🔑 开始登录账号:', account.name);
+      const loginService = new GaeaLoginService();
+      
+      const credentials: LoginCredentials = {
+        username: account.username,
+        password: account.password,
+        proxy: account.proxy
+      };
+      
+      const result = await loginService.login(credentials);
+      
+      if (result.success && result.gaeaToken && result.browserId) {
+        const updateSuccess = await loginService.updateAccountTokens(
+          account.id, 
+          result.gaeaToken, 
+          result.browserId
+        );
+        
+        if (updateSuccess) {
+          console.log('✅ 账号登录成功:', account.name);
+          // 更新本地账号状态
+          setAccounts(prev => prev.map(acc => {
+            if (acc.id === accountId) {
+              return {
+                ...acc,
+                token: result.gaeaToken || acc.token,
+                browser_id: result.browserId || acc.browser_id,
+                updated_at: new Date().toISOString()
+              };
+            }
+            return acc;
+          }));
+          return true;
+        }
+      }
+      
+      console.error('❌ 账号登录失败:', account.name, result.error);
+      return false;
+    } catch (error) {
+      console.error('❌ 登录过程中发生错误:', error);
+      return false;
+    }
+  }, [accounts]);
+
+  // 刷新其他标签页数据（暂时使用模拟数据）
+  const handleRefreshTickets = useCallback(async () => {
+    console.log('刷新Tickets数据');
+    toast({ title: '刷新成功', description: 'Tickets数据已刷新', type: 'success' });
+  }, [toast]);
+
+  const handleRefreshDecisions = useCallback(async () => {
+    console.log('刷新决策数据');
+    toast({ title: '刷新成功', description: '决策数据已刷新', type: 'success' });
+  }, [toast]);
+
+  const handleRefreshTrainings = useCallback(async () => {
+    console.log('刷新训练数据');
+    toast({ title: '刷新成功', description: '训练数据已刷新', type: 'success' });
+  }, [toast]);
+
+  const handleRefreshMining = useCallback(async () => {
+    console.log('刷新挖矿数据');
+    toast({ title: '刷新成功', description: '挖矿数据已刷新', type: 'success' });
+  }, [toast]);
+
+  // Tickets相关功能
+  const handleSupplementTickets = useCallback(async () => {
+    console.log('补充Tickets');
+    toast({ title: '开始补充', description: '正在为账号补充缺失的Tickets...', type: 'info' });
+  }, [toast]);
+
+  const togglePasswordVisibility = (accountId: string) => {
+    setShowPasswords(prev => ({
+      ...prev,
+      [accountId]: !prev[accountId]
+    }));
+  };
+
+  const handleStartEdit = (account: Account) => {
+    setEditingRowId(account.id);
+    setEditingData({ ...account });
+  };
+
+  const handleCancelEdit = () => {
+    setEditingRowId(null);
+    setEditingData({});
+  };
+
+  const handleSaveEdit = async () => {
+    if (!editingData || !editingRowId) return;
+    
+    try {
+      if (typeof window === 'undefined') {
+        toast({ title: '失败', description: '服务器端环境无法操作数据库', type: 'error' });
+        return;
+      }
+
+      const { getDatabaseService } = await import('@/lib/database');
+      const dbService = getDatabaseService('gaea_accounts');
+      
+      const existingDoc = await dbService.get(editingRowId);
+      
+      const updatedDoc = {
+        ...existingDoc,
+        name: editingData.name,
+        browserId: editingData.browser_id,
+        token: editingData.token,
+        proxy: editingData.proxy,
+        uid: editingData.uid,
+        username: editingData.username,
+        password: editingData.password,
+        group: editingData.group_name,
+        updatedAt: new Date().toISOString()
+      };
+      
+      await dbService.put(updatedDoc);
+      
+      toast({ title: '成功', description: '账号更新成功', type: 'success' });
+      setEditingRowId(null);
+      setEditingData({});
+      loadAccounts();
+      
+    } catch (error) {
+      console.error('更新账号失败:', error);
+      toast({ title: '更新失败', description: '更新账号失败', type: 'error' });
     }
   };
 
-  // 导入导出处理函数
+  const handleDeleteAccount = async (accountId: string) => {
+    if (!confirm('确定要删除这个账号吗？')) return;
+    
+    try {
+      if (typeof window === 'undefined') {
+        toast({ title: '失败', description: '服务器端环境无法操作数据库', type: 'error' });
+        return;
+      }
+
+      const { getDatabaseService } = await import('@/lib/database');
+      const dbService = getDatabaseService('gaea_accounts');
+      
+      const existingDoc = await dbService.get(accountId.toString());
+      await dbService.remove(existingDoc);
+      
+      toast({ title: '成功', description: '账号删除成功', type: 'success' });
+      loadAccounts();
+      
+    } catch (error) {
+      console.error('删除账号失败:', error);
+      toast({ title: '删除失败', description: '删除账号失败', type: 'error' });
+    }
+  };
+
+  const handleLogin = async (account: Account) => {
+    if (!account.username || !account.password) {
+      toast({ title: '登录失败', description: '账号缺少用户名或密码', type: 'error' });
+      return;
+    }
+
+    setLoggingInAccounts(prev => new Set(prev).add(account.id));
+    setLoginResult(null);
+    
+    try {
+      const loginService = new GaeaLoginService();
+      
+      const credentials: LoginCredentials = {
+        username: account.username,
+        password: account.password,
+        proxy: account.proxy
+      };
+      
+      console.log('开始登录账号:', account.name);
+      const result = await loginService.login(credentials);
+      
+      if (result.success && result.gaeaToken && result.browserId) {
+        const updateSuccess = await loginService.updateAccountTokens(
+          account.id, 
+          result.gaeaToken, 
+          result.browserId
+        );
+        
+        if (updateSuccess) {
+          toast({ 
+            title: '登录成功', 
+            description: `账号 ${account.name} 登录成功，token已更新`, 
+            type: 'success' 
+          });
+          await loadAccounts();
+        } else {
+          toast({ 
+            title: '部分成功', 
+            description: '登录成功但更新数据库失败', 
+            type: 'warning' 
+          });
+        }
+      } else {
+        toast({ 
+          title: '登录失败', 
+          description: result.error || '未知错误', 
+          type: 'error' 
+        });
+      }
+      
+      setLoginResult(result);
+    } catch (error) {
+      console.error('登录过程出错:', error);
+      toast({ 
+        title: '登录失败', 
+        description: error instanceof Error ? error.message : '未知错误', 
+        type: 'error' 
+      });
+    } finally {
+      setLoggingInAccounts(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(account.id);
+        return newSet;
+      });
+    }
+  };
+
+  const handleAddAccount = async () => {
+    try {
+      if (typeof window === 'undefined') {
+        toast({ title: '失败', description: '服务器端环境无法操作数据库', type: 'error' });
+        return;
+      }
+
+      const { getDatabaseService } = await import('@/lib/database');
+      const dbService = getDatabaseService('gaea_accounts');
+      
+      const accountDoc = {
+        _id: `account_${Date.now()}`,
+        name: newAccount.name || '新账号',
+        browserId: newAccount.browser_id || '',
+        token: newAccount.token || '',
+        proxy: newAccount.proxy || '',
+        uid: newAccount.uid || '',
+        username: newAccount.username || '',
+        password: newAccount.password || '',
+        group: newAccount.group_name || 'Default',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      } as any;
+      
+      await dbService.put(accountDoc);
+      
+        toast({ title: '成功', description: '账号创建成功', type: 'success' });
+        setNewAccount({});
+        setIsAdding(false);
+        loadAccounts();
+      
+    } catch (error) {
+      console.error('创建账号失败:', error);
+      toast({ title: '创建失败', description: '创建账号失败', type: 'error' });
+    }
+  };
 
   const handleExport = async () => {
     setIsExporting(true);
     try {
       const csvContent = await importExportService.exportToCSV();
       if (csvContent) {
-        // 创建下载链接
         const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
         const link = document.createElement('a');
         const url = URL.createObjectURL(blob);
@@ -493,16 +628,16 @@ export default function GaeaPluginPage() {
 
     try {
       const result = await handleImport(file);
-      setImportResult(result);
       
-      if (result.success > 0) {
+      // 使用toast显示导入结果
+      if (result.success > 0 && result.failed === 0) {
         toast({ title: '导入成功', description: `成功导入 ${result.success} 个账号`, type: 'success' });
-        // 重新加载数据
         loadAccounts();
-      }
-      
-      if (result.failed > 0) {
-        toast({ title: '部分失败', description: `${result.failed} 个账号导入失败`, type: 'warning' });
+      } else if (result.success > 0 && result.failed > 0) {
+        toast({ title: '部分成功', description: `成功: ${result.success} 个，失败: ${result.failed} 个`, type: 'warning' });
+        loadAccounts();
+      } else if (result.failed > 0) {
+        toast({ title: '导入失败', description: `${result.failed} 个账号导入失败`, type: 'error' });
       }
     } catch (error) {
       console.error('导入失败:', error);
@@ -575,245 +710,62 @@ export default function GaeaPluginPage() {
     URL.revokeObjectURL(url);
   };
 
-  const handleSelectAll = async () => {
-    if (!accounts || accounts.length === 0) return;
-    
-    const allSelected = selectedAccounts.size === accounts.length;
-    const accountIds = accounts.map(acc => acc.id);
-    
-    try {
-      const response = await fetch('/api/plugin/gaea/selection-state', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          account_ids: accountIds,
-          selected: !allSelected
-        })
-      });
-      
-      const data = await response.json();
-      if (data.success) {
-        if (allSelected) {
-          setSelectedAccounts(new Set());
-        } else {
-          setSelectedAccounts(new Set(accountIds));
-        }
-      }
-    } catch (error) {
-      toast({ title: '操作失败', description: '网络错误', type: 'error' });
-    }
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
   };
 
-  const handleAddAccount = async () => {
-    try {
-      // 检查是否在浏览器环境中
-      if (typeof window === 'undefined') {
-        toast({ title: '失败', description: '服务器端环境无法操作数据库', type: 'error' });
-        return;
-      }
-
-      // 动态导入数据库服务
-      const { getDatabaseService } = await import('@/lib/database');
-      const dbService = getDatabaseService('gaea_accounts');
-      
-      // 创建新账号文档
-      const accountDoc = {
-        _id: `account_${Date.now()}`,
-        name: newAccount.name || '新账号',
-        browserId: newAccount.browser_id || '',
-        token: newAccount.token || '',
-        proxy: newAccount.proxy || '',
-        uid: newAccount.uid || '',
-        username: newAccount.username || '',
-        password: newAccount.password || '',
-        group: newAccount.group_name || 'Default',
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
-      } as any; // 使用any类型避免_rev字段要求
-      
-      // 保存到数据库
-      await dbService.put(accountDoc);
-      
-      toast({ title: '成功', description: '账号创建成功', type: 'success' });
-      setNewAccount({});
-      setIsAdding(false);
-      loadAccounts();
-      
-    } catch (error) {
-      console.error('创建账号失败:', error);
-      toast({ title: '创建失败', description: '创建账号失败', type: 'error' });
-    }
+  const handlePageSizeChange = (size: number) => {
+    setPageSize(size);
+    setCurrentPage(1);
   };
 
-  const handleUpdateAccount = async (account: Account) => {
-    try {
-      // 检查是否在浏览器环境中
-      if (typeof window === 'undefined') {
-        toast({ title: '失败', description: '服务器端环境无法操作数据库', type: 'error' });
-        return;
-      }
-
-      // 动态导入数据库服务
-      const { getDatabaseService } = await import('@/lib/database');
-      const dbService = getDatabaseService('gaea_accounts');
-      
-      // 获取现有文档
-      const existingDoc = await dbService.get(account.id.toString());
-      
-      // 更新文档
-      const updatedDoc = {
-        ...existingDoc,
-        name: account.name,
-        browserId: account.browser_id,
-        token: account.token,
-        proxy: account.proxy,
-        uid: account.uid,
-        username: account.username,
-        password: account.password,
-        group: account.group_name,
-        updatedAt: new Date().toISOString()
-      };
-      
-      // 保存到数据库
-      await dbService.put(updatedDoc);
-      
-      toast({ title: '成功', description: '账号更新成功', type: 'success' });
-      setEditingAccount(null);
-      loadAccounts();
-      
-    } catch (error) {
-      console.error('更新账号失败:', error);
-      toast({ title: '更新失败', description: '更新账号失败', type: 'error' });
-    }
-  };
-
-  // 内联编辑处理函数
-  const handleStartEdit = (account: Account) => {
-    setEditingRowId(account.id);
-    setEditingData({ ...account });
-  };
-
-  const handleCancelEdit = () => {
-    setEditingRowId(null);
-    setEditingData({});
-  };
-
-  const handleSaveEdit = async () => {
-    if (!editingData || !editingRowId) return;
-    
-    try {
-      // 检查是否在浏览器环境中
-      if (typeof window === 'undefined') {
-        toast({ title: '失败', description: '服务器端环境无法操作数据库', type: 'error' });
-        return;
-      }
-
-      // 动态导入数据库服务
-      const { getDatabaseService } = await import('@/lib/database');
-      const dbService = getDatabaseService('gaea_accounts');
-      
-      // 获取现有文档
-      const existingDoc = await dbService.get(editingRowId);
-      
-      // 更新文档
-      const updatedDoc = {
-        ...existingDoc,
-        name: editingData.name,
-        browserId: editingData.browser_id,
-        token: editingData.token,
-        proxy: editingData.proxy,
-        uid: editingData.uid,
-        username: editingData.username,
-        password: editingData.password,
-        group: editingData.group_name,
-        updatedAt: new Date().toISOString()
-      };
-      
-      // 保存到数据库
-      await dbService.put(updatedDoc);
-      
-      toast({ title: '成功', description: '账号更新成功', type: 'success' });
-      setEditingRowId(null);
-      setEditingData({});
-      loadAccounts();
-      
-    } catch (error) {
-      console.error('更新账号失败:', error);
-      toast({ title: '更新失败', description: '更新账号失败', type: 'error' });
-    }
-  };
-
-  const handleDeleteAccount = async (accountId: string) => {
-    if (!confirm('确定要删除这个账号吗？')) return;
-    
-    try {
-      // 检查是否在浏览器环境中
-      if (typeof window === 'undefined') {
-        toast({ title: '失败', description: '服务器端环境无法操作数据库', type: 'error' });
-        return;
-      }
-
-      // 动态导入数据库服务
-      const { getDatabaseService } = await import('@/lib/database');
-      const dbService = getDatabaseService('gaea_accounts');
-      
-      // 获取现有文档
-      const existingDoc = await dbService.get(accountId.toString());
-      
-      // 删除文档
-      await dbService.remove(existingDoc);
-      
-      toast({ title: '成功', description: '账号删除成功', type: 'success' });
-      loadAccounts();
-      
-    } catch (error) {
-      console.error('删除账号失败:', error);
-      toast({ title: '删除失败', description: '删除账号失败', type: 'error' });
-    }
-  };
-
-  const handleBatchOperation = async (operation: string, groupName?: string) => {
-    const selectedIds = Array.from(selectedAccounts);
+  const handleMoveToGroup = async (targetGroup: string) => {
+    const selectedIds = Array.from(selectedAccounts || []);
     if (selectedIds.length === 0) {
-      toast({ title: '提示', description: '请先选择账号', type: 'info' });
+      toast({ title: '提示', description: '请先选择要移动的账号', type: 'warning' });
       return;
     }
 
     try {
-      const response = await fetch('/api/plugin/gaea/batch-operation', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          account_ids: selectedIds,
-          operation: operation,
-          kwargs: groupName ? { group_name: groupName } : {}
-        })
+      const { getDatabaseService } = await import('@/lib/database');
+      const dbService = getDatabaseService('gaea_accounts');
+      
+      for (const accountId of selectedIds) {
+        try {
+          const account = await dbService.get(accountId);
+          const updatedAccount = {
+            ...account,
+            group: targetGroup,
+            updatedAt: new Date().toISOString()
+          };
+          await dbService.put(updatedAccount);
+        } catch (error) {
+          console.error(`更新账号 ${accountId} 失败:`, error);
+        }
+      }
+
+      toast({ 
+        title: '成功', 
+        description: `已将 ${selectedIds.length} 个账号移动到 ${targetGroup} 分组`, 
+        type: 'success' 
       });
       
-      const data = await response.json();
-      if (data.success) {
-        toast({ title: '成功', description: data.message, type: 'success' });
         setSelectedAccounts(new Set());
         loadAccounts();
-      } else {
-        toast({ title: '操作失败', description: data.error, type: 'error' });
-      }
     } catch (error) {
-      toast({ title: '操作失败', description: '网络错误', type: 'error' });
+      console.error('移动账号失败:', error);
+      toast({ title: '操作失败', description: '移动账号失败', type: 'error' });
     }
   };
 
   const handleAddGroup = async () => {
     try {
-      // 检查分组名称是否重复
       const { getDatabaseService } = await import('@/lib/database');
       const dbService = getDatabaseService('gaea_groups');
       
-      // 获取现有分组
       const result = await dbService.getAllDocs();
       const existingGroups = (result as any).data || (result as any).rows || [];
       
-      // 检查名称是否重复（包括默认分组）
       const isDuplicate = existingGroups.some((doc: any) => {
         const group = doc.doc || doc;
         return group && group.name === newGroup.name;
@@ -835,15 +787,11 @@ export default function GaeaPluginPage() {
       
       await dbService.put(groupDoc as any);
       
-      toast({ title: '成功', description: '分组创建成功', type: 'success' });
-      setNewGroup({});
-      setShowAddGroup(false);
-      loadGroups(); // 重新加载分组列表
+        toast({ title: '成功', description: '分组创建成功', type: 'success' });
+        setNewGroup({});
+        setShowAddGroup(false);
+        loadGroups();
       
-      // 如果编辑分组弹窗是打开的，保持打开状态
-      if (showEditGroups) {
-        // 编辑分组弹窗保持打开，分组列表会自动刷新
-      }
     } catch (error) {
       console.error('创建分组失败:', error);
       toast({ title: '创建失败', description: '保存分组失败', type: 'error' });
@@ -859,7 +807,6 @@ export default function GaeaPluginPage() {
       const { getDatabaseService } = await import('@/lib/database');
       const dbService = getDatabaseService('gaea_groups');
       
-      // 检查名称是否重复（排除当前编辑的分组）
       const result = await dbService.getAllDocs();
       const existingGroups = (result as any).data || (result as any).rows || [];
       
@@ -895,7 +842,6 @@ export default function GaeaPluginPage() {
       return;
     }
     
-    // 添加确认对话框
     const group = groups.find(g => (g as any)._id === groupId);
     const groupName = group?.name || '未知分组';
     
@@ -907,11 +853,9 @@ export default function GaeaPluginPage() {
       const { getDatabaseService } = await import('@/lib/database');
       const dbService = getDatabaseService('gaea_groups');
       
-      // 获取分组文档以获取_rev
       const groupDoc = await dbService.get(groupId);
       await dbService.remove(groupDoc);
       
-      // 将该分组下的账号移动到默认分组
       const accountsDbService = getDatabaseService('gaea_accounts');
       const accountsResult = await accountsDbService.getAllDocs();
       
@@ -966,9 +910,15 @@ export default function GaeaPluginPage() {
     <Layout>
       <div className="p-6 bg-white min-h-screen">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">GAEA</h1>
+          <div className="flex items-center justify-between">
+            <h1 className="text-3xl font-bold text-gray-900">GAEA</h1>
+            <div className="flex items-center space-x-3">
+              <DeepTrainingCountdown />
+              <DecisionCountdown />
         </div>
-
+                </div>
+              </div>
+              
         {/* 主要内容 */}
         <div className="max-w-7xl">
           <Tabs defaultValue="accounts" className="w-full">
@@ -995,1018 +945,116 @@ export default function GaeaPluginPage() {
               </TabsTrigger>
             </TabsList>
 
-          {/* 账号管理标签页 */}
-          <TabsContent value="accounts" className="space-y-2">
-            {/* 账号表格 */}
-            <Card>
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <div>
-                <CardTitle>账号列表</CardTitle>
-                <CardDescription className="mt-3" style={{ marginTop: '0.5rem' }}>
-                  共 {total} 个账号，第 {currentPage} 页，共 {totalPages} 页
-                </CardDescription>
-              </div>
-              <div className="flex items-center space-x-2">
-                {/* 搜索框 */}
-                <div className="relative">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" style={{ left: '0.5rem' }} />
-                  <Input
-                    placeholder="搜索账号..."
-                    value={searchTerm}
-                    onChange={(e) => handleSearch(e.target.value)}
-                    className="pl-12 w-64"
-                    style={{ paddingLeft: '2rem' }}
-                  />
-                </div>
-
-                {/* 分组选择下拉框 */}
-                <div className="flex items-center space-x-2">
-                  <Select value={selectedGroup} onValueChange={handleGroupFilter}>
-                    <SelectTrigger className="w-32 bg-white">
-                      <SelectValue placeholder="选择分组" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-white">
-                      <SelectItem value="all">全部分组</SelectItem>
-                      <SelectItem value="Default">未分组账号</SelectItem>
-                      {groups.filter(group => group.name !== 'Default').map(group => (
-                        <SelectItem key={group.name} value={group.name}>
-                          {group.name}
-                        </SelectItem>
-                      ))}
-                      <SelectItem value="add-group" className="text-blue-600 font-medium">
-                        <div className="flex items-center space-x-2">
-                          <Plus className="w-4 h-4" />
-                          <span>添加分组</span>
-                        </div>
-                      </SelectItem>
-                      <SelectItem value="edit-groups" className="text-green-600 font-medium">
-                        <div className="flex items-center space-x-2">
-                          <Edit className="w-4 h-4" />
-                          <span>编辑分组</span>
-                        </div>
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
-
-                  {/* 移动图标 */}
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <div className="inline-block">
-                          <Button
-                            onClick={() => {
-                              if (selectedAccounts.size > 0) {
-                                setShowMoveDialog(true);
-                              } else {
-                                toast({ title: '提示', description: '请先选择要移动的账号', type: 'warning' });
-                              }
-                            }}
-                            disabled={selectedAccounts.size === 0}
-                            size="sm"
-                            variant="outline"
-                            className="p-2"
-                          >
-                            <ArrowRight className="w-4 h-4" />
-                          </Button>
-                        </div>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>{selectedAccounts.size === 0 ? '请先选择要移动的账号' : '移动选中账号到其他分组'}</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </div>
-
-                {/* 导入导出按钮 */}
-                <div className="flex items-center space-x-1">
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept=".csv"
-                    onChange={handleFileSelect}
-                    className="hidden"
-                  />
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Button
-                          onClick={() => fileInputRef.current?.click()}
-                          disabled={loading || isImporting}
-                          size="sm"
-                          variant="outline"
-                          className="p-2"
-                        >
-                          <Upload className="w-4 h-4" />
-                        </Button>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>{isImporting ? '导入中...' : '导入CSV'}</p>
-                      </TooltipContent>
-                    </Tooltip>
-
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Button
-                          onClick={handleDownloadTemplate}
-                          size="sm"
-                          variant="outline"
-                          className="p-2"
-                        >
-                          <FileDown className="w-4 h-4" />
-                        </Button>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>下载模板</p>
-                      </TooltipContent>
-                    </Tooltip>
-
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Button
-                          onClick={handleExport}
-                          disabled={loading || isExporting}
-                          size="sm"
-                          variant="outline"
-                          className="p-2"
-                        >
-                          <Download className="w-4 h-4" />
-                        </Button>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>{isExporting ? '导出中...' : '导出CSV'}</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </div>
-
-                {/* 添加按钮 */}
-                <Button
-                  onClick={() => setIsAdding(true)}
-                  disabled={isAdding}
-                  size="sm"
-                  className="flex items-center space-x-1"
-                >
-                  <Plus className="w-4 h-4" />
-                  <span>添加</span>
-                </Button>
-              </div>
-            </div>
-          </CardHeader>
-          <CardContent>
-            <div className="overflow-x-auto">
-              <Table className="min-w-full">
-                <TableHeader>
-                  <TableRow>
-                    <TableHead className="w-12">
-                      <input
-                        type="checkbox"
-                        checked={selectedAccounts.size === (accounts?.length || 0) && (accounts?.length || 0) > 0}
-                        onChange={handleSelectAll}
-                        className="rounded"
-                      />
-                    </TableHead>
-                    <TableHead className="w-16">
-                      <button
-                        onClick={() => handleSort('name')}
-                        className="flex items-center space-x-1 hover:text-blue-600 transition-colors"
-                      >
-                        <span>名称</span>
-                        {sortField === 'name' ? (
-                          sortDirection === 'asc' ? <ArrowUp className="w-3 h-3" /> : <ArrowDown className="w-3 h-3" />
-                        ) : (
-                          <ArrowUpDown className="w-3 h-3 opacity-50" />
-                        )}
-                      </button>
-                    </TableHead>
-                    <TableHead className="w-32">
-                      <button
-                        onClick={() => handleSort('browser_id')}
-                        className="flex items-center space-x-1 hover:text-blue-600 transition-colors"
-                      >
-                        <span>浏览器ID</span>
-                        {sortField === 'browser_id' ? (
-                          sortDirection === 'asc' ? <ArrowUp className="w-3 h-3" /> : <ArrowDown className="w-3 h-3" />
-                        ) : (
-                          <ArrowUpDown className="w-3 h-3 opacity-50" />
-                        )}
-                      </button>
-                    </TableHead>
-                    <TableHead className="w-32">
-                      <button
-                        onClick={() => handleSort('token')}
-                        className="flex items-center space-x-1 hover:text-blue-600 transition-colors"
-                      >
-                        <span>Token</span>
-                        {sortField === 'token' ? (
-                          sortDirection === 'asc' ? <ArrowUp className="w-3 h-3" /> : <ArrowDown className="w-3 h-3" />
-                        ) : (
-                          <ArrowUpDown className="w-3 h-3 opacity-50" />
-                        )}
-                      </button>
-                    </TableHead>
-                    <TableHead className="w-32">
-                      <button
-                        onClick={() => handleSort('proxy')}
-                        className="flex items-center space-x-1 hover:text-blue-600 transition-colors"
-                      >
-                        <span>代理</span>
-                        {sortField === 'proxy' ? (
-                          sortDirection === 'asc' ? <ArrowUp className="w-3 h-3" /> : <ArrowDown className="w-3 h-3" />
-                        ) : (
-                          <ArrowUpDown className="w-3 h-3 opacity-50" />
-                        )}
-                      </button>
-                    </TableHead>
-                    <TableHead className="w-24">
-                      <button
-                        onClick={() => handleSort('uid')}
-                        className="flex items-center space-x-1 hover:text-blue-600 transition-colors"
-                      >
-                        <span>UID</span>
-                        {sortField === 'uid' ? (
-                          sortDirection === 'asc' ? <ArrowUp className="w-3 h-3" /> : <ArrowDown className="w-3 h-3" />
-                        ) : (
-                          <ArrowUpDown className="w-3 h-3 opacity-50" />
-                        )}
-                      </button>
-                    </TableHead>
-                    <TableHead className="w-32">
-                      <button
-                        onClick={() => handleSort('username')}
-                        className="flex items-center space-x-1 hover:text-blue-600 transition-colors"
-                      >
-                        <span>用户名</span>
-                        {sortField === 'username' ? (
-                          sortDirection === 'asc' ? <ArrowUp className="w-3 h-3" /> : <ArrowDown className="w-3 h-3" />
-                        ) : (
-                          <ArrowUpDown className="w-3 h-3 opacity-50" />
-                        )}
-                      </button>
-                    </TableHead>
-                    <TableHead className="w-20">密码</TableHead>
-                    <TableHead className="w-28">
-                      <button
-                        onClick={() => handleSort('created_at')}
-                        className="flex items-center space-x-1 hover:text-blue-600 transition-colors"
-                      >
-                        <span>创建时间</span>
-                        {sortField === 'created_at' ? (
-                          sortDirection === 'asc' ? <ArrowUp className="w-3 h-3" /> : <ArrowDown className="w-3 h-3" />
-                        ) : (
-                          <ArrowUpDown className="w-3 h-3 opacity-50" />
-                        )}
-                      </button>
-                    </TableHead>
-                    <TableHead className="w-20 text-right">操作</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {loading ? (
-                    <TableRow>
-                      <TableCell colSpan={9} className="text-center py-8">
-                        <div className="flex items-center justify-center">
-                          <div className="w-6 h-6 animate-spin border-2 border-blue-600 border-t-transparent rounded-full mr-2"></div>
-                          加载中...
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  ) : accounts.length === 0 ? (
-                    <TableRow>
-                      <TableCell colSpan={9} className="text-center py-8 text-gray-500">
-                        暂无数据
-                      </TableCell>
-                    </TableRow>
-                  ) : (
-                    accounts.map((account) => (
-                      <TableRow key={account.id}>
-                        <TableCell>
-                          <input
-                            type="checkbox"
-                            checked={selectedAccounts.has(account.id)}
-                            onChange={(e) => handleSelectAccount(account.id, e.target.checked)}
-                            className="rounded"
-                          />
-                        </TableCell>
-                        <TableCell className="font-medium">
-                          {editingRowId === account.id ? (
-                            <Input
-                              value={editingData.name || ''}
-                              onChange={(e) => setEditingData({ ...editingData, name: e.target.value })}
-                              className="h-8"
-                            />
-                          ) : (
-                            account.name
-                          )}
-                        </TableCell>
-                        <TableCell>
-                          {editingRowId === account.id ? (
-                            <Input
-                              value={editingData.browser_id || ''}
-                              onChange={(e) => setEditingData({ ...editingData, browser_id: e.target.value })}
-                              className="h-8"
-                            />
-                          ) : (
-                            <div 
-                              className="max-w-28 truncate" 
-                              style={{
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
-                                whiteSpace: 'nowrap',
-                                maxWidth: '112px'
-                              }}
-                              title={account.browser_id}
-                            >
-                              {account.browser_id}
-                            </div>
-                          )}
-                        </TableCell>
-                        <TableCell>
-                          {editingRowId === account.id ? (
-                            <Input
-                              value={editingData.token || ''}
-                              onChange={(e) => setEditingData({ ...editingData, token: e.target.value })}
-                              className="h-8"
-                            />
-                          ) : (
-                            <div 
-                              className="max-w-28 truncate" 
-                              style={{
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
-                                whiteSpace: 'nowrap',
-                                maxWidth: '112px'
-                              }}
-                              title={account.token}
-                            >
-                              {account.token}
-                            </div>
-                          )}
-                        </TableCell>
-                        <TableCell>
-                          {editingRowId === account.id ? (
-                            <Input
-                              value={editingData.proxy || ''}
-                              onChange={(e) => setEditingData({ ...editingData, proxy: e.target.value })}
-                              className="h-8"
-                            />
-                          ) : (
-                            account.proxy ? (
-                              <div 
-                                className="max-w-28 truncate" 
-                                style={{
-                                  overflow: 'hidden',
-                                  textOverflow: 'ellipsis',
-                                  whiteSpace: 'nowrap',
-                                  maxWidth: '112px'
-                                }}
-                                title={account.proxy}
-                              >
-                                {account.proxy}
-                              </div>
-                            ) : (
-                              <span className="text-gray-400">-</span>
-                            )
-                          )}
-                        </TableCell>
-                        <TableCell>
-                          {editingRowId === account.id ? (
-                            <Input
-                              value={editingData.uid || ''}
-                              onChange={(e) => setEditingData({ ...editingData, uid: e.target.value })}
-                              className="h-8"
-                            />
-                          ) : (
-                            <div 
-                              className="max-w-20 truncate" 
-                              style={{
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
-                                whiteSpace: 'nowrap',
-                                maxWidth: '80px'
-                              }}
-                              title={account.uid}
-                            >
-                              {account.uid}
-                            </div>
-                          )}
-                        </TableCell>
-                        <TableCell>
-                          {editingRowId === account.id ? (
-                            <Input
-                              value={editingData.username || ''}
-                              onChange={(e) => setEditingData({ ...editingData, username: e.target.value })}
-                              className="h-8"
-                            />
-                          ) : (
-                            <div 
-                              className="max-w-28 truncate" 
-                              style={{
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
-                                whiteSpace: 'nowrap',
-                                maxWidth: '112px'
-                              }}
-                              title={account.username}
-                            >
-                              {account.username}
-                            </div>
-                          )}
-                        </TableCell>
-                        <TableCell>
-                          {editingRowId === account.id ? (
-                            <Input
-                              type="password"
-                              value={editingData.password || ''}
-                              onChange={(e) => setEditingData({ ...editingData, password: e.target.value })}
-                              className="h-8"
-                            />
-                          ) : (
-                            <div className="flex items-center space-x-2">
-                              <span className="font-mono text-sm max-w-20 truncate" title={showPasswords[account.id] ? account.password : '••••••••'}>
-                                {showPasswords[account.id] ? account.password : '••••••••'}
-                              </span>
-                              <TooltipProvider>
-                                <Tooltip>
-                                  <TooltipTrigger asChild>
-                                    <Button
-                                      size="sm"
-                                      variant="ghost"
-                                      onClick={() => togglePasswordVisibility(account.id)}
-                                    >
-                                      {showPasswords[account.id] ? (
-                                        <EyeOff className="w-4 h-4" />
-                                      ) : (
-                                        <Eye className="w-4 h-4" />
-                                      )}
-                                    </Button>
-                                  </TooltipTrigger>
-                                  <TooltipContent>
-                                    <p>{showPasswords[account.id] ? '隐藏密码' : '显示密码'}</p>
-                                  </TooltipContent>
-                                </Tooltip>
-                              </TooltipProvider>
-                            </div>
-                          )}
-                        </TableCell>
-                        <TableCell className="text-sm text-gray-500">
-                          {formatDate(account.created_at)}
-                        </TableCell>
-                        <TableCell>
-                          <div className="flex items-center space-x-1">
-                            {editingRowId === account.id ? (
-                              <>
-                                <TooltipProvider>
-                                  <Tooltip>
-                                    <TooltipTrigger asChild>
-                                      <Button
-                                        size="sm"
-                                        variant="ghost"
-                                        onClick={handleSaveEdit}
-                                        className="text-green-600 hover:text-green-700"
-                                      >
-                                        <Check className="w-4 h-4" />
-                                      </Button>
-                                    </TooltipTrigger>
-                                    <TooltipContent>
-                                      <p>保存修改</p>
-                                    </TooltipContent>
-                                  </Tooltip>
-                                </TooltipProvider>
-                                <TooltipProvider>
-                                  <Tooltip>
-                                    <TooltipTrigger asChild>
-                                      <Button
-                                        size="sm"
-                                        variant="ghost"
-                                        onClick={handleCancelEdit}
-                                        className="text-red-600 hover:text-red-700"
-                                      >
-                                        <X className="w-4 h-4" />
-                                      </Button>
-                                    </TooltipTrigger>
-                                    <TooltipContent>
-                                      <p>取消编辑</p>
-                                    </TooltipContent>
-                                  </Tooltip>
-                                </TooltipProvider>
-                              </>
-                            ) : (
-                              <>
-                                <TooltipProvider>
-                                  <Tooltip>
-                                    <TooltipTrigger asChild>
-                                      <Button
-                                        size="sm"
-                                        variant="ghost"
-                                        onClick={() => handleStartEdit(account)}
-                                      >
-                                        <Edit className="w-4 h-4" />
-                                      </Button>
-                                    </TooltipTrigger>
-                                    <TooltipContent>
-                                      <p>编辑账号</p>
-                                    </TooltipContent>
-                                  </Tooltip>
-                                </TooltipProvider>
-                                <TooltipProvider>
-                                  <Tooltip>
-                                    <TooltipTrigger asChild>
-                                      <Button
-                                        size="sm"
-                                        variant="ghost"
-                                        onClick={() => handleDeleteAccount(account.id)}
-                                      >
-                                        <Trash2 className="w-4 h-4" />
-                                      </Button>
-                                    </TooltipTrigger>
-                                    <TooltipContent>
-                                      <p>删除账号</p>
-                                    </TooltipContent>
-                                  </Tooltip>
-                                </TooltipProvider>
-                              </>
-                            )}
-                          </div>
-                        </TableCell>
-                      </TableRow>
-                    ))
-                  )}
-                </TableBody>
-              </Table>
-            </div>
-
-            {/* 分页 */}
-            <div className="flex items-center justify-between mt-4">
-              <div className="flex items-center space-x-2">
-                <span className="text-sm text-gray-700">每页显示</span>
-                <Select value={pageSize.toString()} onValueChange={(value) => handlePageSizeChange(parseInt(value))}>
-                  <SelectTrigger className="w-20">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="10">10</SelectItem>
-                    <SelectItem value="20">20</SelectItem>
-                    <SelectItem value="50">50</SelectItem>
-                    <SelectItem value="100">100</SelectItem>
-                  </SelectContent>
-                </Select>
-                <span className="text-sm text-gray-700">条</span>
-              </div>
-              
-              <div className="flex items-center space-x-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => handlePageChange(currentPage - 1)}
-                  disabled={currentPage <= 1}
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </Button>
-                
-                <span className="text-sm text-gray-700">
-                  第 {currentPage} 页，共 {totalPages} 页
-                </span>
-                
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => handlePageChange(currentPage + 1)}
-                  disabled={currentPage >= totalPages}
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </Button>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-            {/* 导入结果显示 */}
-            {importResult && (
-              <Card className="mt-6">
-                <CardHeader>
-                  <CardTitle className="flex items-center space-x-2">
-                    <FileText className="w-5 h-5" />
-                    <span>导入结果</span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-3 gap-4">
-                      <div className="flex items-center space-x-2">
-                        <CheckCircle className="w-5 h-5 text-green-500" />
-                        <span className="text-green-600 font-medium">
-                          成功: {importResult.success}
-                        </span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <XCircle className="w-5 h-5 text-red-500" />
-                        <span className="text-red-600 font-medium">
-                          失败: {importResult.failed}
-                        </span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <FileText className="w-5 h-5 text-blue-500" />
-                        <span className="text-blue-600 font-medium">
-                          总计: {importResult.success + importResult.failed}
-                        </span>
-                      </div>
-                    </div>
-
-                    {importResult.errors && importResult.errors.length > 0 && (
-                      <div>
-                        <h4 className="font-medium text-red-600 mb-2 flex items-center space-x-2">
-                          <AlertCircle className="w-4 h-4" />
-                          <span>错误详情</span>
-                        </h4>
-                        <div className="bg-red-50 border border-red-200 rounded-md p-3 max-h-40 overflow-y-auto">
-                          <ul className="text-sm text-red-700 space-y-1">
-                            {importResult.errors.map((error: string, index: number) => (
-                              <li key={index}>• {error}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    )}
-
-                    {importResult.accounts && importResult.accounts.length > 0 && (
-                      <div>
-                        <h4 className="font-medium text-green-600 mb-2 flex items-center space-x-2">
-                          <CheckCircle className="w-4 h-4" />
-                          <span>成功导入的账号</span>
-                        </h4>
-                        <div className="bg-green-50 border border-green-200 rounded-md p-3 max-h-40 overflow-y-auto">
-                          <ul className="text-sm text-green-700 space-y-1">
-                            {importResult.accounts.map((account: any, index: number) => (
-                              <li key={index}>
-                                • {account.name} ({account.username}) - {account.uid}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-          </TabsContent>
-
-          {/* Tickets 标签页 */}
-          <TabsContent value="tickets" className="space-y-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>Tickets 管理</CardTitle>
-                <CardDescription>管理账号的 Tickets 信息</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-center py-8 text-gray-500">
-                  <Ticket className="w-12 h-12 mx-auto mb-4 text-gray-400" />
-                  <p>Tickets 功能开发中...</p>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* 决策标签页 */}
-          <TabsContent value="decisions" className="space-y-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>决策管理</CardTitle>
-                <CardDescription>管理账号的决策信息</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-center py-8 text-gray-500">
-                  <Settings className="w-12 h-12 mx-auto mb-4 text-gray-400" />
-                  <p>决策功能开发中...</p>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* 训练管理标签页 */}
-          <TabsContent value="trainings" className="space-y-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>训练管理</CardTitle>
-                <CardDescription>管理账号的训练任务</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-center py-8 text-gray-500">
-                  <Brain className="w-12 h-12 mx-auto mb-4 text-gray-400" />
-                  <p>训练管理功能开发中...</p>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* 挂机挖矿标签页 */}
-          <TabsContent value="mining" className="space-y-4">
-            <Card>
-              <CardHeader>
-                <CardTitle>挂机挖矿</CardTitle>
-                <CardDescription>管理挂机挖矿任务</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-center py-8 text-gray-500">
-                  <BarChart3 className="w-12 h-12 mx-auto mb-4 text-gray-400" />
-                  <p>挂机挖矿功能开发中...</p>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
-        </div>
-      </div>
-
-      {/* 添加分组对话框 */}
-      <Dialog open={showAddGroup} onOpenChange={setShowAddGroup}>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>添加新分组</DialogTitle>
-            <DialogDescription>
-              创建一个新的账号分组来组织您的账号。
-            </DialogDescription>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <label htmlFor="group-name" className="text-right">
-                分组名称
-              </label>
-              <Input
-                id="group-name"
-                value={newGroup.name || ''}
-                onChange={(e) => setNewGroup({ ...newGroup, name: e.target.value })}
-                className="col-span-3"
-                placeholder="输入分组名称"
+            {/* 账号管理标签页 */}
+            <TabsContent value="accounts" className="space-y-2">
+              <AccountsTab
+                accounts={accounts}
+                groups={groups}
+                loading={loading}
+                total={total}
+                currentPage={currentPage}
+                totalPages={totalPages}
+                pageSize={pageSize}
+                searchTerm={searchTerm}
+                selectedGroup={selectedGroup}
+                selectedAccounts={selectedAccounts}
+                showPasswords={showPasswords}
+                editingRowId={editingRowId}
+                editingData={editingData}
+                isAdding={isAdding}
+                newAccount={newAccount}
+                loggingInAccounts={loggingInAccounts}
+                sortField={sortField}
+                sortDirection={sortDirection}
+                isImporting={isImporting}
+                isExporting={isExporting}
+                showAddGroup={showAddGroup}
+                showEditGroups={showEditGroups}
+                showMoveDialog={showMoveDialog}
+                targetGroup={targetGroup}
+                newGroup={newGroup}
+                editingGroup={editingGroup}
+                onSearch={handleSearch}
+                onGroupFilter={handleGroupFilter}
+                onSelectAccount={handleSelectAccount}
+                onSelectAll={handleSelectAll}
+                onTogglePasswordVisibility={togglePasswordVisibility}
+                onStartEdit={handleStartEdit}
+                onCancelEdit={handleCancelEdit}
+                onSaveEdit={handleSaveEdit}
+                onUpdateEditingData={setEditingData}
+                onDeleteAccount={handleDeleteAccount}
+                onLogin={handleLogin}
+                onSort={handleSort}
+                onAdd={() => setIsAdding(true)}
+                onUpdateNewAccount={setNewAccount}
+                onAddAccount={handleAddAccount}
+                onCancelAdd={() => {
+                  setIsAdding(false);
+                  setNewAccount({});
+                }}
+                onFileSelect={handleFileSelect}
+                onExport={handleExport}
+                onDownloadTemplate={handleDownloadTemplate}
+                onPageChange={handlePageChange}
+                onPageSizeChange={handlePageSizeChange}
+                onMoveToGroup={handleMoveToGroup}
+                onShowAddGroup={() => setShowAddGroup(true)}
+                onShowEditGroups={() => setShowEditGroups(true)}
+                onShowMoveDialog={() => setShowMoveDialog(true)}
+                onUpdateNewGroup={setNewGroup}
+                onUpdateEditingGroup={setEditingGroup}
+                onAddGroup={handleAddGroup}
+                onUpdateGroup={handleUpdateGroup}
+                onDeleteGroup={handleDeleteGroup}
+                onEditGroup={handleEditGroup}
+                onCloseAddGroup={() => {
+                  setShowAddGroup(false);
+                  setNewGroup({});
+                }}
+                onCloseEditGroups={() => setShowEditGroups(false)}
+                onCloseMoveDialog={() => setShowMoveDialog(false)}
+                onCloseEditingGroup={() => setEditingGroup({})}
+                onSetTargetGroup={setTargetGroup}
+                onRefresh={handleRefreshAccounts}
               />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <label htmlFor="group-description" className="text-right">
-                描述
-              </label>
-              <Input
-                id="group-description"
-                value={newGroup.description || ''}
-                onChange={(e) => setNewGroup({ ...newGroup, description: e.target.value })}
-                className="col-span-3"
-                placeholder="输入分组描述（可选）"
+            </TabsContent>
+
+            {/* Tickets 标签页 */}
+            <TabsContent value="tickets" className="space-y-4">
+              <TicketsTab 
+                onRefresh={handleRefreshTickets} 
+                onSupplementTickets={handleSupplementTickets}
+                onLogin={handleLoginAccount}
+                loading={loading}
+                toast={toast}
               />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <label htmlFor="group-color" className="text-right">
-                颜色
-              </label>
-              <div className="col-span-3 flex items-center space-x-2">
-                <input
-                  type="color"
-                  id="group-color"
-                  value={newGroup.color || '#3B82F6'}
-                  onChange={(e) => setNewGroup({ ...newGroup, color: e.target.value })}
-                  className="w-8 h-8 rounded border"
-                />
-                <span className="text-sm text-gray-500">
-                  {newGroup.color || '#3B82F6'}
-                </span>
+            </TabsContent>
+
+            {/* 决策标签页 */}
+            <TabsContent value="decisions" className="space-y-4">
+              <DecisionsTab onRefresh={handleRefreshDecisions} loading={loading} />
+            </TabsContent>
+
+            {/* 训练管理标签页 */}
+            <TabsContent value="trainings" className="space-y-4">
+              <TrainingsTab onRefresh={handleRefreshTrainings} loading={loading} />
+            </TabsContent>
+
+            {/* 挂机挖矿标签页 */}
+            <TabsContent value="mining" className="space-y-4">
+              <MiningTab onRefresh={handleRefreshMining} loading={loading} />
+            </TabsContent>
+          </Tabs>
               </div>
             </div>
-          </div>
-          <DialogFooter>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => {
-                setShowAddGroup(false);
-                setNewGroup({});
-              }}
-            >
-              取消
-            </Button>
-            <Button
-              type="button"
-              onClick={handleAddGroup}
-              disabled={!newGroup.name?.trim()}
-            >
-              创建分组
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      {/* 移动分组对话框 */}
-      <Dialog open={showMoveDialog} onOpenChange={setShowMoveDialog}>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>移动账号到分组</DialogTitle>
-            <DialogDescription>
-              将选中的 {selectedAccounts.size} 个账号移动到目标分组
-            </DialogDescription>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <label htmlFor="target-group" className="text-right">
-                目标分组
-              </label>
-              <Select value={targetGroup} onValueChange={setTargetGroup}>
-                <SelectTrigger className="col-span-3">
-                  <SelectValue placeholder="选择目标分组" />
-                </SelectTrigger>
-                <SelectContent>
-                  {groups.map((group) => (
-                    <SelectItem key={(group as any)._id} value={group.name}>
-                      <div className="flex items-center space-x-2">
-                        <div 
-                          className="w-3 h-3 rounded-full" 
-                          style={{ backgroundColor: group.color || '#3B82F6' }}
-                        />
-                        <span>{group.name}</span>
-                      </div>
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-          <DialogFooter>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => setShowMoveDialog(false)}
-            >
-              取消
-            </Button>
-            <Button
-              type="button"
-              onClick={() => {
-                if (targetGroup) {
-                  handleMoveToGroup(targetGroup);
-                  setShowMoveDialog(false);
-                  setTargetGroup('');
-                } else {
-                  toast({ title: '提示', description: '请选择目标分组', type: 'warning' });
-                }
-              }}
-              disabled={!targetGroup}
-            >
-              移动账号
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      {/* 编辑分组对话框 */}
-      <Dialog open={showEditGroups} onOpenChange={setShowEditGroups}>
-        <DialogContent className="max-w-4xl max-h-[80vh] overflow-hidden">
-          <DialogHeader>
-            <div className="flex items-center justify-between">
-              <div>
-                <DialogTitle>编辑分组</DialogTitle>
-                <DialogDescription>
-                  管理所有分组，可以修改、删除分组
-                </DialogDescription>
-              </div>
-              <Button
-                type="button"
-                onClick={() => setShowAddGroup(true)}
-                className="flex items-center space-x-2"
-              >
-                <Plus className="w-4 h-4" />
-                <span>添加新分组</span>
-              </Button>
-            </div>
-          </DialogHeader>
-          <div className="overflow-auto max-h-[60vh]">
-            <div className="space-y-4">
-              {groups.map((group) => (
-                <Card key={(group as any)._id} className="p-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-4">
-                      <div 
-                        className="w-4 h-4 rounded-full" 
-                        style={{ backgroundColor: group.color || '#3B82F6' }}
-                      />
-                      <div>
-                        <h3 className="font-medium">{group.name}</h3>
-                        <p className="text-sm text-gray-500">{group.description || '无描述'}</p>
-                        <p className="text-xs text-gray-400">
-                          账号数量: {group.account_count || 0} | 
-                          创建时间: {new Date(group.created_at || '').toLocaleString('zh-CN')}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      {(group as any)._id !== 'default' && (
-                        <>
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            onClick={() => handleEditGroup(group)}
-                          >
-                            <Edit className="w-4 h-4 mr-1" />
-                            编辑
-                          </Button>
-                          <Button
-                            size="sm"
-                            variant="destructive"
-                            onClick={() => handleDeleteGroup((group as any)._id)}
-                            className="bg-red-50 hover:bg-red-100 text-red-700 border-red-200 hover:border-red-300"
-                          >
-                            <Trash2 className="w-4 h-4 mr-1" />
-                            删除
-                          </Button>
-                        </>
-                      )}
-                      {(group as any)._id === 'default' && (
-                        <span className="text-sm text-gray-500">默认分组</span>
-                      )}
-                    </div>
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
-          <DialogFooter>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => setShowEditGroups(false)}
-            >
-              关闭
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      {/* 编辑单个分组对话框 */}
-      <Dialog open={!!(editingGroup as any)._id} onOpenChange={() => setEditingGroup({})}>
-        <DialogContent className="sm:max-w-[425px]">
-          <DialogHeader>
-            <DialogTitle>编辑分组</DialogTitle>
-            <DialogDescription>
-              修改分组信息
-            </DialogDescription>
-          </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-4 items-center gap-4">
-              <label htmlFor="edit-group-name" className="text-right">
-                分组名称
-              </label>
-              <Input
-                id="edit-group-name"
-                value={editingGroup.name || ''}
-                onChange={(e) => setEditingGroup({ ...editingGroup, name: e.target.value })}
-                className="col-span-3"
-                placeholder="输入分组名称"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <label htmlFor="edit-group-description" className="text-right">
-                描述
-              </label>
-              <Input
-                id="edit-group-description"
-                value={editingGroup.description || ''}
-                onChange={(e) => setEditingGroup({ ...editingGroup, description: e.target.value })}
-                className="col-span-3"
-                placeholder="输入分组描述（可选）"
-              />
-            </div>
-            <div className="grid grid-cols-4 items-center gap-4">
-              <label htmlFor="edit-group-color" className="text-right">
-                颜色
-              </label>
-              <div className="col-span-3 flex items-center space-x-2">
-                <input
-                  type="color"
-                  id="edit-group-color"
-                  value={editingGroup.color || '#3B82F6'}
-                  onChange={(e) => setEditingGroup({ ...editingGroup, color: e.target.value })}
-                  className="w-8 h-8 rounded border"
-                />
-                <span className="text-sm text-gray-500">
-                  {editingGroup.color || '#3B82F6'}
-                </span>
-              </div>
-            </div>
-          </div>
-          <DialogFooter>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => setEditingGroup({})}
-            >
-              取消
-            </Button>
-            <Button
-              type="button"
-              onClick={handleUpdateGroup}
-              disabled={!editingGroup.name?.trim()}
-            >
-              更新分组
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      
+      {/* 浏览器下载模态框 */}
+      <BrowserDownloadModal
+        isOpen={showDownloadModal}
+        onClose={handleDownloadClose}
+        onComplete={handleDownloadComplete}
+      />
     </Layout>
   );
 }

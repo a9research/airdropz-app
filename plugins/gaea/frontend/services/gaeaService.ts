@@ -26,11 +26,13 @@ export class GaeaService {
     if (this.initialized) return;
     
     try {
+      console.log('🔍 开始初始化Gaea服务...');
       this.db = getDatabaseService('gaea_accounts');
+      console.log('🔍 数据库服务获取成功:', !!this.db);
       this.initialized = true;
-      console.log('Gaea service initialized');
+      console.log('✅ Gaea service initialized');
     } catch (error) {
-      console.error('Failed to initialize Gaea service:', error);
+      console.error('❌ Failed to initialize Gaea service:', error);
       throw error;
     }
   }
@@ -91,6 +93,21 @@ export class GaeaService {
     } catch (error) {
       console.error('Error getting accounts:', error);
       throw error;
+    }
+  }
+
+  // 根据ID获取单个账号
+  async getAccountById(accountId: string): Promise<GaeaAccount | null> {
+    await this.init();
+    
+    try {
+      console.log('🔍 通过ID获取账号:', accountId);
+      const account = await this.db.get(accountId);
+      console.log('🔍 数据库返回的账号:', account);
+      return account;
+    } catch (error) {
+      console.error('❌ 获取账号失败:', error);
+      return null;
     }
   }
 

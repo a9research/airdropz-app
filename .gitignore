@@ -29,6 +29,8 @@
 
 # storage files
 /storage/
+/plugins/*/storage/
+
 
 # playwright browsers (handled by CI/CD)
 # /playwright-browsers/

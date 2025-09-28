@@ -29,6 +29,24 @@ const nextConfig: NextConfig = {
         'pouchdb-adapter-idb': 'commonjs pouchdb-adapter-idb',
       });
     }
+    
+    // 添加对Playwright和Crawlee的支持
+    config.resolve = config.resolve || {};
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      'fs': false,
+      'path': false,
+      'os': false,
+    };
+    
+    // 确保Playwright和Crawlee模块能够正确解析
+    config.module = config.module || {};
+    config.module.rules = config.module.rules || [];
+    config.module.rules.push({
+      test: /\.node$/,
+      use: 'node-loader',
+    });
+    
     config.watchOptions = {
       ...config.watchOptions,
       ignored: ['**/references/**', '**/doc/**'],

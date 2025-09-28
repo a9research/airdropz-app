@@ -1,0 +1,1304 @@
+2025-09-28 15:41:45,590 - miningService - INFO - 挂机挖矿服务初始化完成
+2025-09-28 15:41:45,590 - __main__ - INFO - 挂机挖矿服务初始化完成
+2025-09-28 15:41:45,591 - __main__ - INFO - 挂机挖矿服务启动
+2025-09-28 15:41:45,648 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.253:5001
+2025-09-28 15:41:45,648 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-28 15:41:45,648 - werkzeug - INFO -  * Restarting with stat
+2025-09-28 15:41:45,863 - miningService - INFO - 挂机挖矿服务初始化完成
+2025-09-28 15:41:45,897 - werkzeug - WARNING -  * Debugger is active!
+2025-09-28 15:41:45,911 - werkzeug - INFO -  * Debugger PIN: 127-170-217
+2025-09-28 15:41:57,806 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 15:41:57] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 15:44:16,671 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 15:44:16,673 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 15:44:16] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 15:44:46,561 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 15:44:46,561 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 15:44:46] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 15:45:16,666 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 15:45:16,666 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 15:45:16] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 15:46:33,629 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 15:46:33,630 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 15:46:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 15:47:33,632 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 15:47:33,633 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 15:47:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 15:48:33,627 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 15:48:33,628 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 15:48:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 15:49:33,664 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 15:49:33,664 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 15:49:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 15:50:33,698 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 15:50:33,698 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 15:50:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 15:51:33,645 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 15:51:33,647 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 15:51:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 15:52:33,647 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 15:52:33,649 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 15:52:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 15:53:33,657 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 15:53:33,658 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 15:53:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 15:54:33,666 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 15:54:33,667 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 15:54:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 15:55:33,689 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 15:55:33,689 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 15:55:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 15:56:33,674 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 15:56:33,675 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 15:56:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 15:57:33,627 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 15:57:33,628 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 15:57:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 15:58:33,683 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 15:58:33,685 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 15:58:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 15:59:33,741 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 15:59:33,742 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 15:59:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:00:33,793 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:00:33,805 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:00:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:01:33,686 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:01:33,687 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:01:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:02:33,629 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:02:33,630 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:02:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:03:33,638 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:03:33,643 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:03:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:04:33,698 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:04:33,699 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:04:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:05:33,655 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:05:33,658 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:05:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:06:33,647 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:06:33,648 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:06:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:07:33,700 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:07:33,703 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:07:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:08:33,696 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:08:33,700 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:08:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:09:33,658 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:09:33,660 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:09:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:10:33,698 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:10:33,699 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:10:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:11:33,655 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:11:33,658 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:11:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:12:33,705 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:12:33,707 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:12:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:13:33,652 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:13:33,653 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:13:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:14:33,737 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:14:33,738 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:14:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:15:33,691 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:15:33,693 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:15:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:16:33,678 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:16:33,679 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:16:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:17:33,651 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:17:33,652 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:17:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:18:33,657 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:18:33,659 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:18:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:19:33,674 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:19:33,676 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:19:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:20:33,746 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:20:33,748 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:20:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:21:33,662 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:21:33,664 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:21:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:22:33,699 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:22:33,701 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:22:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:23:33,740 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:23:33,744 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:23:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:24:33,698 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:24:33,705 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:24:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:25:33,727 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:25:33,729 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:25:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:26:33,657 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:26:33,659 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:26:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:27:33,664 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:27:33,667 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:27:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:28:33,634 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:28:33,636 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:28:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:29:33,903 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:29:33,904 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:29:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:30:33,719 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:30:33,722 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:30:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:31:33,880 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:31:33,881 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:31:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:32:33,660 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:32:33,662 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:32:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:33:33,651 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:33:33,657 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:33:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:34:33,659 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:34:33,661 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:34:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:35:33,665 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:35:33,669 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:35:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:36:33,659 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:36:33,664 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:36:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:37:33,691 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:37:33,693 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:37:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:38:33,667 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:38:33,670 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:38:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:39:33,659 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:39:33,662 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:39:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:40:33,674 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:40:33,677 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:40:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:41:33,700 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:41:33,702 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:41:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:42:33,698 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:42:33,700 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:42:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:43:33,654 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:43:33,657 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:43:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:44:33,719 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:44:33,721 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:44:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:45:33,741 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:45:33,744 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:45:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:46:33,706 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:46:33,708 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:46:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:47:33,640 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:47:33,643 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:47:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:48:33,820 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:48:33,824 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:48:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:49:33,748 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:49:33,751 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:49:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:50:33,743 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:50:33,746 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:50:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:51:33,688 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:51:33,691 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:51:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:52:33,709 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:52:33,712 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:52:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:53:33,693 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:53:33,697 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:53:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:54:33,697 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:54:33,699 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:54:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:55:33,730 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:55:33,732 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:55:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:56:33,720 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:56:33,721 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:56:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:57:33,721 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:57:33,723 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:57:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:58:33,706 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:58:33,707 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:58:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 16:59:33,746 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 16:59:33,747 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 16:59:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:00:33,758 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:00:33,762 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:00:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:01:33,774 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:01:33,775 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:01:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:02:33,869 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:02:33,870 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:02:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:03:33,603 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:03:33,604 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:03:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:04:33,634 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:04:33,635 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:04:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:05:33,651 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:05:33,652 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:05:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:06:33,713 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:06:33,714 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:06:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:07:33,665 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:07:33,666 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:07:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:08:33,656 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:08:33,657 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:08:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:09:33,702 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:09:33,703 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:09:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:10:33,703 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:10:33,704 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:10:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:11:33,684 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:11:33,686 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:11:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:12:33,673 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:12:33,675 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:12:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:13:33,708 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:13:33,710 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:13:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:14:33,723 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:14:33,725 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:14:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:15:33,707 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:15:33,710 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:15:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:16:33,647 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:16:33,649 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:16:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:17:33,665 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:17:33,666 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:17:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:18:33,698 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:18:33,699 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:18:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:19:33,726 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:19:33,727 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:19:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:20:33,719 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:20:33,720 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:20:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:21:33,694 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:21:33,697 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:21:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:22:33,716 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:22:33,717 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:22:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:23:33,776 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:23:33,780 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:23:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:24:33,690 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:24:33,692 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:24:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:25:33,730 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:25:33,731 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:25:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:26:33,742 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:26:33,744 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:26:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:27:33,728 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:27:33,731 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:27:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:28:33,740 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:28:33,741 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:28:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:29:33,905 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:29:33,905 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:29:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:30:33,775 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:30:33,777 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:30:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:31:33,716 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:31:33,720 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:31:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:32:33,735 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:32:33,736 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:32:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:33:33,744 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:33:33,745 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:33:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:34:33,861 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:34:33,864 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:34:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:35:33,699 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:35:33,701 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:35:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:36:33,658 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:36:33,659 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:36:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:37:33,720 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:37:33,722 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:37:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:38:33,711 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:38:33,712 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:38:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:39:33,820 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:39:33,822 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:39:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:39:40,845 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:39:40] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 17:39:46,781 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:39:46,784 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:39:46] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:40:33,854 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:40:33,855 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:40:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:40:45,673 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:40:45,674 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:40:45] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:41:15,746 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:41:15,747 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:41:15] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:41:46,756 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:41:46,757 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:41:46] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:42:16,784 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:42:16,785 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:42:16] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:43:23,997 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:43:23,999 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:43:23] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:43:24,042 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:43:24] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 17:43:28,396 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:43:28] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 17:43:54,838 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:43:54,840 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:43:54] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:44:24,708 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:44:24,709 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:44:24] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:44:54,751 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:44:54,753 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:44:54] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:45:24,708 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:45:24,709 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:45:24] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:45:50,000 - werkzeug - INFO -  * Detected change in '/Users/austin/Desktop/Projects/rabbit_tools/framework/plugins/gaea/backend/services/miningService.py', reloading
+2025-09-28 17:45:50,103 - werkzeug - INFO -  * Restarting with stat
+2025-09-28 17:45:50,490 - miningService - INFO - 挂机挖矿服务初始化完成
+2025-09-28 17:45:50,522 - werkzeug - WARNING -  * Debugger is active!
+2025-09-28 17:45:50,532 - werkzeug - INFO -  * Debugger PIN: 127-170-217
+2025-09-28 17:45:54,754 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:45:54,755 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:45:54] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:46:24,736 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:46:24,739 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:46:24] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:47:33,784 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:47:33,786 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:47:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:48:33,768 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:48:33,768 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:48:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:49:33,769 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:49:33,770 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:49:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:50:33,779 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:50:33,779 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:50:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:51:33,779 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:51:33,780 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:51:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:56:05,927 - __main__ - INFO - 挂机挖矿服务初始化完成
+2025-09-28 17:56:05,928 - __main__ - INFO - 挂机挖矿服务启动
+2025-09-28 17:56:05,991 - miningService - INFO - 挂机挖矿服务初始化完成
+2025-09-28 17:56:06,046 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.253:5001
+2025-09-28 17:56:06,046 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-28 17:56:06,047 - werkzeug - INFO -  * Restarting with stat
+2025-09-28 17:56:06,204 - miningService - INFO - 挂机挖矿服务初始化完成
+2025-09-28 17:56:06,221 - werkzeug - WARNING -  * Debugger is active!
+2025-09-28 17:56:06,228 - werkzeug - INFO -  * Debugger PIN: 127-170-217
+2025-09-28 17:56:13,096 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:56:13] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 17:56:17,512 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:56:17,513 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:56:17] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:56:47,511 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:56:47,513 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:56:47] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:56:53,171 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:56:53,171 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:56:53] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:56:53,196 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:56:53] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 17:57:23,622 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:57:23,629 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:57:23] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:57:49,907 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:57:49,908 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:57:49] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:57:50,138 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:57:50] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 17:58:19,938 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:58:19,939 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:58:19] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:58:28,847 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:58:28,849 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:58:28] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:58:28,894 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:58:28] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 17:58:58,963 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:58:58,967 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:58:58] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:59:28,946 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:59:28,949 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:59:28] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 17:59:58,984 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 17:59:58,988 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 17:59:58] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:00:15,760 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:00:15,762 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:00:15] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:00:15,796 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:00:15] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:00:45,880 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:00:45,881 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:00:45] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:01:05,289 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:01:05,292 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:01:05] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:01:05,332 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:01:05] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:01:14,570 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:01:14,573 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:01:14] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:01:14,629 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:01:14] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:01:26,485 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:01:26,486 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:01:26] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:01:26,517 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:01:26] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:01:48,237 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:01:48,237 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:01:48] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:01:48,259 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:01:48] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:02:01,030 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:02:01,031 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:02:01] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:02:01,044 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:02:01] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:02:31,209 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:02:31,209 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:02:31] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:02:49,954 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:02:49,957 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:02:49] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:02:50,045 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:02:50] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:03:03,010 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:03:03,011 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:03:03] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:03:03,047 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:03:03] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:03:33,147 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:03:33,151 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:03:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:03:38,353 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:03:38,353 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:03:38] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:03:38,392 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:03:38] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:03:44,040 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:03:44,044 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:03:44] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:03:44,079 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:03:44] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:03:49,279 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:03:49,280 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:03:49] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:03:49,306 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:03:49] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:04:14,219 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:04:14,220 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:04:14] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:04:14,367 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:04:14,367 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:04:14] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:04:14,417 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:04:14] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:04:14,440 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:04:14] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:04:44,485 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:04:44,486 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:04:44] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:05:04,360 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:05:04,361 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:05:04] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:05:04,388 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:05:04] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:05:10,839 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:05:10,840 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:05:10] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:05:10,872 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:05:10] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:05:19,965 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:05:19,966 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:05:19] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:05:20,006 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:05:20] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:05:26,553 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:05:26,554 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:05:26] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:05:26,626 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:05:26] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:05:56,567 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:05:56,569 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:05:56] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:06:26,762 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:06:26,764 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:06:26] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:06:56,744 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:06:56,745 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:06:56] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:07:26,693 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:07:26,693 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:07:26] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:07:56,756 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:07:56,757 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:07:56] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:08:02,277 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:08:02,278 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:08:02] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:08:02,290 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:08:02] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:08:32,811 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:08:32,811 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:08:32] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:09:02,818 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:09:02,821 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:09:02] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:09:32,722 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:09:32,725 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:09:32] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:10:02,818 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:10:02,820 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:10:02] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:10:32,434 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:10:32,438 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:10:32] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:10:33,975 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:10:33] "[33mPOST /api/mining/start HTTP/1.1[0m" 404 -
+2025-09-28 18:11:03,050 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:11:03,053 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:11:03] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:11:27,020 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:11:27] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:11:32,432 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:11:32,434 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:11:32] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:11:40,503 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:11:40] "[33mPOST /api/mining/start HTTP/1.1[0m" 404 -
+2025-09-28 18:11:48,899 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:11:48] "[33mPOST /api/mining/start HTTP/1.1[0m" 404 -
+2025-09-28 18:11:59,905 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:11:59] "[31m[1mPOST /api/mining/start/test-account HTTP/1.1[0m" 400 -
+2025-09-28 18:12:02,440 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:12:02,441 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:12:02] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:12:07,029 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:12:07,030 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:12:07] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:12:07,158 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:12:07] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:12:15,379 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:12:15,382 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:12:15] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:12:15,458 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:12:15] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:12:22,791 - miningService - INFO - 开始账号挖矿: W001 (account_1758980843278_0)
+2025-09-28 18:12:22,793 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:12:22] "POST /api/mining/start/account_1758980843278_0 HTTP/1.1" 200 -
+2025-09-28 18:12:25,324 - miningService - INFO - 账号 W001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:12:45,653 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:12:45,654 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:12:45] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:13:15,501 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:13:15,501 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:13:15] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:13:45,519 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:13:45,520 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:13:45] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:14:15,756 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:14:15,757 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:14:15] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:14:45,702 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:14:45,703 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:14:45] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:15:15,891 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:15:15,892 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:15:15] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:15:26,340 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:15:26] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:15:33,326 - miningService - INFO - 开始账号挖矿: W001 (account_1758980843278_0)
+2025-09-28 18:15:33,327 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:15:33] "POST /api/mining/start/account_1758980843278_0 HTTP/1.1" 200 -
+2025-09-28 18:15:35,901 - miningService - INFO - 账号 W001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:15:45,708 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:15:45,710 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:15:45] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:16:08,101 - miningService - INFO - 开始账号挖矿: W001 (account_1758980843278_0)
+2025-09-28 18:16:08,102 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:16:08] "POST /api/mining/start/account_1758980843278_0 HTTP/1.1" 200 -
+2025-09-28 18:16:11,971 - miningService - INFO - 账号 W001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:16:33,786 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:16:33,787 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:16:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:16:45,543 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:16:45,545 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:16:45] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:16:59,707 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:16:59] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:17:03,336 - miningService - INFO - 开始账号挖矿: W001 (account_1758980843278_0)
+2025-09-28 18:17:03,337 - miningService - INFO - 延迟启动账号挖矿: W001 (延迟 0 秒)
+2025-09-28 18:17:03,338 - miningService - INFO - 开始所有账号挖矿: 64/64 (10分钟内随机启动)
+2025-09-28 18:17:03,338 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:17:03] "POST /api/mining/start-all HTTP/1.1" 200 -
+2025-09-28 18:17:06,028 - miningService - INFO - 账号 W001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:17:08,343 - miningService - INFO - 开始账号挖矿: T020 (account_1758980843298_44)
+2025-09-28 18:17:08,343 - miningService - INFO - 延迟启动账号挖矿: T020 (延迟 5 秒)
+2025-09-28 18:17:10,835 - miningService - INFO - 账号 T020 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:17:11,108 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:17:11] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:17:15,507 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:17:15,509 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:17:15] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:17:18,344 - miningService - INFO - 开始账号挖矿: W002 (account_1758980843281_1)
+2025-09-28 18:17:18,344 - miningService - INFO - 延迟启动账号挖矿: W002 (延迟 15 秒)
+2025-09-28 18:17:19,991 - miningService - INFO - 开始所有账号挖矿: 64/64 (10分钟内随机启动)
+2025-09-28 18:17:19,991 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:17:19] "POST /api/mining/start-all HTTP/1.1" 200 -
+2025-09-28 18:17:20,595 - miningService - INFO - 账号 W002 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:17:26,344 - miningService - INFO - 开始账号挖矿: A009 (account_1758980843301_53)
+2025-09-28 18:17:26,345 - miningService - INFO - 延迟启动账号挖矿: A009 (延迟 23 秒)
+2025-09-28 18:17:28,920 - miningService - INFO - 账号 A009 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:17:39,997 - miningService - INFO - 开始账号挖矿: T006 (account_1758980843293_30)
+2025-09-28 18:17:39,998 - miningService - INFO - 延迟启动账号挖矿: T006 (延迟 20 秒)
+2025-09-28 18:17:41,996 - miningService - INFO - 开始账号挖矿: W011 (account_1758980843286_9)
+2025-09-28 18:17:41,996 - miningService - INFO - 延迟启动账号挖矿: W011 (延迟 22 秒)
+2025-09-28 18:17:42,344 - miningService - INFO - 开始账号挖矿: T009 (account_1758980843294_33)
+2025-09-28 18:17:42,344 - miningService - INFO - 延迟启动账号挖矿: T009 (延迟 39 秒)
+2025-09-28 18:17:42,408 - miningService - INFO - 账号 T006 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:17:43,996 - miningService - INFO - 开始账号挖矿: W012 (account_1758980843286_10)
+2025-09-28 18:17:43,996 - miningService - INFO - 延迟启动账号挖矿: W012 (延迟 24 秒)
+2025-09-28 18:17:43,997 - miningService - INFO - 开始账号挖矿: T015 (account_1758980843296_39)
+2025-09-28 18:17:43,997 - miningService - INFO - 延迟启动账号挖矿: T015 (延迟 24 秒)
+2025-09-28 18:17:44,680 - miningService - INFO - 账号 W011 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:17:45,018 - miningService - INFO - 账号 T009 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:17:45,343 - miningService - INFO - 开始账号挖矿: W017 (account_1758980843288_16)
+2025-09-28 18:17:45,344 - miningService - INFO - 延迟启动账号挖矿: W017 (延迟 42 秒)
+2025-09-28 18:17:45,570 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:17:45,571 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:17:45] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:17:46,518 - miningService - INFO - 账号 T015 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:17:46,632 - miningService - INFO - 账号 W012 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:17:48,169 - miningService - INFO - 账号 W017 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:18:02,998 - miningService - INFO - 开始账号挖矿: W024 (account_1758980843291_23)
+2025-09-28 18:18:03,002 - miningService - INFO - 延迟启动账号挖矿: W024 (延迟 43 秒)
+2025-09-28 18:18:05,435 - miningService - INFO - 账号 W024 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:18:09,344 - miningService - INFO - 开始账号挖矿: T010 (account_1758980843294_34)
+2025-09-28 18:18:09,345 - miningService - INFO - 延迟启动账号挖矿: T010 (延迟 66 秒)
+2025-09-28 18:18:11,846 - miningService - INFO - 账号 T010 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:18:12,344 - miningService - INFO - 开始账号挖矿: A044 (account_1758980843302_58)
+2025-09-28 18:18:12,345 - miningService - INFO - 延迟启动账号挖矿: A044 (延迟 69 秒)
+2025-09-28 18:18:14,801 - miningService - INFO - 账号 A044 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:18:15,750 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:18:15,751 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:18:15] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:18:19,342 - miningService - INFO - 开始账号挖矿: A014 (account_1758980843301_55)
+2025-09-28 18:18:19,343 - miningService - INFO - 延迟启动账号挖矿: A014 (延迟 76 秒)
+2025-09-28 18:18:19,996 - miningService - INFO - 开始账号挖矿: T009 (account_1758980843294_33)
+2025-09-28 18:18:19,996 - miningService - INFO - 延迟启动账号挖矿: T009 (延迟 60 秒)
+2025-09-28 18:18:21,852 - miningService - INFO - 账号 A014 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:18:22,603 - miningService - INFO - 账号 T009 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:18:35,344 - miningService - INFO - 开始账号挖矿: T021 (account_1758980843298_45)
+2025-09-28 18:18:35,346 - miningService - INFO - 延迟启动账号挖矿: T021 (延迟 92 秒)
+2025-09-28 18:18:37,344 - miningService - INFO - 开始账号挖矿: T012 (account_1758980843295_36)
+2025-09-28 18:18:37,344 - miningService - INFO - 延迟启动账号挖矿: T012 (延迟 94 秒)
+2025-09-28 18:18:38,231 - miningService - INFO - 账号 T021 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:18:39,843 - miningService - INFO - 账号 T012 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:18:43,344 - miningService - INFO - 开始账号挖矿: T011 (account_1758980843294_35)
+2025-09-28 18:18:43,345 - miningService - INFO - 延迟启动账号挖矿: T011 (延迟 100 秒)
+2025-09-28 18:18:44,997 - miningService - INFO - 开始账号挖矿: A051 (account_1758980843303_61)
+2025-09-28 18:18:44,998 - miningService - INFO - 延迟启动账号挖矿: A051 (延迟 85 秒)
+2025-09-28 18:18:45,638 - miningService - INFO - 账号 T011 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:18:45,722 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:18:45,723 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:18:45] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:18:47,562 - miningService - INFO - 账号 A051 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:18:57,340 - miningService - INFO - 开始账号挖矿: W006 (account_1758980843285_5)
+2025-09-28 18:18:57,342 - miningService - INFO - 延迟启动账号挖矿: W006 (延迟 114 秒)
+2025-09-28 18:18:59,572 - miningService - INFO - 账号 W006 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:19:25,964 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:19:25,965 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:19:25] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:19:26,996 - miningService - INFO - 开始账号挖矿: W023 (account_1758980843290_22)
+2025-09-28 18:19:26,996 - miningService - INFO - 延迟启动账号挖矿: W023 (延迟 127 秒)
+2025-09-28 18:19:29,495 - miningService - INFO - 账号 W023 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:19:29,992 - miningService - INFO - 开始账号挖矿: A039 (account_1758980843302_56)
+2025-09-28 18:19:29,993 - miningService - INFO - 延迟启动账号挖矿: A039 (延迟 130 秒)
+2025-09-28 18:19:32,432 - miningService - INFO - 账号 A039 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:19:39,346 - miningService - INFO - 开始账号挖矿: T014 (account_1758980843296_38)
+2025-09-28 18:19:39,347 - miningService - INFO - 延迟启动账号挖矿: T014 (延迟 156 秒)
+2025-09-28 18:19:41,911 - miningService - INFO - 账号 T014 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:19:46,345 - miningService - INFO - 开始账号挖矿: T019 (account_1758980843298_43)
+2025-09-28 18:19:46,346 - miningService - INFO - 延迟启动账号挖矿: T019 (延迟 163 秒)
+2025-09-28 18:19:48,879 - miningService - INFO - 账号 T019 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:19:53,021 - miningService - INFO - 开始账号挖矿: W001 (account_1758980843278_0)
+2025-09-28 18:19:53,023 - miningService - INFO - 延迟启动账号挖矿: W001 (延迟 153 秒)
+2025-09-28 18:19:55,713 - miningService - INFO - 账号 W001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:20:02,996 - miningService - INFO - 开始账号挖矿: A048 (account_1758980843303_60)
+2025-09-28 18:20:02,997 - miningService - INFO - 延迟启动账号挖矿: A048 (延迟 163 秒)
+2025-09-28 18:20:03,346 - miningService - INFO - 开始账号挖矿: A008 (account_1758980843300_52)
+2025-09-28 18:20:03,347 - miningService - INFO - 延迟启动账号挖矿: A008 (延迟 180 秒)
+2025-09-28 18:20:05,605 - miningService - INFO - 账号 A048 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:20:05,713 - miningService - INFO - 账号 A008 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:20:05,998 - miningService - INFO - 开始账号挖矿: W003 (account_1758980843283_2)
+2025-09-28 18:20:05,999 - miningService - INFO - 延迟启动账号挖矿: W003 (延迟 166 秒)
+2025-09-28 18:20:06,344 - miningService - INFO - 开始账号挖矿: W004 (account_1758980843284_3)
+2025-09-28 18:20:06,344 - miningService - INFO - 延迟启动账号挖矿: W004 (延迟 183 秒)
+2025-09-28 18:20:08,646 - miningService - INFO - 账号 W003 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:20:08,956 - miningService - INFO - 账号 W004 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:20:10,346 - miningService - INFO - 开始账号挖矿: A013 (account_1758980843301_54)
+2025-09-28 18:20:10,347 - miningService - INFO - 延迟启动账号挖矿: A013 (延迟 187 秒)
+2025-09-28 18:20:12,926 - miningService - INFO - 账号 A013 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:20:16,346 - miningService - INFO - 开始账号挖矿: T018 (account_1758980843297_42)
+2025-09-28 18:20:16,347 - miningService - INFO - 延迟启动账号挖矿: T018 (延迟 193 秒)
+2025-09-28 18:20:18,740 - miningService - INFO - 账号 T018 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:20:23,997 - miningService - INFO - 开始账号挖矿: W022 (account_1758980843290_21)
+2025-09-28 18:20:23,998 - miningService - INFO - 延迟启动账号挖矿: W022 (延迟 184 秒)
+2025-09-28 18:20:26,621 - miningService - INFO - 账号 W022 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:20:26,994 - miningService - INFO - 开始账号挖矿: A054 (account_1758980843304_63)
+2025-09-28 18:20:26,995 - miningService - INFO - 延迟启动账号挖矿: A054 (延迟 187 秒)
+2025-09-28 18:20:29,619 - miningService - INFO - 账号 A054 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:20:33,783 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:20:33,784 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:20:33] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:20:37,997 - miningService - INFO - 开始账号挖矿: A044 (account_1758980843302_58)
+2025-09-28 18:20:37,998 - miningService - INFO - 延迟启动账号挖矿: A044 (延迟 198 秒)
+2025-09-28 18:20:38,345 - miningService - INFO - 开始账号挖矿: W003 (account_1758980843283_2)
+2025-09-28 18:20:38,346 - miningService - INFO - 延迟启动账号挖矿: W003 (延迟 215 秒)
+2025-09-28 18:20:40,397 - miningService - INFO - 账号 A044 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:20:40,886 - miningService - INFO - 账号 W003 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:20:47,007 - miningService - INFO - 开始账号挖矿: A008 (account_1758980843300_52)
+2025-09-28 18:20:47,016 - miningService - INFO - 延迟启动账号挖矿: A008 (延迟 207 秒)
+2025-09-28 18:20:47,999 - miningService - INFO - 开始账号挖矿: T011 (account_1758980843294_35)
+2025-09-28 18:20:47,999 - miningService - INFO - 延迟启动账号挖矿: T011 (延迟 208 秒)
+2025-09-28 18:20:48,999 - miningService - INFO - 开始账号挖矿: T022 (account_1758980843299_46)
+2025-09-28 18:20:49,000 - miningService - INFO - 延迟启动账号挖矿: T022 (延迟 209 秒)
+2025-09-28 18:20:49,723 - miningService - INFO - 账号 A008 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:20:50,490 - miningService - INFO - 账号 T011 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:20:51,366 - miningService - INFO - 账号 T022 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:20:53,346 - miningService - INFO - 开始账号挖矿: A051 (account_1758980843303_61)
+2025-09-28 18:20:53,347 - miningService - INFO - 延迟启动账号挖矿: A051 (延迟 230 秒)
+2025-09-28 18:20:55,901 - miningService - INFO - 账号 A051 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:21:04,348 - miningService - INFO - 开始账号挖矿: A039 (account_1758980843302_56)
+2025-09-28 18:21:04,349 - miningService - INFO - 延迟启动账号挖矿: A039 (延迟 241 秒)
+2025-09-28 18:21:06,646 - miningService - INFO - 账号 A039 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:21:08,347 - miningService - INFO - 开始账号挖矿: W014 (account_1758980843287_13)
+2025-09-28 18:21:08,347 - miningService - INFO - 延迟启动账号挖矿: W014 (延迟 245 秒)
+2025-09-28 18:21:08,999 - miningService - INFO - 开始账号挖矿: T014 (account_1758980843296_38)
+2025-09-28 18:21:08,999 - miningService - INFO - 延迟启动账号挖矿: T014 (延迟 229 秒)
+2025-09-28 18:21:11,036 - miningService - INFO - 账号 W014 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:21:11,662 - miningService - INFO - 账号 T014 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:21:11,996 - miningService - INFO - 开始账号挖矿: W018 (account_1758980843289_17)
+2025-09-28 18:21:11,997 - miningService - INFO - 延迟启动账号挖矿: W018 (延迟 232 秒)
+2025-09-28 18:21:11,997 - miningService - INFO - 开始账号挖矿: A045 (account_1758980843303_59)
+2025-09-28 18:21:11,997 - miningService - INFO - 延迟启动账号挖矿: A045 (延迟 232 秒)
+2025-09-28 18:21:14,551 - miningService - INFO - 账号 W018 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:21:14,639 - miningService - INFO - 账号 A045 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:21:20,602 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:21:20,603 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:21:20] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:21:23,347 - miningService - INFO - 开始账号挖矿: W016 (account_1758980843288_15)
+2025-09-28 18:21:23,348 - miningService - INFO - 延迟启动账号挖矿: W016 (延迟 260 秒)
+2025-09-28 18:21:25,966 - miningService - INFO - 账号 W016 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:21:31,000 - miningService - INFO - 开始账号挖矿: A013 (account_1758980843301_54)
+2025-09-28 18:21:31,001 - miningService - INFO - 延迟启动账号挖矿: A013 (延迟 251 秒)
+2025-09-28 18:21:33,496 - miningService - INFO - 账号 A013 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:21:35,998 - miningService - INFO - 开始账号挖矿: T008 (account_1758980843294_32)
+2025-09-28 18:21:35,999 - miningService - INFO - 延迟启动账号挖矿: T008 (延迟 256 秒)
+2025-09-28 18:21:38,446 - miningService - INFO - 账号 T008 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:21:38,999 - miningService - INFO - 开始账号挖矿: T005 (account_1758980843293_29)
+2025-09-28 18:21:39,000 - miningService - INFO - 延迟启动账号挖矿: T005 (延迟 259 秒)
+2025-09-28 18:21:41,347 - miningService - INFO - 开始账号挖矿: T016 (account_1758980843297_40)
+2025-09-28 18:21:41,347 - miningService - INFO - 延迟启动账号挖矿: T016 (延迟 278 秒)
+2025-09-28 18:21:41,407 - miningService - INFO - 账号 T005 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:21:42,346 - miningService - INFO - 开始账号挖矿: W013 (account_1758980843287_12)
+2025-09-28 18:21:42,347 - miningService - INFO - 延迟启动账号挖矿: W013 (延迟 279 秒)
+2025-09-28 18:21:43,813 - miningService - INFO - 账号 T016 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:21:44,950 - miningService - INFO - 账号 W013 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:21:45,347 - miningService - INFO - 开始账号挖矿: W023 (account_1758980843290_22)
+2025-09-28 18:21:45,348 - miningService - INFO - 延迟启动账号挖矿: W023 (延迟 282 秒)
+2025-09-28 18:21:47,948 - miningService - INFO - 账号 W023 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:21:51,623 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:21:51,624 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:21:51] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:21:57,366 - miningService - INFO - 开始账号挖矿: T006 (account_1758980843293_30)
+2025-09-28 18:21:57,367 - miningService - INFO - 延迟启动账号挖矿: T006 (延迟 294 秒)
+2025-09-28 18:21:59,000 - miningService - INFO - 开始账号挖矿: W025 (account_1758980843291_24)
+2025-09-28 18:21:59,000 - miningService - INFO - 延迟启动账号挖矿: W025 (延迟 279 秒)
+2025-09-28 18:21:59,745 - miningService - INFO - 账号 T006 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:22:00,347 - miningService - INFO - 开始账号挖矿: T004 (account_1758980843292_28)
+2025-09-28 18:22:00,347 - miningService - INFO - 延迟启动账号挖矿: T004 (延迟 297 秒)
+2025-09-28 18:22:01,407 - miningService - INFO - 账号 W025 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:22:02,802 - miningService - INFO - 账号 T004 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:22:09,639 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:22:09,642 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:22:09] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:22:09,674 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:22:09] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:22:11,000 - miningService - INFO - 开始账号挖矿: W015 (account_1758980843288_14)
+2025-09-28 18:22:11,000 - miningService - INFO - 延迟启动账号挖矿: W015 (延迟 291 秒)
+2025-09-28 18:22:13,346 - miningService - INFO - 账号 W015 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:22:15,000 - miningService - INFO - 开始账号挖矿: T024 (account_1758980843299_48)
+2025-09-28 18:22:15,000 - miningService - INFO - 延迟启动账号挖矿: T024 (延迟 295 秒)
+2025-09-28 18:22:17,461 - miningService - INFO - 账号 T024 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:22:21,346 - miningService - INFO - 开始账号挖矿: W005 (account_1758980843284_4)
+2025-09-28 18:22:21,347 - miningService - INFO - 延迟启动账号挖矿: W005 (延迟 318 秒)
+2025-09-28 18:22:23,682 - miningService - INFO - 账号 W005 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:22:24,000 - miningService - INFO - 开始账号挖矿: T017 (account_1758980843297_41)
+2025-09-28 18:22:24,001 - miningService - INFO - 延迟启动账号挖矿: T017 (延迟 304 秒)
+2025-09-28 18:22:24,001 - miningService - INFO - 开始账号挖矿: A014 (account_1758980843301_55)
+2025-09-28 18:22:24,002 - miningService - INFO - 延迟启动账号挖矿: A014 (延迟 304 秒)
+2025-09-28 18:22:26,314 - miningService - INFO - 账号 T017 ping成功: {'score': 94.69, 'interval': 600}
+2025-09-28 18:22:26,642 - miningService - INFO - 账号 A014 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:22:30,000 - miningService - INFO - 开始账号挖矿: T012 (account_1758980843295_36)
+2025-09-28 18:22:30,001 - miningService - INFO - 延迟启动账号挖矿: T012 (延迟 310 秒)
+2025-09-28 18:22:30,002 - miningService - INFO - 开始账号挖矿: A003 (account_1758980843300_50)
+2025-09-28 18:22:30,002 - miningService - INFO - 延迟启动账号挖矿: A003 (延迟 310 秒)
+2025-09-28 18:22:32,564 - miningService - INFO - 账号 T012 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:22:32,610 - miningService - INFO - 账号 A003 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:22:32,917 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:22:32] "[33mPOST /api/mining/start HTTP/1.1[0m" 404 -
+2025-09-28 18:22:39,001 - miningService - INFO - 开始账号挖矿: T001 (account_1758980843291_25)
+2025-09-28 18:22:39,002 - miningService - INFO - 延迟启动账号挖矿: T001 (延迟 319 秒)
+2025-09-28 18:22:39,646 - miningService - INFO - 开始账号挖矿: W001 (account_1758980843278_0)
+2025-09-28 18:22:39,647 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:22:39] "POST /api/mining/start/account_1758980843278_0 HTTP/1.1" 200 -
+2025-09-28 18:22:40,348 - miningService - INFO - 开始账号挖矿: T015 (account_1758980843296_39)
+2025-09-28 18:22:40,348 - miningService - INFO - 延迟启动账号挖矿: T015 (延迟 337 秒)
+2025-09-28 18:22:41,072 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:22:41,073 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:22:41] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:22:41,189 - miningService - INFO - 账号 T001 ping成功: {'score': 94.69, 'interval': 600}
+2025-09-28 18:22:42,000 - miningService - INFO - 开始账号挖矿: W014 (account_1758980843287_13)
+2025-09-28 18:22:42,001 - miningService - INFO - 延迟启动账号挖矿: W014 (延迟 322 秒)
+2025-09-28 18:22:42,001 - miningService - INFO - 开始账号挖矿: T018 (account_1758980843297_42)
+2025-09-28 18:22:42,001 - miningService - INFO - 延迟启动账号挖矿: T018 (延迟 322 秒)
+2025-09-28 18:22:42,253 - miningService - INFO - 账号 W001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:22:42,804 - miningService - INFO - 账号 T015 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:22:43,999 - miningService - INFO - 开始账号挖矿: W005 (account_1758980843284_4)
+2025-09-28 18:22:44,000 - miningService - INFO - 延迟启动账号挖矿: W005 (延迟 324 秒)
+2025-09-28 18:22:44,527 - miningService - INFO - 账号 W014 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:22:44,619 - miningService - INFO - 账号 T018 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:22:46,410 - miningService - INFO - 账号 W005 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:22:48,543 - miningService - INFO - 开始账号挖矿: W001 (account_1758980843278_0)
+2025-09-28 18:22:48,544 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:22:48] "POST /api/mining/start/account_1758980843278_0 HTTP/1.1" 200 -
+2025-09-28 18:22:50,348 - miningService - INFO - 开始账号挖矿: T023 (account_1758980843299_47)
+2025-09-28 18:22:50,348 - miningService - INFO - 延迟启动账号挖矿: T023 (延迟 347 秒)
+2025-09-28 18:22:50,999 - miningService - INFO - 开始账号挖矿: W008 (account_1758980843285_7)
+2025-09-28 18:22:51,000 - miningService - INFO - 延迟启动账号挖矿: W008 (延迟 331 秒)
+2025-09-28 18:22:51,000 - miningService - INFO - 开始账号挖矿: T025 (account_1758980843300_49)
+2025-09-28 18:22:51,001 - miningService - INFO - 延迟启动账号挖矿: T025 (延迟 331 秒)
+2025-09-28 18:22:51,001 - miningService - INFO - 账号 W001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:22:52,686 - miningService - INFO - 账号 T023 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:22:53,420 - miningService - INFO - 账号 T025 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:22:53,554 - miningService - INFO - 账号 W008 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:22:59,463 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:22:59] "[33mPOST /api/mining/start HTTP/1.1[0m" 404 -
+2025-09-28 18:23:04,001 - miningService - INFO - 开始账号挖矿: A007 (account_1758980843300_51)
+2025-09-28 18:23:04,002 - miningService - INFO - 延迟启动账号挖矿: A007 (延迟 344 秒)
+2025-09-28 18:23:04,003 - miningService - INFO - 开始账号挖矿: T007 (account_1758980843293_31)
+2025-09-28 18:23:04,004 - miningService - INFO - 延迟启动账号挖矿: T007 (延迟 344 秒)
+2025-09-28 18:23:06,374 - miningService - INFO - 账号 A007 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:23:06,440 - miningService - INFO - 账号 T007 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:23:06,740 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:23:06,741 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:23:06] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:23:06,777 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:23:06] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:23:10,344 - miningService - INFO - 开始账号挖矿: T002 (account_1758980843292_26)
+2025-09-28 18:23:10,345 - miningService - INFO - 延迟启动账号挖矿: T002 (延迟 367 秒)
+2025-09-28 18:23:12,604 - miningService - INFO - 账号 T002 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:23:28,349 - miningService - INFO - 开始账号挖矿: T008 (account_1758980843294_32)
+2025-09-28 18:23:28,354 - miningService - INFO - 延迟启动账号挖矿: T008 (延迟 385 秒)
+2025-09-28 18:23:30,348 - miningService - INFO - 开始账号挖矿: W021 (account_1758980843290_20)
+2025-09-28 18:23:30,349 - miningService - INFO - 延迟启动账号挖矿: W021 (延迟 387 秒)
+2025-09-28 18:23:30,971 - miningService - INFO - 账号 T008 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:23:32,909 - miningService - INFO - 账号 W021 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:23:37,777 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:23:37,778 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:23:37] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:23:38,348 - miningService - INFO - 开始账号挖矿: W009 (account_1758980843286_8)
+2025-09-28 18:23:38,349 - miningService - INFO - 延迟启动账号挖矿: W009 (延迟 395 秒)
+2025-09-28 18:23:40,947 - miningService - INFO - 账号 W009 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:23:44,001 - miningService - INFO - 开始账号挖矿: A009 (account_1758980843301_53)
+2025-09-28 18:23:44,002 - miningService - INFO - 延迟启动账号挖矿: A009 (延迟 384 秒)
+2025-09-28 18:23:46,553 - miningService - INFO - 账号 A009 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:23:59,348 - miningService - INFO - 开始账号挖矿: W008 (account_1758980843285_7)
+2025-09-28 18:23:59,350 - miningService - INFO - 延迟启动账号挖矿: W008 (延迟 416 秒)
+2025-09-28 18:24:01,845 - miningService - INFO - 账号 W008 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:24:06,001 - miningService - INFO - 开始账号挖矿: W021 (account_1758980843290_20)
+2025-09-28 18:24:06,001 - miningService - INFO - 延迟启动账号挖矿: W021 (延迟 406 秒)
+2025-09-28 18:24:07,695 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:24:07,695 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:24:07] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:24:08,349 - miningService - INFO - 开始账号挖矿: A042 (account_1758980843302_57)
+2025-09-28 18:24:08,349 - miningService - INFO - 延迟启动账号挖矿: A042 (延迟 425 秒)
+2025-09-28 18:24:08,541 - miningService - INFO - 账号 W021 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:24:10,793 - miningService - INFO - 账号 A042 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:24:11,344 - miningService - INFO - 开始账号挖矿: W019 (account_1758980843289_18)
+2025-09-28 18:24:11,344 - miningService - INFO - 延迟启动账号挖矿: W019 (延迟 428 秒)
+2025-09-28 18:24:12,357 - miningService - INFO - 开始账号挖矿: T025 (account_1758980843300_49)
+2025-09-28 18:24:12,368 - miningService - INFO - 延迟启动账号挖矿: T025 (延迟 429 秒)
+2025-09-28 18:24:14,027 - miningService - INFO - 账号 W019 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:24:14,782 - miningService - INFO - 账号 T025 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:24:22,346 - miningService - INFO - 开始账号挖矿: T007 (account_1758980843293_31)
+2025-09-28 18:24:22,346 - miningService - INFO - 延迟启动账号挖矿: T007 (延迟 439 秒)
+2025-09-28 18:24:23,347 - miningService - INFO - 开始账号挖矿: W012 (account_1758980843286_10)
+2025-09-28 18:24:23,348 - miningService - INFO - 延迟启动账号挖矿: W012 (延迟 440 秒)
+2025-09-28 18:24:24,801 - miningService - INFO - 账号 T007 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:24:25,349 - miningService - INFO - 开始账号挖矿: A048 (account_1758980843303_60)
+2025-09-28 18:24:25,349 - miningService - INFO - 延迟启动账号挖矿: A048 (延迟 442 秒)
+2025-09-28 18:24:25,696 - miningService - INFO - 账号 W012 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:24:26,348 - miningService - INFO - 开始账号挖矿: W024 (account_1758980843291_23)
+2025-09-28 18:24:26,348 - miningService - INFO - 延迟启动账号挖矿: W024 (延迟 443 秒)
+2025-09-28 18:24:26,998 - miningService - INFO - 开始账号挖矿: T003 (account_1758980843292_27)
+2025-09-28 18:24:26,999 - miningService - INFO - 延迟启动账号挖矿: T003 (延迟 427 秒)
+2025-09-28 18:24:27,835 - miningService - INFO - 账号 A048 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:24:28,992 - miningService - INFO - 账号 W024 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:24:29,578 - miningService - INFO - 账号 T003 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:24:31,349 - miningService - INFO - 开始账号挖矿: W011 (account_1758980843286_9)
+2025-09-28 18:24:31,350 - miningService - INFO - 延迟启动账号挖矿: W011 (延迟 448 秒)
+2025-09-28 18:24:33,207 - miningService - INFO - 开始账号挖矿: W001 (account_1758980843278_0)
+2025-09-28 18:24:33,208 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:24:33] "POST /api/mining/start/account_1758980843278_0 HTTP/1.1" 200 -
+2025-09-28 18:24:33,908 - miningService - INFO - 账号 W011 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:24:35,000 - miningService - INFO - 开始账号挖矿: W017 (account_1758980843288_16)
+2025-09-28 18:24:35,000 - miningService - INFO - 延迟启动账号挖矿: W017 (延迟 435 秒)
+2025-09-28 18:24:35,894 - miningService - INFO - 账号 W001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:24:35,997 - miningService - INFO - 开始账号挖矿: W004 (account_1758980843284_3)
+2025-09-28 18:24:35,997 - miningService - INFO - 延迟启动账号挖矿: W004 (延迟 436 秒)
+2025-09-28 18:24:37,623 - miningService - INFO - 账号 W017 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:24:37,785 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:24:37,786 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:24:37] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:24:38,612 - miningService - INFO - 账号 W004 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:24:40,137 - miningService - INFO - 停止所有账号挖矿: 0
+2025-09-28 18:24:40,138 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:24:40] "POST /api/mining/stop-all HTTP/1.1" 200 -
+2025-09-28 18:24:40,348 - miningService - INFO - 开始账号挖矿: W007 (account_1758980843285_6)
+2025-09-28 18:24:40,352 - miningService - INFO - 延迟启动账号挖矿: W007 (延迟 457 秒)
+2025-09-28 18:24:42,726 - miningService - INFO - 账号 W007 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:24:43,002 - miningService - INFO - 开始账号挖矿: T021 (account_1758980843298_45)
+2025-09-28 18:24:43,002 - miningService - INFO - 延迟启动账号挖矿: T021 (延迟 443 秒)
+2025-09-28 18:24:45,608 - miningService - INFO - 账号 T021 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:24:48,828 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:24:48] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:24:50,349 - miningService - INFO - 开始账号挖矿: T022 (account_1758980843299_46)
+2025-09-28 18:24:50,349 - miningService - INFO - 延迟启动账号挖矿: T022 (延迟 467 秒)
+2025-09-28 18:24:52,349 - miningService - INFO - 开始账号挖矿: A053 (account_1758980843304_62)
+2025-09-28 18:24:52,350 - miningService - INFO - 延迟启动账号挖矿: A053 (延迟 469 秒)
+2025-09-28 18:24:52,715 - miningService - INFO - 账号 T022 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:24:54,908 - miningService - INFO - 账号 A053 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:25:01,348 - miningService - INFO - 开始账号挖矿: W015 (account_1758980843288_14)
+2025-09-28 18:25:01,349 - miningService - INFO - 延迟启动账号挖矿: W015 (延迟 478 秒)
+2025-09-28 18:25:03,945 - miningService - INFO - 账号 W015 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:25:04,047 - miningService - INFO - 开始账号挖矿: W016 (account_1758980843288_15)
+2025-09-28 18:25:04,048 - miningService - INFO - 延迟启动账号挖矿: W016 (延迟 464 秒)
+2025-09-28 18:25:04,090 - miningService - INFO - 开始账号挖矿: T023 (account_1758980843299_47)
+2025-09-28 18:25:04,096 - miningService - INFO - 延迟启动账号挖矿: T023 (延迟 464 秒)
+2025-09-28 18:25:06,580 - miningService - INFO - 账号 T023 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:25:06,664 - miningService - INFO - 账号 W016 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:25:06,881 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:25:06,883 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:25:06] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:25:12,851 - miningService - INFO - 开始账号挖矿: W001 (account_1758980843278_0)
+2025-09-28 18:25:12,854 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:25:12] "POST /api/mining/start/account_1758980843278_0 HTTP/1.1" 200 -
+2025-09-28 18:25:13,203 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:25:13,204 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:25:13] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:25:15,332 - miningService - INFO - 账号 W001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:25:17,349 - miningService - INFO - 开始账号挖矿: W022 (account_1758980843290_21)
+2025-09-28 18:25:17,351 - miningService - INFO - 延迟启动账号挖矿: W022 (延迟 494 秒)
+2025-09-28 18:25:19,748 - miningService - INFO - 账号 W022 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:25:23,002 - miningService - INFO - 开始账号挖矿: W013 (account_1758980843287_12)
+2025-09-28 18:25:23,003 - miningService - INFO - 延迟启动账号挖矿: W013 (延迟 483 秒)
+2025-09-28 18:25:23,021 - miningService - INFO - 开始账号挖矿: W001 (account_1758980843278_0)
+2025-09-28 18:25:23,023 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:25:23] "POST /api/mining/start/account_1758980843278_0 HTTP/1.1" 200 -
+2025-09-28 18:25:23,406 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:25:23,406 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:25:23] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:25:25,474 - miningService - INFO - 账号 W013 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:25:25,528 - miningService - INFO - 账号 W001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:25:32,350 - miningService - INFO - 开始账号挖矿: A054 (account_1758980843304_63)
+2025-09-28 18:25:32,351 - miningService - INFO - 延迟启动账号挖矿: A054 (延迟 509 秒)
+2025-09-28 18:25:33,002 - miningService - INFO - 开始账号挖矿: W007 (account_1758980843285_6)
+2025-09-28 18:25:33,003 - miningService - INFO - 延迟启动账号挖矿: W007 (延迟 493 秒)
+2025-09-28 18:25:33,349 - miningService - INFO - 开始账号挖矿: W020 (account_1758980843289_19)
+2025-09-28 18:25:33,350 - miningService - INFO - 延迟启动账号挖矿: W020 (延迟 510 秒)
+2025-09-28 18:25:35,022 - miningService - INFO - 账号 A054 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:25:35,653 - miningService - INFO - 账号 W007 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:25:35,749 - miningService - INFO - 账号 W020 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:25:36,815 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:25:36,816 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:25:36] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:25:40,350 - miningService - INFO - 开始账号挖矿: W025 (account_1758980843291_24)
+2025-09-28 18:25:40,351 - miningService - INFO - 延迟启动账号挖矿: W025 (延迟 517 秒)
+2025-09-28 18:25:41,016 - miningService - INFO - 开始账号挖矿: T010 (account_1758980843294_34)
+2025-09-28 18:25:41,016 - miningService - INFO - 延迟启动账号挖矿: T010 (延迟 501 秒)
+2025-09-28 18:25:42,821 - miningService - INFO - 账号 W025 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:25:44,267 - miningService - INFO - 账号 T010 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:25:44,349 - miningService - INFO - 开始账号挖矿: T013 (account_1758980843296_37)
+2025-09-28 18:25:44,350 - miningService - INFO - 延迟启动账号挖矿: T013 (延迟 521 秒)
+2025-09-28 18:25:46,612 - miningService - INFO - 账号 T013 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:25:50,350 - miningService - INFO - 开始账号挖矿: A003 (account_1758980843300_50)
+2025-09-28 18:25:50,350 - miningService - INFO - 延迟启动账号挖矿: A003 (延迟 527 秒)
+2025-09-28 18:25:52,988 - miningService - INFO - 账号 A003 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:25:55,002 - miningService - INFO - 开始账号挖矿: T004 (account_1758980843292_28)
+2025-09-28 18:25:55,002 - miningService - INFO - 延迟启动账号挖矿: T004 (延迟 515 秒)
+2025-09-28 18:25:57,349 - miningService - INFO - 开始账号挖矿: W010 (account_1758980843287_11)
+2025-09-28 18:25:57,350 - miningService - INFO - 延迟启动账号挖矿: W010 (延迟 534 秒)
+2025-09-28 18:25:57,350 - miningService - INFO - 开始账号挖矿: T017 (account_1758980843297_41)
+2025-09-28 18:25:57,351 - miningService - INFO - 延迟启动账号挖矿: T017 (延迟 534 秒)
+2025-09-28 18:25:57,474 - miningService - INFO - 账号 T004 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:25:59,945 - miningService - INFO - 账号 T017 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:25:59,990 - miningService - INFO - 账号 W010 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:26:03,002 - miningService - INFO - 开始账号挖矿: T002 (account_1758980843292_26)
+2025-09-28 18:26:03,003 - miningService - INFO - 延迟启动账号挖矿: T002 (延迟 523 秒)
+2025-09-28 18:26:04,350 - miningService - INFO - 开始账号挖矿: A007 (account_1758980843300_51)
+2025-09-28 18:26:04,351 - miningService - INFO - 延迟启动账号挖矿: A007 (延迟 541 秒)
+2025-09-28 18:26:05,396 - miningService - INFO - 账号 T002 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:26:06,618 - miningService - INFO - 账号 A007 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:26:06,792 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:26:06,793 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:26:06] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:26:08,002 - miningService - INFO - 开始账号挖矿: W020 (account_1758980843289_19)
+2025-09-28 18:26:08,002 - miningService - INFO - 延迟启动账号挖矿: W020 (延迟 528 秒)
+2025-09-28 18:26:08,862 - miningService - INFO - 账号 W010 信息更新成功
+2025-09-28 18:26:09,002 - miningService - INFO - 开始账号挖矿: W019 (account_1758980843289_18)
+2025-09-28 18:26:09,003 - miningService - INFO - 延迟启动账号挖矿: W019 (延迟 529 秒)
+2025-09-28 18:26:10,503 - miningService - INFO - 账号 W020 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:26:11,259 - miningService - INFO - 账号 W019 ping成功: {'score': 94.69, 'interval': 600}
+2025-09-28 18:26:11,276 - miningService - INFO - 账号 W020 信息更新成功
+2025-09-28 18:26:13,350 - miningService - INFO - 开始账号挖矿: T005 (account_1758980843293_29)
+2025-09-28 18:26:13,351 - miningService - INFO - 延迟启动账号挖矿: T005 (延迟 550 秒)
+2025-09-28 18:26:14,350 - miningService - INFO - 开始账号挖矿: T024 (account_1758980843299_48)
+2025-09-28 18:26:14,351 - miningService - INFO - 延迟启动账号挖矿: T024 (延迟 551 秒)
+2025-09-28 18:26:16,170 - miningService - INFO - 账号 T005 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:26:16,887 - miningService - INFO - 账号 T024 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:26:18,350 - miningService - INFO - 开始账号挖矿: A045 (account_1758980843303_59)
+2025-09-28 18:26:18,351 - miningService - INFO - 延迟启动账号挖矿: A045 (延迟 555 秒)
+2025-09-28 18:26:20,002 - miningService - INFO - 开始账号挖矿: W009 (account_1758980843286_8)
+2025-09-28 18:26:20,004 - miningService - INFO - 延迟启动账号挖矿: W009 (延迟 540 秒)
+2025-09-28 18:26:20,969 - miningService - INFO - 账号 A045 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:26:21,003 - miningService - INFO - 开始账号挖矿: T016 (account_1758980843297_40)
+2025-09-28 18:26:21,004 - miningService - INFO - 延迟启动账号挖矿: T016 (延迟 541 秒)
+2025-09-28 18:26:23,425 - miningService - INFO - 账号 W009 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:26:23,445 - miningService - INFO - 账号 T016 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:26:24,000 - miningService - INFO - 开始账号挖矿: A042 (account_1758980843302_57)
+2025-09-28 18:26:24,001 - miningService - INFO - 延迟启动账号挖矿: A042 (延迟 544 秒)
+2025-09-28 18:26:26,484 - miningService - INFO - 账号 A042 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:26:28,002 - miningService - INFO - 开始账号挖矿: T019 (account_1758980843298_43)
+2025-09-28 18:26:28,002 - miningService - INFO - 延迟启动账号挖矿: T019 (延迟 548 秒)
+2025-09-28 18:26:30,489 - miningService - INFO - 账号 T019 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:26:36,808 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:26:36,809 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:26:36] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:26:43,351 - miningService - INFO - 开始账号挖矿: T001 (account_1758980843291_25)
+2025-09-28 18:26:43,352 - miningService - INFO - 延迟启动账号挖矿: T001 (延迟 580 秒)
+2025-09-28 18:26:45,002 - miningService - INFO - 开始账号挖矿: T020 (account_1758980843298_44)
+2025-09-28 18:26:45,003 - miningService - INFO - 延迟启动账号挖矿: T020 (延迟 565 秒)
+2025-09-28 18:26:45,913 - miningService - INFO - 账号 T001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:26:47,423 - miningService - INFO - 账号 T020 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:26:50,348 - miningService - INFO - 开始账号挖矿: W018 (account_1758980843289_17)
+2025-09-28 18:26:50,349 - miningService - INFO - 延迟启动账号挖矿: W018 (延迟 587 秒)
+2025-09-28 18:26:52,331 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:26:52,334 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:26:52] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:26:52,371 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:26:52] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:26:52,467 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:26:52] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:26:52,542 - miningService - INFO - 账号 W018 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:27:07,137 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:27:07,138 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:27:07] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:27:07,219 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:27:07] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:27:07,301 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:27:07] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:27:08,013 - miningService - INFO - 开始账号挖矿: W010 (account_1758980843287_11)
+2025-09-28 18:27:08,025 - miningService - INFO - 延迟启动账号挖矿: W010 (延迟 588 秒)
+2025-09-28 18:27:10,860 - miningService - INFO - 账号 W010 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:27:12,998 - miningService - INFO - 开始账号挖矿: W006 (account_1758980843285_5)
+2025-09-28 18:27:12,999 - miningService - INFO - 延迟启动账号挖矿: W006 (延迟 593 秒)
+2025-09-28 18:27:14,002 - miningService - INFO - 开始账号挖矿: W002 (account_1758980843281_1)
+2025-09-28 18:27:14,003 - miningService - INFO - 延迟启动账号挖矿: W002 (延迟 594 秒)
+2025-09-28 18:27:15,434 - miningService - INFO - 账号 W006 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:27:16,603 - miningService - INFO - 账号 W002 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:27:22,852 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:27:22] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:27:23,199 - miningService - INFO - 账号 W002 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:27:37,145 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:27:37,145 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:27:37] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:27:37,222 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:27:37] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:27:50,876 - miningService - INFO - 开始账号挖矿: W001 (account_1758980843278_0)
+2025-09-28 18:27:50,876 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:27:50] "POST /api/mining/start/account_1758980843278_0 HTTP/1.1" 200 -
+2025-09-28 18:27:53,263 - miningService - INFO - 账号 W001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:28:07,068 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:28:07,068 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:28:07] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:28:07,282 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:28:07] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:28:09,263 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:28:09] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:28:15,912 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:28:15] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:28:23,713 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:28:23] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:28:37,171 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:28:37,173 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:28:37] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:28:37,282 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:28:37] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:28:37,507 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:28:37] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:28:49,798 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:28:49] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:28:54,199 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:28:54] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:29:03,883 - miningService - INFO - 停止所有账号挖矿: 0
+2025-09-28 18:29:03,883 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:29:03] "POST /api/mining/stop-all HTTP/1.1" 200 -
+2025-09-28 18:29:07,137 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:29:07,138 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:29:07] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:29:07,227 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:29:07] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:29:10,474 - miningService - INFO - 开始账号挖矿: W001 (account_1758980843278_0)
+2025-09-28 18:29:10,475 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:29:10] "POST /api/mining/start/account_1758980843278_0 HTTP/1.1" 200 -
+2025-09-28 18:29:12,685 - miningService - INFO - 账号 W001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:29:17,358 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:29:17] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:29:37,103 - miningService - INFO - 同步账号数据: 64 个账号
+2025-09-28 18:29:37,104 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:29:37] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:29:37,241 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:29:37] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:29:38,642 - werkzeug - INFO -  * Detected change in '/Users/austin/Desktop/Projects/rabbit_tools/framework/plugins/gaea/backend/services/miningService.py', reloading
+2025-09-28 18:29:38,706 - werkzeug - INFO -  * Restarting with stat
+2025-09-28 18:29:38,936 - miningService - INFO - 挂机挖矿服务初始化完成
+2025-09-28 18:29:38,962 - werkzeug - WARNING -  * Debugger is active!
+2025-09-28 18:29:38,970 - werkzeug - INFO -  * Debugger PIN: 127-170-217
+2025-09-28 18:32:02,468 - werkzeug - INFO -  * Detected change in '/Users/austin/Desktop/Projects/rabbit_tools/framework/plugins/gaea/backend/services/miningService.py', reloading
+2025-09-28 18:32:02,501 - werkzeug - INFO -  * Restarting with stat
+2025-09-28 18:32:02,677 - miningService - INFO - 挂机挖矿服务初始化完成
+2025-09-28 18:32:02,696 - werkzeug - WARNING -  * Debugger is active!
+2025-09-28 18:32:02,701 - werkzeug - INFO -  * Debugger PIN: 127-170-217
+2025-09-28 18:32:19,007 - werkzeug - INFO -  * Detected change in '/Users/austin/Desktop/Projects/rabbit_tools/framework/plugins/gaea/backend/services/miningService.py', reloading
+2025-09-28 18:32:19,036 - werkzeug - INFO -  * Restarting with stat
+2025-09-28 18:32:19,214 - miningService - INFO - 挂机挖矿服务初始化完成
+2025-09-28 18:32:19,231 - werkzeug - WARNING -  * Debugger is active!
+2025-09-28 18:32:19,238 - werkzeug - INFO -  * Debugger PIN: 127-170-217
+2025-09-28 18:32:28,412 - werkzeug - INFO -  * Detected change in '/Users/austin/Desktop/Projects/rabbit_tools/framework/plugins/gaea/backend/services/miningService.py', reloading
+2025-09-28 18:32:28,439 - werkzeug - INFO -  * Restarting with stat
+2025-09-28 18:32:28,588 - miningService - INFO - 挂机挖矿服务初始化完成
+2025-09-28 18:32:28,609 - werkzeug - WARNING -  * Debugger is active!
+2025-09-28 18:32:28,614 - werkzeug - INFO -  * Debugger PIN: 127-170-217
+2025-09-28 18:32:32,718 - werkzeug - INFO -  * Detected change in '/Users/austin/Desktop/Projects/rabbit_tools/framework/plugins/gaea/backend/services/miningService.py', reloading
+2025-09-28 18:32:32,750 - werkzeug - INFO -  * Restarting with stat
+2025-09-28 18:32:32,857 - miningService - INFO - 挂机挖矿服务初始化完成
+2025-09-28 18:32:32,874 - werkzeug - WARNING -  * Debugger is active!
+2025-09-28 18:32:32,878 - werkzeug - INFO -  * Debugger PIN: 127-170-217
+2025-09-28 18:32:33,912 - werkzeug - INFO -  * Detected change in '/Users/austin/Desktop/Projects/rabbit_tools/framework/plugins/gaea/backend/services/miningService.py', reloading
+2025-09-28 18:32:33,937 - werkzeug - INFO -  * Restarting with stat
+2025-09-28 18:32:34,034 - miningService - INFO - 挂机挖矿服务初始化完成
+2025-09-28 18:32:34,053 - werkzeug - WARNING -  * Debugger is active!
+2025-09-28 18:32:34,056 - werkzeug - INFO -  * Debugger PIN: 127-170-217
+2025-09-28 18:36:52,330 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:36:52,332 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:36:52] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:36:52,333 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:36:52,334 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:36:52] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:36:52,350 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:36:52] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:36:52,379 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:36:52] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:36:52,416 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:36:52] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:36:52,562 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:36:52] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:37:21,297 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:37:21,298 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:37:21] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:37:21,433 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:37:21] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:37:51,269 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:37:51,270 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:37:51] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:37:51,448 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:37:51] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:38:19,575 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:38:19] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:38:21,316 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:38:21,316 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:38:21] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:38:21,446 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:38:21] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:38:24,827 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:38:24] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:38:42,167 - miningService - INFO - 开始账号挖矿: B001 (account_1759055801897)
+2025-09-28 18:38:42,169 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:38:42] "POST /api/mining/start/account_1759055801897 HTTP/1.1" 200 -
+2025-09-28 18:38:42,535 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:38:42,535 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:38:42] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:38:42,569 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:38:42] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:38:44,994 - miningService - INFO - 账号 B001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:38:51,219 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:38:51,220 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:38:51] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:38:51,336 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:38:51] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:38:58,225 - miningService - INFO - 开始账号挖矿: W001 (account_1758980843278_0)
+2025-09-28 18:38:58,226 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:38:58] "POST /api/mining/start/account_1758980843278_0 HTTP/1.1" 200 -
+2025-09-28 18:39:00,616 - miningService - INFO - 账号 W001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:39:03,637 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:39:03] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:39:12,382 - miningService - INFO - 停止账号挖矿: account_1758980843278_0
+2025-09-28 18:39:12,382 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:39:12] "POST /api/mining/stop/account_1758980843278_0 HTTP/1.1" 200 -
+2025-09-28 18:39:16,046 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:39:16] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:39:20,157 - miningService - INFO - 开始所有账号挖矿: 65/65 (10分钟内随机启动)
+2025-09-28 18:39:20,157 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:39:20] "POST /api/mining/start-all HTTP/1.1" 200 -
+2025-09-28 18:39:21,303 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:39:21,303 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:39:21] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:39:21,406 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:39:21] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:39:24,019 - miningService - INFO - 停止所有账号挖矿: 0
+2025-09-28 18:39:24,019 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:39:24] "POST /api/mining/stop-all HTTP/1.1" 200 -
+2025-09-28 18:39:28,867 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:39:28] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:39:40,902 - miningService - INFO - 开始账号挖矿: B001 (account_1759055801897)
+2025-09-28 18:39:40,913 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:39:40] "POST /api/mining/start/account_1759055801897 HTTP/1.1" 200 -
+2025-09-28 18:39:41,254 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:39:41,254 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:39:41] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:39:41,461 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:39:41] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:39:44,228 - miningService - INFO - 账号 B001 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:39:51,226 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:39:51,227 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:39:51] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:39:51,348 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:39:51] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:40:21,289 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:40:21,291 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:40:21] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:40:21,405 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:40:21] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:40:51,256 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:40:51,257 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:40:51] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:40:51,383 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:40:51] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:40:55,298 - miningService - INFO - 挂机挖矿服务初始化完成
+2025-09-28 18:41:02,452 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:41:02] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:41:07,464 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:41:07] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:41:21,339 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:41:21,343 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:41:21] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:41:21,400 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:41:21] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:41:32,392 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:41:32,400 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:41:32] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:41:32,499 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:41:32] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:41:32,620 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:41:32] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:42:01,748 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:42:01,751 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:42:01] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:42:01,839 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:42:01] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:42:31,741 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:42:31,746 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:42:31] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:42:31,863 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:42:31] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:42:33,035 - miningService - INFO - 停止所有账号挖矿: 0
+2025-09-28 18:42:33,035 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:42:33] "POST /api/mining/stop-all HTTP/1.1" 200 -
+2025-09-28 18:42:38,159 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:42:38] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:42:45,419 - miningService - INFO - 开始账号挖矿: B001 (account_1759055801897)
+2025-09-28 18:42:45,420 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:42:45] "POST /api/mining/start/account_1759055801897 HTTP/1.1" 200 -
+2025-09-28 18:42:48,115 - miningService - INFO - 账号 B001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:42:50,434 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:42:50] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:43:02,466 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:43:02,467 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:43:02] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:43:02,502 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:43:02] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:43:31,726 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:43:31,729 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:43:31] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:43:31,929 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:43:31] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:43:47,929 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:43:47,930 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:43:47] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:43:47,956 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:43:47] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:43:47,995 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:43:47] "GET /api/mining/logs?limit=50 HTTP/1.1" 200 -
+2025-09-28 18:44:18,053 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:44:18,056 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:44:18] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:44:18,183 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:44:18] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:44:24,893 - miningService - INFO - 开始账号挖矿: B001 (account_1759055801897)
+2025-09-28 18:44:24,894 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:44:24] "POST /api/mining/start/account_1759055801897 HTTP/1.1" 200 -
+2025-09-28 18:44:25,138 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:44:25,139 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:44:25] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:44:25,521 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:44:25] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:44:28,296 - miningService - INFO - 账号 B001 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:44:48,060 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:44:48,065 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:44:48] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:44:48,207 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:44:48] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:45:18,324 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:45:18,326 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:45:18] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:45:18,356 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:45:18] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:45:48,123 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:45:48,124 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:45:48] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:45:48,303 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:45:48] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:46:18,086 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:46:18,086 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:46:18] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:46:18,316 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:46:18] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:46:48,206 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:46:48,206 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:46:48] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:46:48,246 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:46:48] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:47:18,076 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:47:18,077 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:47:18] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:47:18,252 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:47:18] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:47:48,040 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:47:48,040 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:47:48] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:47:48,295 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:47:48] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:48:18,092 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:48:18] "[31m[1mPOST /api/mining/sync-accounts HTTP/1.1[0m" 400 -
+2025-09-28 18:48:18,364 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:48:18] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:48:48,114 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:48:48] "[31m[1mPOST /api/mining/sync-accounts HTTP/1.1[0m" 400 -
+2025-09-28 18:48:48,309 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:48:48] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:49:18,259 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:49:18] "[31m[1mPOST /api/mining/sync-accounts HTTP/1.1[0m" 400 -
+2025-09-28 18:49:18,711 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:49:18] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:49:48,110 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:49:48,114 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:49:48] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:49:48,231 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:49:48] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:50:02,339 - miningService - INFO - 挂机挖矿服务初始化完成
+2025-09-28 18:50:02,375 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.253:5001
+2025-09-28 18:50:02,376 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-28 18:50:02,376 - werkzeug - INFO -  * Restarting with stat
+2025-09-28 18:50:02,480 - miningService - INFO - 挂机挖矿服务初始化完成
+2025-09-28 18:50:02,498 - werkzeug - WARNING -  * Debugger is active!
+2025-09-28 18:50:02,508 - werkzeug - INFO -  * Debugger PIN: 127-170-217
+2025-09-28 18:50:07,454 - miningService - INFO - 同步账号数据: 1 个账号
+2025-09-28 18:50:07,455 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:50:07] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:50:18,091 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:50:18,092 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:50:18] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:50:18,260 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:50:18] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:50:48,057 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:50:48,059 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:50:48] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:50:48,322 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:50:48] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:51:13,975 - miningService - INFO - 开始账号挖矿: B001 (account_1759055801897)
+2025-09-28 18:51:13,978 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:51:13] "POST /api/mining/start/account_1759055801897 HTTP/1.1" 200 -
+2025-09-28 18:51:14,421 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:51:14,422 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:51:14] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:51:14,550 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:51:14] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:51:17,658 - miningService - INFO - 账号 B001 ping成功: {'score': 94.36, 'interval': 600}
+2025-09-28 18:51:17,975 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:51:17,976 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:51:17] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:51:18,106 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:51:18] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:51:24,122 - miningService - INFO - 开始账号挖矿: B001 (account_1759055801897)
+2025-09-28 18:51:24,122 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:51:24] "POST /api/mining/start/account_1759055801897 HTTP/1.1" 200 -
+2025-09-28 18:51:24,466 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:51:24,466 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:51:24] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:51:24,483 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:51:24] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:51:29,558 - miningService - INFO - 账号 B001 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:51:48,058 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:51:48,059 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:51:48] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:51:48,217 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:51:48] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:52:18,094 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:52:18,095 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:52:18] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:52:18,299 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:52:18] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:52:24,607 - miningService - INFO - 开始账号挖矿: B001 (account_1759055801897)
+2025-09-28 18:52:24,608 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:52:24] "POST /api/mining/start/account_1759055801897 HTTP/1.1" 200 -
+2025-09-28 18:52:27,225 - miningService - INFO - 账号 B001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:52:33,960 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:52:33] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:52:48,075 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:52:48,079 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:52:48] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:52:48,297 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:52:48] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:52:57,812 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:52:57] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:53:03,173 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:53:03] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:53:08,293 - miningService - INFO - 开始账号挖矿: B001 (account_1759055801897)
+2025-09-28 18:53:08,297 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:53:08] "POST /api/mining/start/account_1759055801897 HTTP/1.1" 200 -
+2025-09-28 18:53:10,188 - miningService - INFO - 账号 B001 ping成功: {'score': 94.69, 'interval': 600}
+2025-09-28 18:53:13,416 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:53:13] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:53:18,283 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:53:18,286 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:53:18] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:53:18,399 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:53:18] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:53:21,203 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:53:21] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:53:29,856 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:53:29] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:53:34,182 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:53:34] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:53:38,168 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:53:38] "GET /api/mining/logs?limit=10 HTTP/1.1" 200 -
+2025-09-28 18:53:48,063 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:53:48,064 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:53:48] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:53:48,226 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:53:48] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:53:50,906 - miningService - INFO - 停止所有账号挖矿: 0
+2025-09-28 18:53:50,907 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:53:50] "POST /api/mining/stop-all HTTP/1.1" 200 -
+2025-09-28 18:53:54,629 - miningService - INFO - 开始账号挖矿: B001 (account_1759055801897)
+2025-09-28 18:53:54,629 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:53:54] "POST /api/mining/start/account_1759055801897 HTTP/1.1" 200 -
+2025-09-28 18:53:56,458 - miningService - INFO - 账号 B001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:54:00,022 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:54:00] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:54:13,718 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:54:13] "GET /api/mining/logs?limit=5 HTTP/1.1" 200 -
+2025-09-28 18:54:18,042 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:54:18,042 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:54:18] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:54:18,229 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:54:18] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:54:48,066 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:54:48,067 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:54:48] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:54:48,179 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:54:48] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:54:52,213 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:54:52] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:54:59,917 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:54:59] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:55:05,189 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:55:05] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:55:18,042 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:55:18,044 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:55:18] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:55:18,240 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:55:18] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:55:27,460 - werkzeug - INFO -  * Detected change in '/Users/austin/Desktop/Projects/rabbit_tools/framework/plugins/gaea/backend/services/miningService.py', reloading
+2025-09-28 18:55:27,605 - werkzeug - INFO -  * Restarting with stat
+2025-09-28 18:55:28,044 - miningService - INFO - 挂机挖矿服务初始化完成
+2025-09-28 18:55:28,109 - werkzeug - WARNING -  * Debugger is active!
+2025-09-28 18:55:28,132 - werkzeug - INFO -  * Debugger PIN: 127-170-217
+2025-09-28 18:55:39,245 - miningService - INFO - 挂机挖矿服务初始化完成
+2025-09-28 18:55:39,273 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.253:5001
+2025-09-28 18:55:39,273 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-28 18:55:39,273 - werkzeug - INFO -  * Restarting with stat
+2025-09-28 18:55:39,373 - miningService - INFO - 挂机挖矿服务初始化完成
+2025-09-28 18:55:39,389 - werkzeug - WARNING -  * Debugger is active!
+2025-09-28 18:55:39,393 - werkzeug - INFO -  * Debugger PIN: 127-170-217
+2025-09-28 18:55:45,662 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:55:45] "[31m[1mPOST /api/mining/start/account_1759055801897 HTTP/1.1[0m" 400 -
+2025-09-28 18:55:48,262 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:55:48,264 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:55:48] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:55:48,309 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:55:48] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:55:54,225 - miningService - INFO - 同步账号数据: 1 个账号
+2025-09-28 18:55:54,226 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:55:54] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:56:01,382 - miningService - INFO - 开始账号挖矿: B001 (account_1759055801897)
+2025-09-28 18:56:01,383 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:56:01] "POST /api/mining/start/account_1759055801897 HTTP/1.1" 200 -
+2025-09-28 18:56:05,049 - miningService - INFO - 账号 B001 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:56:05,475 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:56:05] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:56:12,642 - miningService - INFO - 重新启动账号挖矿: B001 (account_1759055801897)
+2025-09-28 18:56:12,643 - miningService - INFO - 同步账号数据: 1 个账号
+2025-09-28 18:56:12,643 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:56:12] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:56:14,548 - miningService - INFO - 账号 B001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:56:16,899 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:56:16] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:56:18,096 - miningService - INFO - 重新启动账号挖矿: B001 (account_1759055801897)
+2025-09-28 18:56:18,097 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:56:18,098 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:56:18] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:56:18,267 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:56:18] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:56:20,604 - miningService - INFO - 账号 B001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:56:21,588 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:56:21] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:56:27,545 - werkzeug - INFO -  * Detected change in '/Users/austin/Desktop/Projects/rabbit_tools/framework/plugins/gaea/backend/services/miningService.py', reloading
+2025-09-28 18:56:27,609 - werkzeug - INFO -  * Restarting with stat
+2025-09-28 18:56:27,831 - miningService - INFO - 挂机挖矿服务初始化完成
+2025-09-28 18:56:27,863 - werkzeug - WARNING -  * Debugger is active!
+2025-09-28 18:56:27,875 - werkzeug - INFO -  * Debugger PIN: 127-170-217
+2025-09-28 18:56:36,221 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:56:36] "[31m[1mPOST /api/mining/stop/account_1759055801897 HTTP/1.1[0m" 400 -
+2025-09-28 18:56:48,071 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:56:48,073 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:56:48] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:56:48,213 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:56:48] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:57:05,559 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:57:05] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:57:11,867 - miningService - INFO - 开始账号挖矿: B001 (account_1759055801897)
+2025-09-28 18:57:11,867 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:57:11] "POST /api/mining/start/account_1759055801897 HTTP/1.1" 200 -
+2025-09-28 18:57:13,844 - miningService - INFO - 账号 B001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:57:17,333 - miningService - INFO - 停止账号挖矿: account_1759055801897
+2025-09-28 18:57:17,333 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:57:17] "POST /api/mining/stop/account_1759055801897 HTTP/1.1" 200 -
+2025-09-28 18:57:18,064 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:57:18,064 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:57:18] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:57:18,310 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:57:18] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:57:27,367 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:57:27] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:57:31,955 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:57:31] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:57:44,650 - miningService - INFO - 开始账号挖矿: B001 (account_1759055801897)
+2025-09-28 18:57:44,650 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:57:44] "POST /api/mining/start/account_1759055801897 HTTP/1.1" 200 -
+2025-09-28 18:57:47,004 - miningService - INFO - 账号 B001 ping成功: {'score': 94.58, 'interval': 600}
+2025-09-28 18:57:48,064 - miningService - INFO - 重新启动账号挖矿: B001 (account_1759055801897)
+2025-09-28 18:57:48,065 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:57:48,065 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:57:48] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:57:48,255 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:57:48] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:57:52,574 - miningService - INFO - 账号 B001 ping成功: {'score': 94.36, 'interval': 600}
+2025-09-28 18:57:53,642 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:57:53] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:57:58,844 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:57:58] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:58:03,590 - miningService - INFO - 停止账号挖矿: account_1759055801897
+2025-09-28 18:58:03,591 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:58:03] "POST /api/mining/stop/account_1759055801897 HTTP/1.1" 200 -
+2025-09-28 18:58:10,213 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:58:10] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:58:18,063 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:58:18,063 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:58:18] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:58:18,249 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:58:18] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:58:21,398 - miningService - INFO - 开始账号挖矿: B001 (account_1759055801897)
+2025-09-28 18:58:21,400 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:58:21] "POST /api/mining/start/account_1759055801897 HTTP/1.1" 200 -
+2025-09-28 18:58:21,786 - miningService - INFO - 重新启动账号挖矿: B001 (account_1759055801897)
+2025-09-28 18:58:21,786 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:58:21,786 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:58:21] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:58:21,805 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:58:21] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:58:24,068 - miningService - WARNING - 账号 B001 ping失败: HTTP 403
+2025-09-28 18:58:25,206 - miningService - INFO - 账号 B001 ping成功: {'score': 94.47, 'interval': 600}
+2025-09-28 18:58:28,329 - miningService - INFO - 停止账号挖矿: account_1759055801897
+2025-09-28 18:58:28,330 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:58:28] "POST /api/mining/stop/account_1759055801897 HTTP/1.1" 200 -
+2025-09-28 18:58:28,682 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:58:28,687 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:58:28] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:58:28,824 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:58:28] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:58:48,040 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:58:48,040 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:58:48] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:58:48,242 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:58:48] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:59:18,151 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:59:18,154 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:59:18] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:59:18,678 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:59:18] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:59:23,910 - werkzeug - INFO -  * Detected change in '/Users/austin/Desktop/Projects/rabbit_tools/framework/plugins/gaea/backend/services/miningService.py', reloading
+2025-09-28 18:59:23,982 - werkzeug - INFO -  * Restarting with stat
+2025-09-28 18:59:24,465 - werkzeug - WARNING -  * Debugger is active!
+2025-09-28 18:59:24,503 - werkzeug - INFO -  * Debugger PIN: 127-170-217
+2025-09-28 18:59:30,866 - werkzeug - INFO -  * Detected change in '/Users/austin/Desktop/Projects/rabbit_tools/framework/plugins/gaea/backend/services/miningService.py', reloading
+2025-09-28 18:59:31,054 - werkzeug - INFO -  * Restarting with stat
+2025-09-28 18:59:31,434 - werkzeug - WARNING -  * Debugger is active!
+2025-09-28 18:59:31,444 - werkzeug - INFO -  * Debugger PIN: 127-170-217
+2025-09-28 18:59:38,893 - werkzeug - INFO -  * Detected change in '/Users/austin/Desktop/Projects/rabbit_tools/framework/plugins/gaea/backend/services/miningService.py', reloading
+2025-09-28 18:59:38,960 - werkzeug - INFO -  * Restarting with stat
+2025-09-28 18:59:39,330 - werkzeug - WARNING -  * Debugger is active!
+2025-09-28 18:59:39,342 - werkzeug - INFO -  * Debugger PIN: 127-170-217
+2025-09-28 18:59:44,476 - werkzeug - INFO -  * Detected change in '/Users/austin/Desktop/Projects/rabbit_tools/framework/plugins/gaea/backend/services/miningService.py', reloading
+2025-09-28 18:59:44,536 - werkzeug - INFO -  * Restarting with stat
+2025-09-28 18:59:45,931 - werkzeug - WARNING -  * Debugger is active!
+2025-09-28 18:59:45,968 - werkzeug - INFO -  * Debugger PIN: 127-170-217
+2025-09-28 18:59:48,363 - miningService - INFO - 同步账号数据: 65 个账号
+2025-09-28 18:59:48,366 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:59:48] "POST /api/mining/sync-accounts HTTP/1.1" 200 -
+2025-09-28 18:59:48,407 - werkzeug - INFO - 127.0.0.1 - - [28/Sep/2025 18:59:48] "GET /api/mining/status HTTP/1.1" 200 -
+2025-09-28 18:59:52,409 - werkzeug - INFO -  * Detected change in '/Users/austin/Desktop/Projects/rabbit_tools/framework/plugins/gaea/backend/services/miningService.py', reloading
+2025-09-28 18:59:52,463 - werkzeug - INFO -  * Restarting with stat
+2025-09-28 18:59:52,785 - werkzeug - WARNING -  * Debugger is active!
+2025-09-28 18:59:52,795 - werkzeug - INFO -  * Debugger PIN: 127-170-217
+2025-09-28 19:00:00,177 - werkzeug - INFO -  * Detected change in '/Users/austin/Desktop/Projects/rabbit_tools/framework/plugins/gaea/backend/services/miningService.py', reloading
+2025-09-28 19:00:00,358 - werkzeug - INFO -  * Restarting with stat
+2025-09-28 19:00:00,657 - werkzeug - WARNING -  * Debugger is active!
+2025-09-28 19:00:00,663 - werkzeug - INFO -  * Debugger PIN: 127-170-217
+2025-09-28 19:00:08,009 - werkzeug - INFO -  * Detected change in '/Users/austin/Desktop/Projects/rabbit_tools/framework/plugins/gaea/backend/services/miningService.py', reloading
+2025-09-28 19:00:08,115 - werkzeug - INFO -  * Restarting with stat
+2025-09-28 19:00:08,349 - werkzeug - WARNING -  * Debugger is active!
+2025-09-28 19:00:08,354 - werkzeug - INFO -  * Debugger PIN: 127-170-217
+2025-09-28 19:00:14,578 - werkzeug - INFO -  * Detected change in '/Users/austin/Desktop/Projects/rabbit_tools/framework/plugins/gaea/backend/services/miningService.py', reloading
+2025-09-28 19:00:14,619 - werkzeug - INFO -  * Restarting with stat
