@@ -13,9 +13,13 @@ export default function AuthPage() {
   const [mode, setMode] = useState<AuthMode>('login');
   const { user, loading } = useAuth();
   const router = useRouter();
+  
+  console.log('✅ 登录页面组件正在渲染 - loading:', loading, 'user:', !!user, 'mode:', mode);
+  console.log('✅ 当前路径:', typeof window !== 'undefined' ? window.location.pathname : 'SSR');
 
   // 如果用户已登录，重定向到首页
   useEffect(() => {
+    console.log('Login page auth check: loading=', loading, 'user=', !!user);
     if (user && !loading) {
       router.push('/');
     }

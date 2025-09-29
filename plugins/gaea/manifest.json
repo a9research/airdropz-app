@@ -29,8 +29,7 @@
   ],
   "resources": {
     "frontend": [
-      "frontend/services/gaeaService.ts",
-      "frontend/components/"
+      "frontend/services/gaeaService.ts"
     ],
     "shared": [
       "shared/types/index.ts"

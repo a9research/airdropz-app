@@ -18,18 +18,28 @@ export default function ClientPluginPage({ pluginName }: ClientPluginPageProps) 
       try {
         setLoading(true);
         setError(null);
-        
-        // 动态导入插件页面
-        const pluginModule = await import(`../../../../plugins/${pluginName}/ui/pages/page`);
+
+        console.log(`🔄 开始加载插件页面: ${pluginName}`);
+
+        // 为避免可变 import 路径在打包后解析失败，这里采用显式映射
+        let pluginModule: { default: React.ComponentType } | null = null;
+        if (pluginName === 'gaea') {
+          pluginModule = await import('../../../../plugins/gaea/ui/pages/page');
+        } else {
+          throw new Error(`未知插件: ${pluginName}`);
+        }
+
         setPluginComponent(() => pluginModule.default);
+        console.log(`✅ 插件组件设置完成`);
       } catch (err: any) {
-        console.error(`Failed to load plugin page for ${pluginName}:`, err);
-        setError(err.message || 'Failed to load plugin');
+        console.error(`❌ 插件页面加载失败 ${pluginName}:`, err);
+        setError(`加载插件失败: ${err.message || '未知错误'}`);
       } finally {
         setLoading(false);
       }
     };
 
+    console.log(`🚀 开始为插件 ${pluginName} 加载页面`);
     loadPlugin();
   }, [pluginName]);
 

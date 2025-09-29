@@ -79,11 +79,14 @@ export class TokenService {
       }
     };
 
-    // 立即检查一次
-    checkToken();
+    // 不要立即检查，延迟1分钟后开始，避免干扰初始认证流程
+    // checkToken();
 
-    // 每5分钟检查一次
+    // 每5分钟检查一次，第一次检查延迟1分钟
     const intervalId = setInterval(checkToken, 5 * 60 * 1000);
+    
+    // 1分钟后开始第一次检查
+    setTimeout(checkToken, 60 * 1000);
     
     // 存储定时器ID以便清理
     (window as any).__tokenRefreshInterval = intervalId;

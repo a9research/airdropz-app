@@ -8,7 +8,7 @@
   "preload": "electron/preload.js",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/copy-plugins.js",
     "start": "next start",
     "electron": "electron .",
     "electron-dev": "concurrently \"next dev\" \"wait-on http://localhost:3000 && NODE_ENV=development electron .\"",
@@ -83,7 +83,8 @@
       "package.json"
     ],
     "asarUnpack": [
-      "runtime/python-env/**/*"
+      "runtime/python-env/**/*",
+      "node_modules/axios/**/*"
     ],
     "extraResources": [
       {

@@ -37,6 +37,14 @@ class PluginResourceManager {
     if (this.isInitialized) {
       return;
     }
+    
+    // 在构建时跳过插件加载
+    if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
+      console.log('Skipping plugin loading during build...');
+      this.isInitialized = true;
+      return;
+    }
+    
     console.log('Initializing PluginResourceManager...');
     await this.loadAllPlugins();
     this.isInitialized = true;
@@ -80,13 +88,15 @@ class PluginResourceManager {
       for (const resourcePath of manifest.resources.shared) {
         const fullPath = path.join(pluginPath, resourcePath);
         try {
-          if (resourcePath.endsWith('.ts') || resourcePath.endsWith('.js')) {
-            // 使用相对路径导入
-            const relativePath = path.relative(process.cwd(), fullPath).replace(/\\/g, '/');
-            const module = await import(`../../${relativePath}`);
+          // 只处理 JavaScript/TypeScript 文件，跳过其他文件类型
+          if (this.isValidModuleFile(resourcePath)) {
+            // 使用绝对路径导入，避免 webpack 分析
+            const module = await import(/* webpackIgnore: true */ fullPath);
             pluginEntry.types.set(path.basename(resourcePath, path.extname(resourcePath)), module);
+            console.log(`Loaded shared resource: ${resourcePath}`);
+          } else {
+            console.log(`Skipping non-module file: ${resourcePath}`);
           }
-          console.log(`Loaded shared resource: ${resourcePath}`);
         } catch (error) {
           console.error(`Failed to load shared resource ${resourcePath} for plugin ${pluginName}:`, error);
         }
@@ -98,10 +108,10 @@ class PluginResourceManager {
       for (const resourcePath of manifest.resources.frontend) {
         const fullPath = path.join(pluginPath, resourcePath);
         try {
-          if (resourcePath.endsWith('.ts') || resourcePath.endsWith('.js')) {
-            // 使用相对路径导入
-            const relativePath = path.relative(process.cwd(), fullPath).replace(/\\/g, '/');
-            const module = await import(`../../${relativePath}`);
+          // 只处理 JavaScript/TypeScript 文件，跳过其他文件类型
+          if (this.isValidModuleFile(resourcePath)) {
+            // 使用绝对路径导入，避免 webpack 分析
+            const module = await import(/* webpackIgnore: true */ fullPath);
             const serviceName = path.basename(resourcePath, path.extname(resourcePath));
             if (module.default) {
               pluginEntry.services.set(serviceName, module.default);
@@ -109,6 +119,8 @@ class PluginResourceManager {
               pluginEntry.services.set(serviceName, module[Object.keys(module)[0]]);
             }
             console.log(`Loaded frontend service: ${resourcePath}`);
+          } else {
+            console.log(`Skipping non-module file: ${resourcePath}`);
           }
         } catch (error) {
           console.error(`Failed to load frontend resource ${resourcePath} for plugin ${pluginName}:`, error);
@@ -145,6 +157,28 @@ class PluginResourceManager {
     } catch {
       return false;
     }
+  }
+
+  private isValidModuleFile(filePath: string): boolean {
+    const validExtensions = ['.ts', '.tsx', '.js', '.jsx'];
+    const ext = path.extname(filePath).toLowerCase();
+    
+    // 检查文件扩展名
+    if (!validExtensions.includes(ext)) {
+      return false;
+    }
+    
+    // 跳过特定文件
+    const fileName = path.basename(filePath).toLowerCase();
+    const skipFiles = ['readme', 'test', 'spec', 'config', 'setup'];
+    
+    for (const skipFile of skipFiles) {
+      if (fileName.includes(skipFile)) {
+        return false;
+      }
+    }
+    
+    return true;
   }
 
   getPluginService(pluginName: string, serviceName: string): any | undefined {

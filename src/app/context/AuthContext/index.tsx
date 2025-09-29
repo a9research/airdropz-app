@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { User, LoginCredentials, RegisterCredentials, AuthError, AuthContextType, AuthResponse, SessionData } from '@/types/auth';
 import { SessionManager } from '@/lib/auth/sessionManager';
-import { TokenService } from '@/lib/auth/tokenService';
+// import { TokenService } from '@/lib/auth/tokenService';
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -23,6 +23,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     const initializeAuth = async () => {
       try {
         console.log('🔍 开始初始化认证...');
+        console.log('Current localStorage keys:', Object.keys(localStorage));
         const session = SessionManager.getSession();
         console.log('📦 获取到的会话数据:', session);
         
@@ -49,17 +50,19 @@ export function AuthProvider({ children }: AuthProviderProps) {
         }
       } catch (err) {
         console.error('❌ 初始化认证失败:', err);
+        console.error('Error stack:', err instanceof Error ? err.stack : 'No stack trace');
         SessionManager.clearSession();
         setUser(null);
       } finally {
+        console.log('🔄 认证初始化完成，设置 loading = false');
         setLoading(false);
       }
     };
 
     initializeAuth();
 
-    // 启动自动token刷新
-    TokenService.startAutoRefresh();
+    // 启动自动token刷新（现在修复了，不会干扰初始认证）
+    // TokenService.startAutoRefresh();
 
     // 监听登出事件
     const handleLogout = () => {
@@ -70,7 +73,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     window.addEventListener('auth:logout', handleLogout);
 
     return () => {
-      TokenService.stopAutoRefresh();
+      // TokenService.stopAutoRefresh();
       window.removeEventListener('auth:logout', handleLogout);
     };
   }, []);
@@ -168,7 +171,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       setLoading(true);
       
       // 停止自动刷新
-      TokenService.stopAutoRefresh();
+      // TokenService.stopAutoRefresh();
       
       // 清除会话数据
       SessionManager.clearSession();
@@ -186,7 +189,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const refreshToken = async (): Promise<boolean> => {
     try {
-      return await TokenService.refreshToken();
+      // return await TokenService.refreshToken();
+      return false;
     } catch (err) {
       console.error('刷新token失败:', err);
       return false;

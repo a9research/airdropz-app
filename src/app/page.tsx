@@ -1,14 +1,36 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useAuth } from '@/app/context/AuthContext';
+import { useAuth } from './context/AuthContext';
 import { useRouter } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
-import Layout from '@/components/layout/Layout';
+import Layout from '../components/layout/Layout';
+
+// 声明全局类型
+declare global {
+  interface Window {
+    api: any;
+  }
+}
 
 export default function Home() {
+  console.log('🏠 首页组件正在渲染，当前路径:', typeof window !== 'undefined' ? window.location.pathname : 'SSR');
   const { user, loading } = useAuth();
   const router = useRouter();
+  
+  // 如果在登录页面，不应该渲染首页组件
+  if (typeof window !== 'undefined' && window.location.pathname !== '/') {
+    console.log('⚠️ 首页组件在非首页路径被错误渲染:', window.location.pathname);
+    // 强制重定向到正确的路由处理
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-blue-600" />
+          <p className="text-gray-600">正在加载页面...</p>
+        </div>
+      </div>
+    );
+  }
   const [scrapeResult, setScrapeResult] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [testUrl, setTestUrl] = useState('https://baidu.com');
@@ -114,14 +136,30 @@ export default function Home() {
   };
 
   useEffect(() => {
+    // 只在首页进行认证检查，避免在插件路由时重定向
+    console.log('Auth check: loading=', loading, 'user=', !!user, 'pathname=', typeof window !== 'undefined' ? window.location.pathname : 'SSR');
+    
+    // 确保在客户端环境
+    if (typeof window === 'undefined') {
+      return;
+    }
+    
+    // 如果不在首页，直接返回不处理
+    if (window.location.pathname !== '/') {
+      console.log('🏠 不在首页，跳过认证检查');
+      return;
+    }
+    
     if (!loading && !user) {
+      // 使用 Next.js 路由器进行重定向
+      console.log('🔄 用户未登录，重定向到登录页面...');
       router.push('/login');
     }
   }, [user, loading, router]);
 
   useEffect(() => {
     addLog('🎯 页面加载完成，检查 API 可用性...');
-    if (window.api) {
+    if (typeof window !== 'undefined' && window.api) {
       addLog('✅ window.api 可用');
       checkDownloadStatus();
     } else {
@@ -141,7 +179,14 @@ export default function Home() {
   }
 
   if (!user) {
-    return null;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-blue-600" />
+          <p className="text-gray-600">重定向到登录页面...</p>
+        </div>
+      </div>
+    );
   }
 
   return (

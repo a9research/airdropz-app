@@ -1,0 +1,8 @@
+# 排除插件目录中的非 JavaScript 文件
+plugins/**/*.md
+plugins/**/*.py
+plugins/**/*.pyc
+plugins/**/__pycache__/**
+plugins/**/README.md
+plugins/**/backend/**
+

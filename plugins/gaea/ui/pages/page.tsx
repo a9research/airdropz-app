@@ -507,11 +507,11 @@ export default function GaeaPluginPage() {
       console.log('开始登录账号:', account.name);
       const result = await loginService.login(credentials);
       
-      if (result.success && result.gaeaToken && result.browserId) {
+      if (result.success && result.gaeaToken) {
         const updateSuccess = await loginService.updateAccountTokens(
           account.id, 
           result.gaeaToken, 
-          result.browserId
+          result.browserId || null
         );
         
         if (updateSuccess) {

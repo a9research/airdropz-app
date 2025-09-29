@@ -4,7 +4,7 @@
 
 import PouchDB from 'pouchdb';
 import PouchDBFind from 'pouchdb-find';
-import { DatabaseConfig, DatabaseInfo, DatabaseService } from '@/types/database';
+import { DatabaseConfig, DatabaseInfo, DatabaseService } from '../../types/database';
 
 // 启用find插件
 PouchDB.plugin(PouchDBFind);
